@@ -1,0 +1,236 @@
+package stx;
+
+using stx.Pointwise;
+using stx.async.Arrowlet;
+using stx.Errors;
+
+import tink.CoreApi;
+
+import stx.data.Thunk;
+import stx.data.Sink;
+
+import stx.types.Upshot;
+
+import stx.simplex.data.Producer;
+
+import stx.simplex.data.Simplex in ESimplex;
+
+abstract Simplex<I,O>(ESimplex<I,O>) from ESimplex<I,O> to ESimplex<I,O>{
+  public function new(v){
+    this = v;
+  }
+  /*
+  @:from static public function fromArrow<I,O>(arw:Arrowlet<I,O>){
+    return Wait(
+      function rec(v:I,cont:Sink<Simplex<I,O>>):Void{
+        var n = Emit.bind(_,Wait(rec));
+        $type(n);
+        //arw.then(Emit.bind(_,Wait(rec)))(i,cont);
+      }
+    );
+  }*/
+  public function map(fn){
+    return Simplexs.map(this,fn);
+  }
+  public function flatMap(fn){
+    return Simplexs.flatMap(this,fn);
+  }
+}
+class Simplexs{
+  static private inline function future<A>(v:A):Future<A>{
+    var ft = new FutureTrigger();
+        ft.trigger(v);
+      return ft;
+  }
+  @:noUsing static public function generator<O>(fn:Thunk<O>):Producer<O,Error>{
+    function rec(i:Noise,cont):Void{
+      var val = null;
+      var err = null;
+      try{
+        val= fn();
+      }catch(e:Dynamic){
+        err = e;
+      }
+      cont(
+        if(err!=null){
+          Halt(err);
+        }else{
+          Emit(val,Wait(rec));
+        }
+      );
+    }
+    return Wait(rec);
+  }
+  static public function map<I,O,O2>(prc:Simplex<I,O>,fn:O->O2):Simplex<I,O2,R>{
+    return switch (prc){
+      case Emit(head,tail)  : Emit(fn(head),map(tail,fn));
+      case Wait(arw)        :
+        var arw2 = arw.then((function(x){ return map(x,fn);}:Arrowlet<Simplex<I,O>,Simplex<I,O2>>));
+        Wait(arw2);
+      case Halt(e)          : Halt(e);
+      case Held(ft)         : Held(ft.map(map.bind(_,fn)));
+    }
+  }
+  static public function append<I,O>(prc0:Simplex<I,O>,prc1:Thunk<Simplex<I,O>>):Simplex<I,O>{
+    return switch (prc0){
+      case Emit(head,tail)  : Emit(head,append(tail,prc1));
+      case Wait(arw)        : Wait(arw.then(append.bind(_,prc1)));
+      case Halt(null)       : prc1();
+      case Halt(e)          : Halt(e);
+      case Held(ft)         : Held(ft.map(append.bind(_,prc1)));
+    }
+  }
+  static public function flatMap<I,O,O2>(prc:Simplex<I,O>,fn:O->Simplex<I,O2>):Simplex<I,O2>{
+    return switch (prc){
+      case Emit(head,tail)  : append(fn(head),Pointwise.toThunk(flatMap(tail,fn)));
+      case Wait(arw)        : Wait(arw.then(flatMap.bind(_,fn)));
+      case Halt(e)          : Halt(e);
+      case Held(ft)         : Held(ft.map(flatMap.bind(_,fn)));
+    }
+  }
+  static public function pipe<I,O,O2>(prc0:Simplex<I,O>,prc1:Simplex<O,O2>):Simplex<I,O2>{
+    return flatMap(prc0,
+      function(x:O):stx.Simplex.Simplex<I,O2>{
+        return switch (prc1){
+          case Emit(head,tail)  : Emit(head,pipe(prc0,tail));
+          case Wait(arw)        : pipe(prc0,Held(arw.apply(x)));
+          case Halt(e)          : Halt(e);
+          case Held(ft)         : pipe(prc0,Held(ft));
+        }
+      }
+    );
+  }
+  static public function press<I,O>(prc0:Simplex<I,O>):Simplex<I,O>{
+    return switch (prc0){
+      case Emit(head,tail)  : Emit(head,press(tail));
+      case Wait(arw)        : Wait(arw.then(press));
+      case Halt(e)          : Halt(e);
+      case Held(ft)         :
+        var val : Simplex<I,O> = null;
+        var cancelled       = false;
+        ft.handle(
+          function(x){
+            if(!cancelled){
+              val = x;
+              cancelled = true;
+            }
+          }
+        );
+        if(val==null){
+          Held(ft);
+        }else{
+          val;
+        }
+    }
+  }
+  @:noUsing static public function one<I,O>(v:O):Simplex<I,O>{
+    return Emit(v,Halt(null));
+  }
+  static public function each<I,O>(prc:Simplex<I,O>,fn:O->Void):Simplex<I,O>{
+    return map(prc,
+      function(x){
+        fn(x);
+        return x;
+      }
+    );
+  }
+  static public function reduce<I,O,Z>(prc:Simplex<I,O>,fn:Z->O->Z,unit:Z):Simplex<I,Z>{
+    var next = unit;
+    return switch (prc){
+      case Emit(head,tail)  : next = fn(next,head); reduce(tail,fn,next);
+      case Wait(arw)        : Wait(arw.then(reduce.bind(_,fn,next)));
+      case Halt(e)          : Emit(next,Halt(e));
+      case Held(ft)         : Held(ft.map(reduce.bind(_,fn,next)));
+    }
+  }
+  /*static public function drive<I,O>(prc:Simplex<I,O>,sig:Signal<I>):Simplex<I,O>{
+    var ft  = Future.trigger();
+    var prc = Held(ft);
+
+    sig.next().handle(
+    function driver(i:I){
+      ft.trigger(switch (prc){
+          case Emit(head,tail)  : Emit(head,tail);
+          case Wait(arw)        : Held(arw.then(drive.bind(_,sig)).apply(i));
+          case Halt(e)          : Halt(e);
+          case Held(ft)         : Held(ft);
+        });
+    });
+    return prc;
+  }*/
+  static public function mapI<I,IN,O>(prc:Simplex<I,O>,fn:IN->I):Simplex<IN,O>{
+    return switch (prc) {
+      case Emit(head,tail) : Emit(head,mapI(prc,fn));
+      case Held(ft)        : Held(ft.map(mapI.bind(_,fn)));
+      case Halt(e)         : Halt(e);
+      case Wait(arw)       : Wait(
+        function(x:IN,cnt):Void{
+          var g : I = fn(x);
+          arw(g,
+            function(x:Simplex<I,O>){
+              var y : Simplex<IN,O> = mapI(x,fn);
+              cnt(y);
+            }
+          );
+        }
+      );
+    };
+  }
+  static public function compile<I,O>(prc:Simplex<I,O>,s:Signal<I>):Signal<Upshot<O>>{
+    var out           = Signal.trigger();
+    var ft_stack      = [];
+    var arw_stack     = [];
+    var stack         = [];
+    var done          = false;
+
+    function wake(){
+      if(!done){
+        switch (prc) {
+        case Held(ft)  :
+          if(ft_stack.indexOf(ft) == -1){
+            ft_stack.push(ft);
+            ft.handle(
+              function(x){
+                prc = x;
+                ft_stack.remove(ft);
+                wake();
+              }
+            );
+          }
+        case Emit(head,tail) :
+          out.trigger(Success(head));
+          prc = tail;
+          if(stack.length>0){
+            wake();
+          }
+        case Halt(e)   :
+          out.trigger(Failure(e));
+          done  = true;
+          stack = null;
+        case Wait(arw) :
+          if(stack.length > 0){
+            if(arw_stack.indexOf(arw) == -1){
+              arw_stack.push(arw);
+              arw.apply(stack.pop()).handle(
+                function(x){
+                  prc = x;
+                  arw_stack.remove(arw);
+                  wake();
+                }
+              );
+            }
+          }
+        }
+      }
+    }
+    s.handle(
+      function(x){
+        if(!done){
+          stack.unshift(x);
+          wake();
+        }
+      }
+    );
+    return out.asSignal();
+  }
+}

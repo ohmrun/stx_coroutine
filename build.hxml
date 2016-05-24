@@ -1,0 +1,8 @@
+-main Test
+-lib pointwise
+-lib arrowlets
+-lib tink_streams
+-cp src/main/haxe
+-cp src/test/haxe
+-neko test.n
+-cmd neko test.n
