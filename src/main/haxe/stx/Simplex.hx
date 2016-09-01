@@ -3,8 +3,8 @@ package stx;
 import haxe.ds.Option;
 
 import tink.CoreApi;
-using stx.Pointwise;
 using stx.async.Arrowlet;
+using stx.Pointwise;
 
 import tink.CoreApi;
 
@@ -16,6 +16,7 @@ import stx.simplex.data.Producer;
 
 import stx.simplex.data.Simplex in ESimplex;
 
+typedef Fn<I,O> = I -> O;
 @:forward abstract Simplex<I,O,R>(ESimplex<I,O,R>) from ESimplex<I,O,R> to ESimplex<I,O,R>{
   public function new(v){
     this = v;
@@ -24,25 +25,25 @@ import stx.simplex.data.Simplex in ESimplex;
     return Simplexs.generator(thunk);
   }
   @:from static public function fromFunction<I,O>(fn:I->O):Simplex<I,O,Error>{
-    var method :Arrowlet<I,Simplex<I,O,Error>>= null;
-        method = function(i,cont){
-        try{
-          cont(Emit(fn(i),Wait(method)));
-        }catch(e:Error){
-          cont(Halt(e));
-        }catch(e:Dynamic){
-          var e = Error.withData(500,Std.string(e),e);
-          cont(Halt(e));
-        }
-        return function(){};
+    var method :Fn<I,Simplex<I,O,Error>>= null;
+        method = function(i){
+          var o = null;
+          try{
+            o = Emit(fn(i),Wait(method));
+          }catch(e:Error){
+            o = Halt(e);
+          }catch(e:Dynamic){
+            var err = Error.withData(500,Std.string(e),e);
+            o = Halt(err);
+          }
+          return o;
       };
     return Wait(method);
   }
   @:from static public function fromArrow<I,O,R>(arw:Arrowlet<I,O>){
     return Wait(
-      function rec(v:I,cont:Sink<Simplex<I,O,R>>):Void{
-        var n = Emit.bind(_,Wait(rec));
-        arw.then(Emit.bind(_,Wait(rec)))(v,cont);
+      function rec(v:I){
+        return Held(arw.then(Emit.bind(_,Wait(rec))).apply(v));
       }
     );
   }
@@ -60,7 +61,7 @@ class Simplexs{
       return ft;
   }
   static public function generator<O,R>(fn:Thunk<O>):Producer<O,Error>{
-    function rec(i:Noise,cont):Void{
+    function rec(i:Noise):Producer<O,Error>{
       var val = null;
       var err = null;
       try{
@@ -70,19 +71,17 @@ class Simplexs{
       }catch(e:Dynamic){
         err = Error.withData(500,Std.string(e),e);
       }
-      cont(
-        if(err!=null){
+      return if(err!=null){
           Halt(err);
         }else{
           Emit(val,Wait(rec));
         }
-      );
     }
     return Wait(rec);
   }
   static public function push<I,O,R>(prc:Simplex<I,O,R>,p:I):Simplex<I,O,R>{
     return switch prc {
-      case Wait(arw)    : Held(arw.apply(p));
+      case Wait(arw)    : arw(p);
       case Emit(v,nxt)  : Emit(v,push(nxt,p));
       case Halt(e)      : Halt(e);
       case Held(ft)     : Held(ft.then(push.bind(_,p)));
@@ -100,7 +99,7 @@ class Simplexs{
     return switch (prc){
       case Emit(head,tail)  : Emit(fn(head),map(tail,fn));
       case Wait(arw)        :
-        var arw2 = arw.then((function(x){ return map(x,fn);}:Arrowlet<Simplex<I,O,R>,Simplex<I,O2,R>>));
+        var arw2 = arw.then((function(x){ return map(x,fn);}:Fn<Simplex<I,O,R>,Simplex<I,O2,R>>));
         Wait(arw2);
       case Halt(e)          : Halt(e);
       case Held(ft)         : Held(ft.map(map.bind(_,fn)));
@@ -153,15 +152,8 @@ class Simplexs{
             )
           );
         case [Emit(v,nxt),Wait(arw)]:
-          var trigger = Future.trigger();
-          arw.apply(v).handle(
-            function(res){
-              trigger.trigger(
-                piper(nxt,res)
-              );
-            }
-          );
-          Held(trigger);
+          var res = arw(v);
+          piper(nxt,res);
         case [Emit(v,nxt),_]      : piper(nxt,push(prc1,v));
         case [Wait(arw),rhs1]     :
           return Wait(arw.then(piper.bind(_,rhs1)));
@@ -242,14 +234,11 @@ class Simplexs{
       case Held(ft)        : Held(ft.map(mapI.bind(_,fn)));
       case Halt(e)         : Halt(e);
       case Wait(arw)       : Wait(
-        function(x:IN,cnt):Void{
+        function(x:IN){
           var g : I = fn(x);
-          arw(g,
-            function(x:Simplex<I,O,R>){
-              var y : Simplex<IN,O,R> = mapI(x,fn);
-              cnt(y);
-            }
-          );
+          var o     = arw(g);
+          var o2    = mapI(o,fn);
+          return o2;
         }
       );
     };
@@ -289,13 +278,10 @@ class Simplexs{
           if(stack.length > 0){
             if(arw_stack.indexOf(arw) == -1){
               arw_stack.push(arw);
-              arw.apply(stack.pop()).handle(
-                function(x){
-                  prc = x;
-                  arw_stack.remove(arw);
-                  wake();
-                }
-              );
+              var o = arw(stack.pop());
+              prc = o;
+              arw_stack.remove(arw);
+              wake();
             }
           }
         }

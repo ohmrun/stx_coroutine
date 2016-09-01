@@ -1,7 +1,7 @@
 -main Test
 -lib pointwise
 -lib arrowlets
--lib tink_streams
+-lib tink_http:git
 -cp src/main/haxe
 -cp src/test/haxe
 -neko test.n

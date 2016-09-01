@@ -54,7 +54,7 @@ class TestSimplex{
       //trace('driver: $simplex');
       switch(simplex){
         case Wait(arw):
-        arw(Noise,driver);
+        driver(arw(Noise));
         case Emit(o,nxt): trace('EMIT: $o'); driver(nxt);
         case Halt(e):
           trace(e);

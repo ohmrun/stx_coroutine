@@ -15,6 +15,7 @@ import stx.types.Process;
 import stx.Tables;
 import stx.types.Table;
 
+enum Se
 enum Get<K,V>{
   At(k:K);
   Dir;
