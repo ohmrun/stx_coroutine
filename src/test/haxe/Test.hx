@@ -1,4 +1,6 @@
+
 import stx.simplex.data.Simplex;
+import stx.simplex.db.Connection;
 using stx.Simplex;
 
 
@@ -58,7 +60,7 @@ class TestSimplex{
         case Emit(o,nxt): trace('EMIT: $o'); driver(nxt);
         case Halt(e):
           trace(e);
-          throw(e);
+          pass();
         case Held(ft):
           //trace("driver held");
           ft.handle(driver);
@@ -68,5 +70,8 @@ class TestSimplex{
     }
     driver(d);
     trace("DONE");
+  }
+  public function testPipeAsPassthrough(){
+
   }
 }

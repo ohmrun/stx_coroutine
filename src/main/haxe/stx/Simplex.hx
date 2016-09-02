@@ -50,8 +50,20 @@ typedef Fn<I,O> = I -> O;
   public function map(fn){
     return Simplexs.map(this,fn);
   }
+  public function mapI<I1>(fn:I1->I){
+    return Simplexs.mapI(this,fn);
+  }
+  public function mapR(fn){
+    return Simplexs.mapR(this,fn);
+  }
   public function flatMap(fn){
     return Simplexs.flatMap(this,fn);
+  }
+  public function plexfold<Z>(zi:Z->I,oz:O->Z,rz:R->Z){
+    return Simplexs.plexfold(this,zi,oz,rz);
+  }
+  public function passthrough<I,O,R>(){
+    return Simplexs.passthrough(this);
   }
 }
 class Simplexs{
@@ -105,6 +117,14 @@ class Simplexs{
       case Held(ft)         : Held(ft.map(map.bind(_,fn)));
     }
   }
+  static public function mapR<I,O,R,R1>(prc:Simplex<I,O,R>,fn:R->R1):Simplex<I,O,R1>{
+    return switch(prc){
+      case Emit(head,tail)  : Emit(head,mapR(tail,fn));
+      case Wait(arw)        : Wait(arw.then(mapR.bind(_,fn)));
+      case Halt(e)          : Halt(fn(e));
+      case Held(ft)         : Held(ft.map(mapR.bind(_,fn)));
+    }
+  }
   static public function append<I,O,R>(prc0:Simplex<I,O,R>,prc1:Thunk<Simplex<I,O,R>>):Simplex<I,O,R>{
     return switch (prc0){
       case Emit(head,tail)  : Emit(head,append(tail,prc1));
@@ -122,12 +142,42 @@ class Simplexs{
       case Held(ft)         : Held(ft.map(flatMap.bind(_,fn)));
     }
   }
+  static public function plexfold<I,O,R,Z>(prc:Simplex<I,O,R>,zi:Z->I,oz:O->Z,rz:R->Z):Simplex<Z,Z,Z>{
+    return prc.mapI(zi).map(oz).mapR(rz);
+  }
+  static public function passthrough<I,O,R>(prc:Simplex<I,O,R>):Simplex<Either<I,O>,Either<I,O>,R>{
+    return switch(prc){
+      case Emit(head,tail)  : Emit(Right(head),passthrough(tail));
+      case Wait(fn) : Wait(
+        function(i:Either<I,O>){
+          return switch(i){
+            case Right(l)  : Emit(Right(l),passthrough(prc));
+            case Left(r)   : passthrough(fn(r));
+          }
+        }
+      );
+      case Halt(e)  : Halt(e);
+      case Held(ft) : Held(ft.map(passthrough));
+    }
+  }
+  /*
+  static public function chain<I,O,R,R1>(prc0:Simplex<I,O,R>,prc1:Simplex<R,O,R1>){
+    return switch([prc0,prc1]){
+      case [Halt(e),Wait(fn)] :
+        chain(prc0,fn(e));
+      case [l,Emit(v,next)]   :
+        chain(Emit(v))
+    }
+  }*/
   static public function pipe<I,O,O2,R>(prc0:Simplex<I,O,R>,prc1:Simplex<O,O2,R>):Simplex<I,O2,R>{
+    var finishedLeft  = None;
+    var finishedRight = None;
     //trace('$prc0 $prc1');
     return function piper(lhs0:Simplex<I,O,R>,rhs0:Simplex<O,O2,R>){
       //trace('$lhs0 $rhs0');
       return switch([lhs0,rhs0]){
         case [Halt(e),_] :
+          finishedLeft = Some(e);
           Halt(e);
         case [_,Halt(e)] :
           Halt(e);
