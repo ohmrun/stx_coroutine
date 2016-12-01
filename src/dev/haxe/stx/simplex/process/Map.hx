@@ -1,5 +1,7 @@
 package stx.process;
 
+
+import fig.RefMaybeVal;
 using stx.Arrays;
 import stx.Equal;
 
@@ -15,7 +17,14 @@ import stx.types.Process;
 import stx.Tables;
 import stx.types.Table;
 
-enum Se
+enum MapInput<K,V>{
+  Set(k:K,v:V);
+  Get(k:K);
+  Dir;
+  All;
+}
+typedef MapOutput<K,V> = Array<
+
 enum Get<K,V>{
   At(k:K);
   Dir;

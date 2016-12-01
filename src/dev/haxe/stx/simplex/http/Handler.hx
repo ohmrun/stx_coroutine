@@ -1,6 +1,6 @@
 package stx.http;
 
-import stx.simplex.pack.Simplex;
+import stx.Simplex;
 
 import haxe.Bytes;
 

@@ -1,4 +1,12 @@
 -main Test
+-lib tink_streams
+-lib stx_transducers
+-lib stx_maybe
+-lib stx_error
+-lib stx_chunk
+-lib figah
+-lib thx.core
+-lib utest
 -lib pointwise
 -lib arrowlets
 -lib tink_http:git

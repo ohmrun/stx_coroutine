@@ -1,0 +1,11 @@
+package stx.simplex.pack.Simplex;
+
+enum SetOp<K,V>{
+  Add(v:V);
+  Get(where:)
+}
+class Set{
+  public static function create(eq:T->T->Bool){
+    
+  }
+}
