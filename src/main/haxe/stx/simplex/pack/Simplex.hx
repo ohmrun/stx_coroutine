@@ -11,7 +11,7 @@ using stx.Pointwise;
 import stx.data.Thunk;
 import stx.data.Sink;
 
-using stx.async.Arrowlet;
+using stx.async.arrowlet.Package;
 
 import stx.simplex.core.Data;
 
@@ -64,24 +64,14 @@ typedef Fn<I,O> = I -> O;
   public function mapR<R,R1>(fn:R->R1):Simplex<I,O,R1>{
     return Simplexs.mapR(this,fn);
   }
-  public function flatMap<O1>(fn:O->Simplex<I,O1,R>):Simplex<I,O1,R>{
-    return Simplexs.flatMap(this,fn);
-  }
   public function flatMapR<R2>(fn:R->Simplex<I,O,R2>):Simplex<I,O,R2>{
     return Simplexs.flatMapR(this,fn);
   }
   public function push(p:I):Simplex<I,O,R>{
     return Simplexs.push(this,p);
   }
-  public function fold<I,O,R>(fn:R->O->R,r:R):Simplex<I,O,R>{
-    return Simplexs.fold(this,fn,r);
-  }
-  /*
-  public function plexfold<Z>(zi:Z->I,oz:O->Z,rz:R->Z){
-    return Simplexs.plexfold(this,zi,oz,rz);
-  }*/
-  public function passthrough<I,O,R>():Simplex<Either<I,O>,Either<I,O>,R>{
-    return Simplexs.passthrough(this);
+  public function tapI<I>(fn:Control<I>->Void){
+    return Simplexs.tapI(this,fn);
   }
   public function mergeWith(that:Simplex<I,O,R>, merger:R->R->R):Simplex<I,O,R>{
     return Simplexs.mergeWith(this,that,merger);

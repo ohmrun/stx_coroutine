@@ -6,8 +6,8 @@ using stx.simplex.Package;
 
 import stx.simplex.core.data.Channel in ChannelT;
 
-abstract LIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
-  static public function unit<T>():LIFO<T>{
+abstract FIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
+  static public function unit<T>():FIFO<T>{
     return Wait(
       function recurse(stack:ReadonlyArray<T>,ch:Control<ChannelOp<T>>){
         return ch.lift(
@@ -31,11 +31,11 @@ abstract LIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
   public function new(self){
     this = self;
   }
-  public function push(i:T):LIFO<T>{
-    return new LIFO(Simplexs.push(this,Push(i)));
+  public function push(i:T):FIFO<T>{
+    return new FIFO(Simplexs.push(this,Push(i)));
   }
   /*
-  public function pull():Tuple2<Future<Option<T>>,LIFO<T>>{
+  public function pull():Tuple2<Future<Option<T>>,FIFO<T>>{
 
   }*/
   public function toSource():Source<T>{
@@ -44,7 +44,7 @@ abstract LIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
           function recurse(ctrl:Control<Noise>){
             return switch(ctrl){
               case Continue(Noise) :
-                function handler(channel:LIFO<T>){
+                function handler(channel:FIFO<T>){
                   return switch(channel){
                     case Wait(fn)         : handler(fn(Continue(Pull)));
                     case Emit(head,tail)  : Emit(head,handler(tail));

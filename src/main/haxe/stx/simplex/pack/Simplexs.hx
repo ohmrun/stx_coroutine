@@ -2,7 +2,24 @@ package stx.simplex.pack;
 
 import stx.simplex.core.Data;
 
+using stx.simplex.Package;
+
 class Simplexs{
+  @:noUsing static public function log<I,O,R>(spx:Simplex<I,O,R>,fn:SimplexValue<I,O,R>->Void):Simplex<I,O,R>{
+    return spx.tapI(
+      function(ctl){
+        fn(SimplexInput(ctl));
+      }
+    ).tap(
+      function(o){
+        fn(SimplexOutput(o));
+      }
+    ).tapR(
+      function(r){
+        fn(SimplexReturn(r));
+      }
+    );
+  } 
   @:noUsing static public function generator<O,R>(fn:Thunk<O>):Producer<O,Noise>{
     function rec(i:Control<Noise>):Producer<O,Noise>{
       return switch(i){
@@ -28,15 +45,12 @@ class Simplexs{
     }
     return Wait(rec);
   }
-  static public function tapR<I,O,R>(prc:Simplex<I,O,R>,fn:R->Void):Simplex<I,O,R>{
+  static public function tapR<I,O,R>(prc:Simplex<I,O,R>,fn:Return<R>->Void):Simplex<I,O,R>{
     return switch(prc){
       case Wait(arw)          : Wait(arw.then(tapR.bind(_,fn)));
       case Emit(v,nxt)        : Emit(v,tapR(nxt,fn));
-      case Halt(Production(r)):
-        fn(r);
-        Halt(Production(r));
-      case Halt(Terminated(cause)) : prc;
-      case Held(ft)     : Held(ft.map(tapR.bind(_,fn)));
+      case Halt(cause)        : fn(cause);Halt(cause);
+      case Held(ft)           : Held(ft.map(tapR.bind(_,fn)));
     }
   }
   static public function tap<I,O,R>(prc:Simplex<I,O,R>,fn:O->Void):Simplex<I,O,R>{
@@ -50,15 +64,11 @@ class Simplexs{
       case Held(ft)     : Held(ft.map(tap.bind(_,fn)));
     }
   }
-  static public function tapI<I,O,R>(prc:Simplex<I,O,R>,fn:I->Void):Simplex<I,O,R>{
+  static public function tapI<I,O,R>(prc:Simplex<I,O,R>,fn:Control<I>->Void):Simplex<I,O,R>{
     return switch(prc){
       case Wait(arw)    : Wait(
         function(v){
-          v.each(
-            function(x){
-              fn(x);
-            }
-          );
+          fn(v);
           return tapI(arw(v),fn);
         }
       );
@@ -85,6 +95,24 @@ class Simplexs{
       case Held(ft)     : Held(ft.map(end.bind(_,e)));
     }
   }
+  static public function mapI<I,IN,O,R>(prc:Simplex<I,O,R>,fn:IN->I):Simplex<IN,O,R>{
+    return switch (prc) {
+      case Emit(head,tail) : Emit(head,mapI(prc,fn));
+      case Held(ft)        : Held(ft.map(mapI.bind(_,fn)));
+      case Halt(e)         : Halt(e);
+      case Wait(arw)       : Wait(
+        function(x:Control<IN>){
+          return switch(x){
+            case Continue(v):
+              var g : I = fn(v);
+              var o     = arw(Continue(g));
+              mapI(o,fn);
+            case Discontinue(cause) : Halt(Terminated(cause));
+          }
+        }
+      );
+    };
+  }
   static public function map<I,O,O2,R>(prc:Simplex<I,O,R>,fn:O->O2):Simplex<I,O2,R>{
     return switch (prc){
       case Emit(head,tail)  : Emit(fn(head),map(tail,fn));
@@ -104,22 +132,17 @@ class Simplexs{
       case Held(ft)                 : Held(ft.map(mapR.bind(_,fn)));
     }
   }
-  static public function append<I,O,R>(prc0:Simplex<I,O,R>,prc1:Thunk<Simplex<I,O,R>>):Simplex<I,O,R>{
-    return switch (prc0){
-      case Emit(head,tail)  : Emit(head,append(tail,prc1));
-      case Wait(arw)        : Wait(arw.then(append.bind(_,prc1)));
-      case Halt(null)       : prc1();
-      case Halt(e)          : Halt(e);
-      case Held(ft)         : Held(ft.map(append.bind(_,prc1)));
+  static public function mapOrCause<I,O,O2,R>(prc:Simplex<I,O,R>,fn: O -> Either<Cause,O2>):Simplex<I,O2,R>{
+    function recurse(spx){
+      return switch(spx){
+        case Emit(Right(o),next)    : Emit(o,recurse(next));
+        case Emit(Left(cause),_)    : Halt(Terminated(cause));
+        case Wait(fn)               : Wait(fn.then(recurse));
+        case Held(ft)               : Held(ft.map(recurse));
+        case Halt(res)              : Halt(res); 
+      }
     }
-  }
-  static public function flatMap<I,O,O2,R>(prc:Simplex<I,O,R>,fn:O->Simplex<I,O2,R>):Simplex<I,O2,R>{
-    return switch (prc){
-      case Emit(head,tail)  : append(fn(head),Pointwise.toThunk(flatMap(tail,fn)));
-      case Wait(arw)        : Wait(arw.then(flatMap.bind(_,fn)));
-      case Halt(e)          : Halt(e);
-      case Held(ft)         : Held(ft.map(flatMap.bind(_,fn)));
-    }
+    return recurse(map(prc,fn));
   }
   static public function flatMapR<I,O,R,R2>(prc:Simplex<I,O,R>,fn:R->Simplex<I,O,R2>):Simplex<I,O,R2>{
     return switch (prc){
@@ -130,43 +153,6 @@ class Simplexs{
       case Held(ft)                     : Held(ft.map(flatMapR.bind(_,fn)));
     }
   }
-  static public function fold<I,O,R>(prc:Simplex<I,O,R>,fn:R->O->R,r:R):Simplex<I,O,R>{
-    return switch(prc){
-      case Emit(head,tail)  : fold(tail,fn,fn(r,head));
-      case Wait(arw)        : Wait(arw.then(fold.bind(_,fn,r)));
-      case Halt(e)          : Halt(fn(r,null));
-      case Held(ft)         : Held(ft.map(fold.bind(_,fn,r)));
-    }
-  }
-  /*static public function plexfold<I,O,R,Z>(prc:Simplex<I,O,R>,zi:Z->I,oz:O->Z,rz:R->Z):Simplex<Z,Z,Z>{
-    return prc.mapI(zi).map(oz).mapR(rz);
-  }*/
-  static public function passthrough<I,O,R>(prc:Simplex<I,O,R>):Simplex<Either<I,O>,Either<I,O>,R>{
-    return switch(prc){
-      case Emit(head,tail)  : Emit(Right(head),passthrough(tail));
-      case Wait(fn) : Wait(
-        function(i:Control<Either<I,O>>){
-          return switch(i){
-            case Continue(Right(l))  : Emit(Right(l),passthrough(prc));
-            case Continue(Left(r))   : passthrough(fn(r));
-            case Discontinue(cause)  : Halt(Terminated(cause));
-          }
-        }
-      );
-      case Halt(e)  : Halt(e);
-      case Held(ft) : Held(ft.map(passthrough));
-    }
-  }
-
-/*
-  static public function chain<I,O,R,R1>(prc0:Simplex<I,O,R>,prc1:Simplex<R,O,R1>){
-    return switch([prc0,prc1]){
-      case [Halt(e),Wait(fn)] :
-        chain(prc0,fn(e));
-      case [l,Emit(v,next)]   :
-        chain(Emit(v))
-    }
-  }*/
   static public function pipe<I,O,O2,R>(prc0:Simplex<I,O,R>,prc1:Simplex<O,O2,R>):Simplex<I,O2,R>{
     var finishedLeft  = None;
     var finishedRight = None;
@@ -333,24 +319,6 @@ class Simplexs{
     });
     return prc;
   }*/
-  static public function mapI<I,IN,O,R>(prc:Simplex<I,O,R>,fn:IN->I):Simplex<IN,O,R>{
-    return switch (prc) {
-      case Emit(head,tail) : Emit(head,mapI(prc,fn));
-      case Held(ft)        : Held(ft.map(mapI.bind(_,fn)));
-      case Halt(e)         : Halt(e);
-      case Wait(arw)       : Wait(
-        function(x:Control<IN>){
-          return switch(x){
-            case Continue(v):
-              var g : I = fn(v);
-              var o     = arw(Continue(g));
-              mapI(o,fn);
-            case Discontinue(cause) : Halt(Terminated(cause));
-          }
-        }
-      );
-    };
-  }
   /*
   static public function compile<I,O,R>(prc:Simplex<I,O,R>,s:Signal<I>):Signal<Either<O,R>>{
     var out           = Signal.trigger();

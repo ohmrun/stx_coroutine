@@ -18,20 +18,33 @@ class Muxs{
       function recurse(ctrl){
         return ctrl.lift(
           function(either){
-            return fn(either) ? Emit(Keep,Wait(recurse)) : Halt(Terminated(Finished));  
+            return fn(either) ? Emit(ChooseEither,Wait(recurse)) : Halt(Terminated(Finished));  
           }
         );
       }
     );
   }
-  @:noUsing static public function once<L,R>(fn:Either<L,R>->Bool):Mux<L,R>{
+  @:noUsing static public function on<L,R>(fn:Either<L,R>->Bool,selector:Muxer):Mux<L,R>{
     return Wait(
       function(ctrl){
         return ctrl.lift(
           function(either){
-            return fn(either) ? Emit(Keep,Halt(Terminated(Finished))) : Halt(Terminated(Finished));
+            return fn(either) ? Emit(selector,Halt(Terminated(Finished))) : Halt(Terminated(Finished));
           }
         );
+      }
+    ); 
+  }
+  @:noUsing static public function once<L,R>(fn:Either<L,R>->Bool):Mux<L,R>{
+    return on(fn,ChooseEither);
+  }
+  @:noUsing static public function until<L,R>(fn:Either<L,R>->Bool,selector:Muxer):Mux<L,R>{
+    return Wait(
+      function recurse(ctl:Control<Either<L,R>>):Mux<L,R>{
+        return switch(ctl){
+          case Continue(ipt)      : fn(ipt) ? Emit(selector,Wait(recurse)) : Halt(Terminated(Finished));
+          case Discontinue(ipt)   : Halt(ipt);
+        }  
       }
     );
   }
@@ -54,5 +67,5 @@ class Muxs{
         }
       }
     );
-  } 
+  }
 }

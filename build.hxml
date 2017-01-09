@@ -3,6 +3,7 @@
 -lib stx_transducers
 -lib stx_maybe
 -lib stx_error
+-lib stx_vouch
 -lib stx_chunk
 -lib figah
 -lib thx.core

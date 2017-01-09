@@ -1,0 +1,22 @@
+{
+    "name": "stx_simplex",
+    "license": "MIT",
+    "tags": [
+        "cross",
+        "functional"
+    ],
+    "description": "Datastructure capable of modelling both folds and unfolds, or a simplex datachannel",
+    "contributors": [
+        "0b1kn00b"
+    ],
+    "releasenote": "Update dependencies",
+    "version": "0.0.4",
+    "url": "https://github.com/0b1kn00b/stx_simplex",
+    "dependencies": {
+        "arrowlets": "",
+        "pointwise": "",
+        "tink_core": "",
+        "stx_tuple": ""
+    },
+    "classPath": "src/main/haxe"
+}

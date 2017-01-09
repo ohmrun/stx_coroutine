@@ -5,4 +5,4 @@ import tink.core.Noise;
 
 import stx.Error;
 
-typedef Process<I,O> = stx.simplex.pack.Simplex<I,O,Option<Error>>;
+typedef Process<I,O> = stx.simplex.core.data.Simplex<I,O,Option<Error>>;

@@ -17,4 +17,7 @@ abstract Cause(CauseT) from CauseT to CauseT{
       case [_,Early(err)]           : Early(err);
     }
   }
+  public function ok(){
+    return this == Finished;
+  }
 } 

@@ -22,6 +22,9 @@ abstract Source<O>(SourceT<O>) from SourceT<O> to SourceT<O>{
   @:to public function toSimplex():Simplex<Noise,O,Noise>{
     return this;
   }
+  @:to public function toPipe():Pipe<Noise,O>{
+    return this;
+  }
   static public function unit<T>():Source<T>{
     return new Source(
       Wait(
@@ -31,33 +34,46 @@ abstract Source<O>(SourceT<O>) from SourceT<O> to SourceT<O>{
       )
     );
   }
-  public function partition():Partition<O>{
-    return new Partition(Simplexs.map(this,Val)); 
+  public function shipment():Shipment<O>{
+    return new Shipment(Simplexs.map(this,Val)); 
   }
   public function new(self:SourceT<O>){
     this = self;
   }
+  /*
+  @:from static public function fromSourceFutures<T>(source:Source<Future<T>>):Source<T>{
+    return stx.simplex.pack.source.Futures.lift(source);
+  }*/
   @:from static public function fromIterable<T>(arr:Iterable<T>):Source<T>{
     function recurse(it:Iterator<T>,ctl:Control<Noise>):Source<T>{
       return switch(ctl){
         case Continue(Noise) :
           return it.hasNext()
-            ?
-              Emit(it.next(),Wait(recurse.bind(it)))
-            :
-              Halt(Terminated(Finished));
+            ? {
+                var out = it.next();
+                //trace('emit $out');
+                Emit(out,Wait(recurse.bind(it)));
+              }
+            : 
+              {
+                //trace("done");
+                Halt(Production(Noise));
+              }
         case Discontinue(cause) : Halt(Terminated(cause));         
       }
     }
     return new Source(Wait(
-      recurse.bind(arr.iterator())
+      function(ctl:Control<Noise>){
+        var itr = arr.iterator();
+        return recurse(itr,ctl);
+      }
     ));
   }
   public function merge(that:Source<O>):Source<O>{
-    return this.mergeWith(
+    return new Source(this.mergeWith(
       that,
       function(x,y){ return y; }
-    );
+    ));
   }
   @:to public function toStream():Stream<O>{
     return new SourceStream(this);
@@ -84,10 +100,29 @@ abstract Source<O>(SourceT<O>) from SourceT<O> to SourceT<O>{
       default : Halt(Noise);
     };
   }
-  public function map<U>(fn:O->U):Source<U>{
-    return Simplexs.map(this,fn);
+  public function filter(fn:O->Bool):Source<O>{
+    return switch(this){
+      case Emit(head,tail) : 
+        if(fn(head)){
+          Emit(head,tail.filter(fn));
+        }else{
+          tail.filter(fn);
+        }
+      case Wait(fn)        : Wait(fn);
+      case Held(ft)        : Held(ft);
+      case Halt(t)         : Halt(t);
+    }
   }
-  public function fold<U>(fn:T->U->U,memo:U):Conclude<U>{
-    return Sources.fold(this,fn,memo);
+  public function mapFilter<U>(fn:O->Option<U>):Source<U>{
+    return Sources.mapFilter(this,fn);
+  }
+  public function map<U>(fn:O->U):Source<U>{
+    return new Source(Simplexs.map(this,fn));
+  }
+  public function foldLeft<U>(fn:O->U->U,memo:U):Conclude<U>{
+    return Sources.foldLeft(this,fn,memo);
+  }
+  public function pipeTo(fn:O->Void):Future<Cause>{
+    return Sources.pipeTo(this,fn);
   }
 }

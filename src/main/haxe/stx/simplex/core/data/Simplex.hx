@@ -1,7 +1,7 @@
 package stx.simplex.core.data;
 
 import tink.CoreApi;
-import stx.async.Arrowlet;
+import stx.async.arrowlet.body.Arrowlet;
 
 import stx.simplex.pack.Cause;
 import stx.simplex.pack.Return;

@@ -11,7 +11,7 @@ import tink.streams.Stream;
 import tink.streams.Accumulator;
 
 class SourceStream<T> extends Generator<T>{
-  public function new(data:Source<T>){
+  public function new(data:Null<Source<T>>){
     super(
       function(){
         var n = Future.trigger();
@@ -32,6 +32,8 @@ class SourceStream<T> extends Generator<T>{
               );
             case Halt(e):
               data = Halt(e);
+              n.trigger(End);
+            case null : 
               n.trigger(End);
           }
         }

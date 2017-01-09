@@ -1,4 +1,6 @@
 
+using stx.Tuple;
+import stx.Chunk;
 import stx.simplex.core.Data;
 using stx.simplex.Package;
 
@@ -32,8 +34,8 @@ class Test{
 class TestSource{
   public function new(){}
   public function test(){
-    var a = [1,2,3];
-    var b : Source<Int> = a;
+    var a                 = [1,2,3];
+    var b : Source<Int>   = a;
     pass();
   }
   public function testA(){
@@ -84,7 +86,7 @@ class TestSource{
     b.emit(4);
   }
   public function testLifo(){
-    var a = LIFO.unit();
+    var a = FIFO.unit();
     var b = a.push(1).push(2).push(3);
     var o = [];  
     var d = b.toSource().toStream();
@@ -98,8 +100,8 @@ class TestSource{
     same([1,2,3],o);
   }
   public function testSubstream(){
-    function go(x){
-      trace(x);
+    function go(x:Dynamic){
+      //trace('go $x');
       return true;
     }
     var a : Source<{ a : Array<Int> }> = [
@@ -110,21 +112,14 @@ class TestSource{
         a : [4,5,6]
       }
     ];
-    
-    var b = a.partition().chunk();
-    //a.toStream().forEach(go);
-    var c = b.derive(
+    var b = a.flatMap(
       function(x){
-        return x.a;
+        var src               = Source.fromIterable(x.a);
+        var out               = src.map(tuple2.bind(x));
+        return out;
       }
     );
-    
-    //a.toStream().forEach(go);
-    
-    var d : Source<Dynamic> = new Source(a.map(Left).mergeWith(c.map(Right),function(x,y) return y));
-    
-    var e = d.toStream();
-        //e.forEach(go);
+    b.pipeTo(printer());
   }
 }
 class TestSimplex{

@@ -15,5 +15,8 @@ import stx.simplex.core.Data.Process in ProcessT;
 @:forward abstract Process<I,O>(ProcessT<I,O>) from ProcessT<I,O> to ProcessT<I,O>{
   public function new(self){
     this = self;
+  }
+  public function flatMap<O1>(fn:O->Process<I,O1>):Process<I,O1>{
+    return Processes.flatMap(this,fn);
   }  
 }
