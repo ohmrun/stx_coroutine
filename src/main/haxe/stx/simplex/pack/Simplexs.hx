@@ -153,6 +153,7 @@ class Simplexs{
       case Held(ft)                     : Held(ft.map(flatMapR.bind(_,fn)));
     }
   }
+
   static public function pipe<I,O,O2,R>(prc0:Simplex<I,O,R>,prc1:Simplex<O,O2,R>):Simplex<I,O2,R>{
     var finishedLeft  = None;
     var finishedRight = None;
@@ -374,5 +375,11 @@ class Simplexs{
     );
     return out.asSignal();
   }*/
+  static public function returns<I,O,R>(spx:Simplex<I,O,R>):Return<R>{
+    return switch(spx){
+      case Halt(r)  : r;
+      default       : Terminated(Kill);
+    }
+  }
 }
 

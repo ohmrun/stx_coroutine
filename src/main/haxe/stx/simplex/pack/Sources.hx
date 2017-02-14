@@ -109,6 +109,19 @@ class Sources{
       case [_,_]                    : SNeither; 
     }
   }
+  static public function filter<O>(self:Source<O>,fn:O->Bool):Source<O>{
+    return switch(self){
+      case Emit(head,tail) : 
+        if(fn(head)){
+          Emit(head,filter(tail,fn));
+        }else{
+          filter(tail,fn);
+        }
+      case Wait(fn)        : Wait(fn);
+      case Held(ft)        : Held(ft);
+      case Halt(t)         : Halt(t);
+    }
+  }
   static public function mapFilter<T,U>(src:Source<T>,fn:T->Option<U>):Source<U>{
     return switch(src){
       case Emit(head,tail) :

@@ -12,7 +12,7 @@ typedef ShipmentT<T> = stx.simplex.core.data.Source<Chunk<T>>;
 
 @:forward abstract Shipment<T>(ShipmentT<T>) from ShipmentT<T> to ShipmentT<T>{
   @:to public function toSimplex():Simplex<Noise,Chunk<T>,Noise>{
-    return this.toSimplex();
+    return this;
   }
   @:to public function toSource():Source<Chunk<T>>{
     return this;

@@ -14,6 +14,7 @@ typedef Causes           = stx.simplex.pack.Causes;
 typedef Consumer<T,R>     = stx.simplex.pack.Consumer<T,R>;
 
 typedef Control<T>        = stx.simplex.pack.Control<T>;
+typedef Controls          = stx.simplex.pack.Controls;
 typedef Effects           = stx.simplex.pack.Effects;
 typedef Mux<L,R>          = stx.simplex.pack.Mux<L,R>;
 typedef Muxs              = stx.simplex.pack.Muxs;

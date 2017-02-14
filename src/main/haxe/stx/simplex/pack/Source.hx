@@ -101,17 +101,7 @@ abstract Source<O>(SourceT<O>) from SourceT<O> to SourceT<O>{
     };
   }
   public function filter(fn:O->Bool):Source<O>{
-    return switch(this){
-      case Emit(head,tail) : 
-        if(fn(head)){
-          Emit(head,tail.filter(fn));
-        }else{
-          tail.filter(fn);
-        }
-      case Wait(fn)        : Wait(fn);
-      case Held(ft)        : Held(ft);
-      case Halt(t)         : Halt(t);
-    }
+    return Sources.filter(this,fn);
   }
   public function mapFilter<U>(fn:O->Option<U>):Source<U>{
     return Sources.mapFilter(this,fn);
