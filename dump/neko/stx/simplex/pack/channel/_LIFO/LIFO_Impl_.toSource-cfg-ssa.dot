@@ -1,0 +1,143 @@
+digraph graphname {
+	node [shape=plaintext];
+n22144[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22144) BKNormal</td></tr>
+	<tr><td port="ep0" align="left">ctrl = \"phi\"(ctrl, ctrl)</td></tr>
+	<tr><td port="ep1" align="left">_ = \"phi\"(_, _)</td></tr>
+	<tr><td port="ep2" align="left">handler = \"phi\"(handler, handler)</td></tr>
+	<tr><td port="ep3" align="left">channel = \"phi\"(channel, channel)</td></tr>
+	<tr><td port="ep4" align="left">channel = \"phi\"(channel, channel)</td></tr>
+	<tr><td port="ep5" align="left">handler = \"phi\"(handler, handler)</td></tr>
+	<tr><td port="e0" align="left">var recurse = \"fun\"(22132)</td></tr>
+	<tr><td port="e1" align="left">var out = recurse</td></tr>
+	<tr><td port="e2" align="left">var out = stx.simplex.core.data.Simplex.Wait(out)</td></tr>
+	<tr><td port="e3" align="left">return null</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22143[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22143) BKNormal</td></tr>
+	<tr><td port="ep0" align="left">_ = \"phi\"(_, _)</td></tr>
+	<tr><td port="ep1" align="left">handler = \"phi\"(handler, handler)</td></tr>
+	<tr><td port="ep2" align="left">channel = \"phi\"(channel, channel)</td></tr>
+	<tr><td port="ep3" align="left">channel = \"phi\"(channel, channel)</td></tr>
+	<tr><td port="ep4" align="left">handler = \"phi\"(handler, handler)</td></tr>
+	<tr><td port="e0" align="left">return stx.simplex.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22142[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22142) BKNormal</td></tr>
+	<tr><td port="ep0" align="left">channel = \"phi\"(channel, channel)</td></tr>
+	<tr><td port="ep1" align="left">channel = \"phi\"(channel, channel)</td></tr>
+	<tr><td port="e0" align="left">handler = \"fun\"(22136)</td></tr>
+	<tr><td port="e1" align="left">var handler = handler</td></tr>
+	<tr><td port="e2" align="left">return handler(`this)</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22141[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22141) BKConditional</td></tr>
+	<tr><td port="e0" align="left">var cause = cast channel[0]</td></tr>
+	<tr><td port="e1" align="left">return stx.simplex.core.data.Simplex.Halt(cause)</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22140[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22140) BKConditional</td></tr>
+	<tr><td port="e0" align="left">var ft = cast channel[0]</td></tr>
+	<tr><td port="e1" align="left">var handler = tink.core._Future.Future_Impl_.map(ft, handler, null)</td></tr>
+	<tr><td port="e2" align="left">return stx.simplex.core.data.Simplex.Held(handler)</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22139[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22139) BKConditional</td></tr>
+	<tr><td port="e0" align="left">var fn = cast channel[0]</td></tr>
+	<tr><td port="e1" align="left">var handler = stx.simplex.core.data.Control.Continue(stx.simplex.core.data.ChannelOp.Pull)</td></tr>
+	<tr><td port="e2" align="left">var handler = fn(handler)</td></tr>
+	<tr><td port="e3" align="left">return handler(handler)</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22138[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22138) BKConditional</td></tr>
+	<tr><td port="e0" align="left">var tail = cast channel[1]</td></tr>
+	<tr><td port="e1" align="left">var head = cast channel[0]</td></tr>
+	<tr><td port="e2" align="left">var handler = handler(tail)</td></tr>
+	<tr><td port="e3" align="left">return stx.simplex.core.data.Simplex.Emit(head, handler)</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22137[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22137) BKFunctionEnd</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22136[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22136) BKFunctionBegin</td></tr>
+	<tr><td port="e0" align="left">var channel = @:exhaustive channel.index</td></tr>
+	<tr><td port="e1" align="left">@:cond-branch channel</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22135[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22135) BKFunctionEnd</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22134[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22134) BKFunctionBegin</td></tr>
+	<tr><td port="e0" align="left">var handler = null</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22133[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22133) BKFunctionEnd</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22132[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22132) BKFunctionBegin</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22131[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22131) BKFunctionEnd</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n22130[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(22130) BKFunctionBegin</td></tr>
+	<tr><td port="e0" align="left">var swallow = stx.simplex.pack.Processes.swallow</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n1[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
+	<tr><td port="in" bgcolor="lightgray">(1) BKRoot</td></tr>
+	<tr><td port="out"></td></tr>
+</table>>];
+n1:out -> n22130:in[label="CFGFunction"];
+n22130:out -> n22144:in[label="CFGGoto"];
+n22130:out -> n22132:in[label="CFGFunction"];
+n22132:out -> n22143:in[label="CFGGoto"];
+n22132:out -> n22134:in[label="CFGFunction"];
+n22134:out -> n22142:in[label="CFGGoto"];
+n22134:out -> n22136:in[label="CFGFunction"];
+n22136:out -> n22141:in[label="CFGCondBranch 3"];
+n22136:out -> n22140:in[label="CFGCondBranch 2"];
+n22136:out -> n22139:in[label="CFGCondBranch 1"];
+n22136:out -> n22138:in[label="CFGCondBranch 0"];
+n22138:out -> n22137:in[label="CFGGoto"];
+n22139:out -> n22137:in[label="CFGGoto"];
+n22140:out -> n22137:in[label="CFGGoto"];
+n22137:out -> n22142:in[label="CFGGoto"];
+n22141:out -> n22137:in[label="CFGGoto"];
+n22142:out -> n22135:in[label="CFGGoto"];
+n22135:out -> n22143:in[label="CFGGoto"];
+n22143:out -> n22133:in[label="CFGGoto"];
+n22133:out -> n22144:in[label="CFGGoto"];
+n22144:out -> n22131:in[label="CFGGoto"];
+n22143:ep0 -> n22144:ep1[color=lightblue,constraint=false];
+n22143:ep1 -> n22144:ep2[color=lightblue,constraint=false];
+n22142:ep0 -> n22141:e0[color=lightblue,constraint=false];
+n22142:ep0 -> n22140:e0[color=lightblue,constraint=false];
+n22142:ep0 -> n22139:e0[color=lightblue,constraint=false];
+n22142:ep0 -> n22138:e1[color=lightblue,constraint=false];
+n22142:ep0 -> n22138:e0[color=lightblue,constraint=false];
+n22142:ep0 -> n22136:e0[color=lightblue,constraint=false];
+n22142:ep0 -> n22143:ep2[color=lightblue,constraint=false];
+n22142:ep0 -> n22144:ep3[color=lightblue,constraint=false];
+n22142:ep1 -> n22143:ep3[color=lightblue,constraint=false];
+n22142:ep1 -> n22144:ep4[color=lightblue,constraint=false];
+n22143:ep4 -> n22144:ep5[color=lightblue,constraint=false];
+n22134:e0 -> n22140:e1[color=lightblue,constraint=false];
+n22134:e0 -> n22139:e3[color=lightblue,constraint=false];
+n22134:e0 -> n22138:e2[color=lightblue,constraint=false];
+n22136:e0 -> n22142:ep1[color=lightblue,constraint=false];
+}

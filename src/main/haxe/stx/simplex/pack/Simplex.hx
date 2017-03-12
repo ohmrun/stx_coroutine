@@ -76,4 +76,7 @@ typedef Fn<I,O> = I -> O;
   public function mergeWith(that:Simplex<I,O,R>, merger:R->R->R):Simplex<I,O,R>{
     return Simplexs.mergeWith(this,that,merger);
   }
+  public function pipe<I,O,O2,R>(prc1:Simplex<O,O2,R>):Simplex<I,O2,R>{
+    return Simplexs.pipe(this,prc1);
+  }
 }
