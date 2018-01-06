@@ -5,12 +5,13 @@
 -lib stx_error
 -lib stx_vouch
 -lib stx_chunk
+-lib stx_tuple
 -lib figah
 -lib thx.core
 -lib utest
 -lib pointwise
 -lib arrowlets
--lib tink_http:git
+-lib tink_http
 -cp src/main/haxe
 -cp src/test/haxe
 -neko test.n

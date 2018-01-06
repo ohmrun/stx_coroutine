@@ -87,12 +87,12 @@ class Simplexs{
       case Held(ft)     : Held(ft.map(push.bind(_,p)));
     }
   }
-  static public function end<I,O,R>(prc:Simplex<I,O,R>,e:R):Simplex<I,O,R>{
+  static public function halt<I,O,R>(prc:Simplex<I,O,R>,e:R):Simplex<I,O,R>{
     return switch prc {
       case Wait(arw)    : Halt(e);
       case Emit(v,nxt)  : Halt(e);
       case Halt(e)      : Halt(e);
-      case Held(ft)     : Held(ft.map(end.bind(_,e)));
+      case Held(ft)     : Held(ft.map(halt.bind(_,e)));
     }
   }
   static public function mapI<I,IN,O,R>(prc:Simplex<I,O,R>,fn:IN->I):Simplex<IN,O,R>{
@@ -132,7 +132,7 @@ class Simplexs{
       case Held(ft)                 : Held(ft.map(mapR.bind(_,fn)));
     }
   }
-  static public function mapOrCause<I,O,O2,R>(prc:Simplex<I,O,R>,fn: O -> Either<Cause,O2>):Simplex<I,O2,R>{
+  static public function mapOrHalt<I,O,O2,R>(prc:Simplex<I,O,R>,fn: O -> Either<Cause,O2>):Simplex<I,O2,R>{
     function recurse(spx){
       return switch(spx){
         case Emit(Right(o),next)    : Emit(o,recurse(next));
@@ -153,7 +153,14 @@ class Simplexs{
       case Held(ft)                     : Held(ft.map(flatMapR.bind(_,fn)));
     }
   }
+  /*
+  static public function pull<I,O,O2,R>(prc0:Simplex<I,O,R>,prc1:Simplex<O,O2,R>):Simplex<I,O2,R>{
+    return (piper(lhs:Simplex<I,O,R>,rhs:Simplex<O,O2,R>):Simplex<I,O2,R> ->
+      switch(lhs,rhs){
 
+      }
+    )(prc0,prc1);
+  }*/
   static public function pipe<I,O,O2,R>(prc0:Simplex<I,O,R>,prc1:Simplex<O,O2,R>):Simplex<I,O2,R>{
     var finishedLeft  = None;
     var finishedRight = None;
@@ -205,6 +212,13 @@ class Simplexs{
        }
     }(prc0,prc1);
   }
+  /**
+   *  Will seek to resolve the value next upcoming Held if it exists.
+   *  @param prc0 - 
+   *  @param prc1 - 
+   *  @param merger - 
+   *  @return Simplex<I,O,R>
+   */
   static public function press<I,O,R>(prc0:Simplex<I,O,R>):Simplex<I,O,R>{
     return switch (prc0){
       case Emit(head,tail)  : Emit(head,press(tail));
@@ -231,6 +245,17 @@ class Simplexs{
         }
     }
   }
+  /**
+   *  static public function pursue
+   */
+
+  /**
+   *  
+   *  @param prc0 - 
+   *  @param prc1 - 
+   *  @param merger - 
+   *  @return Simplex<I,O,R>
+   */
   static public function mergeWith<I,O,R>(prc0:Simplex<I,O,R>,prc1:Simplex<I,O,R>,merger:R->R->R):Simplex<I,O,R>{
     //trace('!!!!!! $prc0 $prc1 !!!!!!!!!');
     return switch([prc0,prc1]){

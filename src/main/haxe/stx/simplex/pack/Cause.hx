@@ -8,13 +8,18 @@ abstract Cause(CauseT) from CauseT to CauseT{
   }
   public function next(that:Cause):Cause{
     return switch([this,that]){
-      case [Kill,Kill]              : Kill;
-      case [Kill,Finished]          : Kill;
-      case [Finished, Kill]         : Kill;
-      case [Finished, Finished]     : Finished;
-      case [Early(e0),Early(e1)]    : Early(e0.next(e1));
-      case [Early(err),_]           : Early(err);
-      case [_,Early(err)]           : Early(err);
+      case [Kill,Kill]                  : Kill;
+      case [Kill,Finished]              : Kill;
+      case [Kill,Unfinished]            : Kill;
+      case [Unfinished,Kill]            : Kill;
+      case [Finished, Kill]             : Kill;
+      case [Finished, Finished]         : Finished;
+      case [Unfinished, Unfinished]     : Unfinished;
+      case [Unfinished, Finished]       : Unfinished;
+      case [Finished, Unfinished]       : Unfinished;
+      case [Early(e0),Early(e1)]        : Early(e0.next(e1));
+      case [Early(err),_]               : Early(err);
+      case [_,Early(err)]               : Early(err);
     }
   }
   public function ok(){

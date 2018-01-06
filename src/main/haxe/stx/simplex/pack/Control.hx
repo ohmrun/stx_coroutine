@@ -30,4 +30,7 @@ abstract Control<T>(ControlT<T>) from ControlT<T> to ControlT<T>{
   public function lift<O,R>(fn:T->Simplex<T,O,R>):Simplex<T,O,R>{
     return Controls.lift(this,fn);
   }
+  static public function cont<T,O,R>(fn:T->Simplex<T,O,R>):Control<T> -> Simplex<T,O,R>{
+    return Controls.lift.bind(_,fn);
+  }
 }
