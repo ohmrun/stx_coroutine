@@ -1,7 +1,7 @@
 
 using stx.Tuple;
 import stx.Chunk;
-import stx.simplex.core.Data;
+
 using stx.simplex.Package;
 
 using tink.CoreApi;
@@ -35,7 +35,7 @@ class TestSource{
   public function new(){}
   public function test(){
     var a                 = [1,2,3];
-    var b : Source<Int>   = a;
+    var b : Emiter<Int>   = a;
     pass();
   }
   public function testA(){
@@ -49,10 +49,10 @@ class TestSource{
     var t0 = Future.trigger();
     var t1 = Future.trigger();
 
-    var simplex0 : Source<Int> = a;
-    var simplex1 : Source<Int> = b;
+    var simplex0 = a.toEmiter();
+    var simplex1 = b.toEmiter();
     var simplex2 = simplex0.merge(simplex1);
-    var stream   = simplex2.toStream(); 
+    var stream   = simplex2.toGenerate(); 
         stream.forEach(
           function(x){
             o.push(x);
@@ -62,19 +62,19 @@ class TestSource{
     same(a.concat(b),o);
   }
   function printer(?pos:haxe.PosInfos){
-    return function(d:Dynamic){
+    return function(d:Dynamic ){
       haxe.Log.trace(d,pos);
     }
   }
   public function testB(){
-    var a = Source.unit();
+    var a = Emiter.unit();
     var o = [];
     var b = 
-      a.emit(1)
-       .emit(2)
-       .emit(3);
+      a.snoc(1)
+       .snoc(2)
+       .snoc(3);
 
-      b.toStream().forEach(
+      b.toGenerate().forEach(
         function(x){
           o.push(x);
           return true;
@@ -83,13 +83,13 @@ class TestSource{
 
     same([1,2,3],o);
 
-    b.emit(4);
+    b.snoc(4);
   }
-  public function testLifo(){
+  /*public function testLifo(){
     var a = FIFO.unit();
     var b = a.push(1).push(2).push(3);
     var o = [];  
-    var d = b.toSource().toStream();
+    var d = b.toSource().toGenerate();
         d.forEach(
           function(x){
             o.push(x);
@@ -98,13 +98,13 @@ class TestSource{
         );
     
     same([1,2,3],o);
-  }
+  }*/
   public function testSubstream(){
     function go(x:Dynamic){
       //trace('go $x');
       return true;
     }
-    var a : Source<{ a : Array<Int> }> = [
+    var a : Emiter<{ a : Array<Int> }> = [
       {
         a : [1,2,3]
       },
@@ -114,7 +114,7 @@ class TestSource{
     ];
     var b = a.flatMap(
       function(x){
-        var src               = Source.fromIterable(x.a);
+        var src               = Iterables.toEmiter(x.a);
         var out               = src.map(tuple2.bind(x));
         return out;
       }
@@ -124,13 +124,14 @@ class TestSource{
 }
 class TestSimplex{
   public function new(){}
+  /*
   public function testConstruct(){
-    var a : Simplex<Int,String,Noise> = function(i:Int){
+    var a = function(i:Int){
       return '$i numbers of fucks am I currently giving';
-    }
+    }.toSource();
     var count = 0;
 
-    var b : Producer<Int,Noise> = function(){
+    var b : Producer<Int> = function(){
       var out = count+1;
       return if(count < 10){
         count = out;
@@ -150,13 +151,14 @@ class TestSimplex{
         case Halt(e):
           trace(e);
           pass();
-        case Held(ft):
-          //trace("driver held");
+        case Hold(ft):
+          //trace("driver Hold");
           ft.handle(driver);
         default: trace("?");
       }
       //trace('HERE: $simplex');
     }
-    driver(d);
+    //driver(d);
   }
+  */
 }

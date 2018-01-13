@@ -8,9 +8,9 @@ class Futures{
   static public function lift<T>(src:Source<Future<T>>):Source<T>{
     function recurse(src:Source<Future<T>>):Source<T>{
       return switch(src){
-        case Held(ft)           : Held(ft.map(recurse));
+        case Hold(ft)           : Hold(ft.map(recurse));
         case Halt(ret)          : Halt(ret);
-        case Emit(head,tail)    : Held(head.map(
+        case Emit(head,tail)    : Hold(head.map(
           function(v:T){
             return Emit(v,recurse(tail));
           }

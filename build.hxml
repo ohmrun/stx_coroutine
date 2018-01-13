@@ -1,4 +1,5 @@
 -main Test
+-lib arrowlets
 -lib tink_streams
 -lib stx_transducers
 -lib stx_maybe
@@ -14,5 +15,6 @@
 -lib tink_http
 -cp src/main/haxe
 -cp src/test/haxe
+-cp src/std/haxe
 -neko test.n
 -cmd neko test.n
