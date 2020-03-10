@@ -5,6 +5,8 @@ package stx.simplex.core.head.data;
  *  Used to notify the Wait state of an intention to Terminate.
  */
 enum Control<T>{
-  Continue(v:T);
-  Discontinue(v:stx.simplex.core.pack.Cause);
+  Push(v:T);
+  Pull;
+  Exit(v:stx.simplex.core.pack.Cause);
+  Okay;
 }

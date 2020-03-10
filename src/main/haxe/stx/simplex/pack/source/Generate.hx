@@ -1,24 +1,30 @@
 package stx.simplex.pack.source;
 
-import tink.streams.StreamStep;
-import tink.streams.Stream;
-import tink.streams.Accumulator;
 
-class Generate<T> extends Generator<T>{
+import tink.streams.Stream;
+
+//TODO fix Poll logic
+class Generate<T> extends Generator<T,Error>{
   public function new(data:Null<Emiter<T>>){
     super(
-      function(){
+      (function(){
         var n = Future.trigger();
         function recurse(){
           switch(data){
             case Emit(head,tail):
               data = tail;
-              n.trigger(Data(head));
+              n.trigger(Link(head,new Generate(tail)));
             case Wait(arw):
               data = arw(Noise);
               recurse();
-            case Hold(ft):
-              ft.handle(
+            case Hold(Poll(v)):
+              data = v();
+              recurse();
+            case Hold(Open(v)):
+              data = v();
+              recurse();
+            case Hold(Hung(ft)):
+              ft.defer(
                 function(x){
                   data = x;
                   recurse();
@@ -33,7 +39,7 @@ class Generate<T> extends Generator<T>{
         }
         recurse();
         return n.asFuture();
-      }
+      })()
     );
   }
 }

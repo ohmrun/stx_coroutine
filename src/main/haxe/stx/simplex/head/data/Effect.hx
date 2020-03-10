@@ -1,3 +1,6 @@
 package stx.simplex.head.data;
 
-typedef Effect = stx.simplex.Package.Simplex<Noise,Noise,Noise>;
+import stx.simplex.core.head.data.Interface;
+import stx.simplex.core.head.data.Simplex;
+
+typedef Effect = Interface<Noise,Noise,Noise>;

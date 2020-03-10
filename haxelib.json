@@ -16,7 +16,10 @@
         "arrowlets": "",
         "pointwise": "",
         "tink_core": "",
-        "stx_tuple": ""
+        "stx_fp": "",
+        "stx_core": "",
+        "tink_runloop": "",
+        "tink_streams": ""
     },
     "classPath": "src/main/haxe"
 }

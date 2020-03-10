@@ -1,3 +1,5 @@
 package stx.simplex.head.data;
 
-typedef Emiter<O> = stx.simplex.head.data.Source<O,Noise>;
+import stx.simplex.head.data.Source;
+
+typedef Emiter<O> = Source<O,Noise>;

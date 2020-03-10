@@ -1,3 +1,7 @@
 package stx.simplex.core.head.data;
 
-typedef Held<I,O,R> = Future<Simplex<I,O,R>>;
+
+import stx.fn.pack.Thunk;
+import stx.simplex.Package.Simplex in SimplexA;
+
+typedef Held<I,O,R> = Thunk<Future<Simplex<I,O,R>>>;

@@ -1,3 +1,7 @@
 package stx.simplex.core.head.data;
 
-typedef Emission<I,O,R> = stx.simplex.core.Package.Control<I> -> stx.simplex.Package.Simplex<I,O,R>;
+import stx.fn.pack.Unary;
+import stx.simplex.core.pack.Operator in OperatorA;
+import stx.simplex.core.pack.Simplex in SimplexA;
+
+typedef Emission<I,O,R> = Unary<OperatorA<I>,SimplexA<I,O,R>>;

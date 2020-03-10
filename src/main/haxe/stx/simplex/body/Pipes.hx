@@ -6,14 +6,37 @@ class Pipes{
       Emission.recursive1(arw.apply)
     );
   }
+  @:static public function fromEmiterConstrucor<I,O>(cons:I->Emiter<O>):Pipe<I,O>{
+    return Wait(
+        function(c:Control<I>):Simplex<I,O,Noise>{
+          return  c.lift(
+            (x:I) -> {
+              function recurse(emiter:Emiter<O>):Pipe<I,O>{
+                return switch(emiter){
+                  case Wait(fn) : Wait(
+                    (c:Control<I>) -> c.lift(
+                      cons.fn().then(recurse)
+                    )
+                  );
+                  case Emit(head,tail)  : Emit(head,recurse(tail));
+                  case Halt(r)          : Halt(r);
+                  case Hold(h)          : Hold(h.map(recurse));         
+                }
+              }
+              return recurse(cons(x));
+            }
+          );
+        } 
+    );
+  }
   static public function fromFunction<I,O>(fn:I->O):Pipe<I,O>{
-      var fn0 = fn.catching();
+      var fn0 = fn.fn().catching();
       return Wait(
           function recurse(ctl:Control<I>):Pipe<I,O>{
             return ctl.lift(
               (i:I) ->  switch(fn0(i)){
-                  case Failure(e)    : Halt(Terminated(Early(stx.Error.fromTinkError(e))));
-                  case Success(v)    : Emit(v,Wait(recurse));
+                  case Failure(e)    : Spx.term(e);
+                  case Success(v)    : Spx.emit(v,Spx.wait(recurse));
               }
             );
           }
@@ -30,7 +53,7 @@ class Pipes{
   }
   static public function flatMap<I,O,O2,R>(prc:Pipe<I,O>,fn:O->Pipe<I,O2>):Pipe<I,O2>{
     return switch (prc){
-      case Emit(head,tail)  : append(fn(head),Pointwise.toThunk(flatMap(tail,fn)));
+      case Emit(head,tail)  : append(fn(head),flatMap.bind(tail,fn));
       case Wait(arw)        : Wait(
         function(i){
           trace(i);
@@ -40,6 +63,14 @@ class Pipes{
       );
       case Halt(e)          : Halt(e);
       case Hold(ft)         : Hold(ft.map(flatMap.bind(_,fn)));
+    }
+  }
+  static public function always<I,O>(prc:Pipe<I,O>,v:Thunk<I>):Emiter<O>{
+    return switch(prc){
+      case Emit(head,tail)  : Emit(head,always(tail,v));
+      case Hold(ft)         : Hold(ft.map(always.bind(_,v)));
+      case Halt(e)          : Halt(e);
+      case Wait(fn)         : always(fn(Continue(v())),v);
     }
   }
   /*

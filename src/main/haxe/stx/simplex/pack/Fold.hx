@@ -10,16 +10,11 @@ import stx.simplex.head.Data.Fold in FoldT;
    /dev/null
   */
   public static function unit<T,R>():Fold<T,R>{
-    return Wait(
-      function recurse(ctrl:Control<T>){
-        return switch(ctrl){
-          case Continue(_)            : Wait(recurse);
-          case Discontinue(cause)     : Halt(Terminated(cause)); 
-        }
-      }
+    return Spx.wait(
+      function recurse(v){ return Spx.wait(recurse); }
     );
   }
   static public function pure<T,R>(r:R):Fold<T,R>{
-    return Halt(Production(r));
+    return Spx.done(r);
   }
 }

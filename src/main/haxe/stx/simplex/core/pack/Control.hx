@@ -8,24 +8,12 @@ import stx.simplex.core.body.Controls;
     this = self;
   }
   @:from static public function fromCause<T>(c:Cause):Control<T>{
-    return Discontinue(c);
+    return Exit(c);
   }
   @:from static public function fromT<T>(v:T):Control<T>{
-    return Continue(v);
+    return Push(v);
   }
   public function map<U>(fn:T->U):Control<U>{
     return Controls.map(this,fn);
-  }
-  public function each<U>(fn:T->Void):Control<T>{
-    return Controls.each(this,fn);
-  }
-  @:to public function toReturn():Return<T>{
-    return switch(this){
-      case Continue(v)      : Production(v);
-      case Discontinue(v)   : Terminated(v);
-    }
-  }
-  public function lift<O,R>(fn:T->Simplex<T,O,R>):Simplex<T,O,R>{
-    return Controls.lift(this,fn);
   }
 }

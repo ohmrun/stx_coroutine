@@ -6,9 +6,18 @@ import stx.simplex.body.Emiters;
 import stx.simplex.body.Sources;
 import stx.simplex.core.body.Simplexs;
 
-abstract Emiter<O>(EmiterT<O>) from EmiterT<O> to EmiterT<O>{
+@:forward abstract Emiter<O>(EmiterT<O>) from EmiterT<O> to EmiterT<O>{
+  @:from static public function fromThunk<O>(th:Thunk<O>):Emiter<O>{
+    return Emiters.fromThunk(th);
+  }
   @:from static public function fromNativeSimplex<O>(spx:stx.simplex.core.pack.Simplex<Noise,O,Noise>):Emiter<O>{
     return new Emiter(spx);
+  }
+  // @:from static public function fromSignal<T>(sig:Signal<T>):Emiter<T>{
+  //   return Emiters.fromSignal(sig);
+  // }
+  @:to public function toSimplex():Simplex<Noise,O,Noise>{
+    return this;
   }
   @:to public function toSource():Source<O,Noise>{
     return this;
@@ -36,12 +45,6 @@ abstract Emiter<O>(EmiterT<O>) from EmiterT<O> to EmiterT<O>{
   }
   @:from static public function fromIterable<T>(iter:Iterable<T>):Emiter<T>{
     return Emiters.fromIterable(iter);
-  }
-  public function merge(that:Emiter<O>):Emiter<O>{
-    return new Emiter(this.mergeWith(
-      that,
-      function(x,y){ return y; }
-    ));
   }
   @:to public function toGenerate():Generate<O>{
     return new Generate(this);
@@ -76,9 +79,6 @@ abstract Emiter<O>(EmiterT<O>) from EmiterT<O> to EmiterT<O>{
   public function last(){
     return Emiters.last(this);
   }
-  public function pipeTo(fn:O->Void):Future<Option<Error>>{
-    return Emiters.pipeTo(this,fn);
-  }
   public function flatMap<U>(fn:O->Emiter<U>):Emiter<U>{
     return Emiters.flatMap(this,fn);
   }
@@ -93,5 +93,14 @@ abstract Emiter<O>(EmiterT<O>) from EmiterT<O> to EmiterT<O>{
   }
   public function toArray():Producer<Array<O>>{
     return Emiters.toArray(this);
+  }
+  public function tap(fn:Phase<Noise,O,Noise>->Void):Emiter<O>{
+    return this.tap(fn);
+  }
+  public function merge(that:Emiter<O>):Emiter<O>{
+    return Emiters.merge(this,that);
+  }
+  public function pipe<U>(p):Emiter<U>{
+    return Emiters.pipe(this,p);
   }
 }

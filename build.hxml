@@ -1,20 +1,21 @@
 -main Test
 -lib arrowlets
 -lib tink_streams
+
+-lib tink_runloop
+-lib stx_core
 -lib stx_transducers
--lib stx_maybe
--lib stx_error
--lib stx_vouch
--lib stx_chunk
--lib stx_tuple
+-lib stx_fp
+
 -lib figah
--lib thx.core
+
 -lib utest
 -lib pointwise
 -lib arrowlets
 -lib tink_http
+
+-lib thx.core
 -cp src/main/haxe
 -cp src/test/haxe
 -cp src/std/haxe
--neko test.n
--cmd neko test.n
+--interp

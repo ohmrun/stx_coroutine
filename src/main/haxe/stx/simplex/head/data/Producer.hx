@@ -1,3 +1,5 @@
 package stx.simplex.head.data;
 
-typedef Producer<R> = stx.simplex.head.data.Fold<Noise,R>;
+import stx.simplex.head.data.Fold;
+
+typedef Producer<R> = Fold<Noise,R>;

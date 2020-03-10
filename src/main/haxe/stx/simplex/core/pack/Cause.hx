@@ -16,4 +16,13 @@ abstract Cause(CauseT) from CauseT to CauseT{
   public function toOption():Option<Error>{
     return Causes.toOption(this);
   }
+  @:from static public function fromTinkError(e:tink.Error):Cause{
+    return Early(Error.fromTinkError(e));
+  }
+  @:from static public function fromError(e:Error):Cause{
+    return Early(e);
+  }
+  static public function early(e:Error):Cause{
+    return Early(e);
+  }
 } 
