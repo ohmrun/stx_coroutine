@@ -1,28 +1,42 @@
 package stx.simplex.core.pack;
 
-import stx.simplex.core.head.Data.Cause in CauseT;
-import stx.simplex.core.body.Causes;
+enum CauseSum<E>{
+  Stop;
+  Exit(err:Err<E>);
+  //Timeout();
+}
 
 /**
  *  Specifies the Cause of a Return if not a Production.
  */
-abstract Cause(CauseT) from CauseT to CauseT{
+@:using(stx.simplex.core.pack.Cause.CauseLift)
+abstract Cause<E>(CauseSum<E>) from CauseSum<E> to CauseSum<E>{
   public function new(self){
     this = self;
   }
-  public function next(that){
-    return Causes.next(this,that);
-  }  
-  public function toOption():Option<Error>{
-    return Causes.toOption(this);
+  // @:from static public function fromTinkError(e:tink.Error):Cause<Dynamic>{
+  //   return Exit(Error.fromTinkError(e));
+  // }
+  @:from static public function fromErr<E>(e:Err<E>):Cause<E>{
+    return Exit(e);
   }
-  @:from static public function fromTinkError(e:tink.Error):Cause{
-    return Early(Error.fromTinkError(e));
-  }
-  @:from static public function fromError(e:Error):Cause{
-    return Early(e);
-  }
-  static public function early(e:Error):Cause{
-    return Early(e);
+  static public function early<E>(e:Err<E>):Cause<E>{
+    return Exit(e);
   }
 } 
+class CauseLift{
+  static public function toOption<E>(self:Cause<E>):Option<Err<E>>{
+    return switch(self){
+      case Exit(err)     : Some(err);
+      case Stop           : Some(__.fault().any("STOP"));
+    }
+  }
+  static public function next<E>(thiz:Cause<E>,that:Cause<E>):Cause<E>{
+    return switch([thiz,that]){
+      case [Stop,Stop]                  : Stop;
+      case [Exit(e0),Exit(e1)]        : Exit(e0.next(e1));
+      case [Exit(err),_]               : Exit(err);
+      case [_,Exit(err)]               : Exit(err);
+    }
+  }
+}

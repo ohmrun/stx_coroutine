@@ -1,26 +1,33 @@
 package stx.simplex.pack;
 
-import stx.simplex.body.Producers;
-import stx.simplex.body.Effects;
-import stx.simplex.head.Data.Effect in EffectT;
+typedef EffectDef<E> = SimplexDef<Noise,Noise,Noise,E>;
 
-@:forward abstract Effect(EffectT) from EffectT to EffectT{
-  @:from static public function fromInterface(i:Interface<Noise,Noise,Noise>):Effect{
-    return new Effect(i);
+@:using(stx.simplex.pack.Effect.EffectLift)
+@:forward abstract Effect<E>(EffectDef<E>) from EffectDef<E> to EffectDef<E>{
+  static public var _(default,never) = EffectLift;
+
+  @:noUsing static public function lift<E>(self:EffectDef<E>):Effect<E>{
+    return new Effect(self);
   }
-  @:from static public function fromSimplex(i:Simplex<Noise,Noise,Noise>):Effect{
-    return new Effect(i);
-  }
-  @:to public function toInterface():Interface<Noise,Noise,Noise>{
+  public function new(self) this = self;
+
+  @:to public function toSimplex():Simplex<Noise,Noise,Noise,E>{
     return this;
   }
-  public function new(self){
-    this = self;
+}
+class EffectLift{
+  static public function run<E>(e:Effect<E>):Future<Option<Cause<E>>>{   
+    var t = Future.trigger();
+    return t;
   }
-  public function run(?schedule){
-    return Effects.run(this,schedule);
-  }
-  public function causeLater(c:Cause){
-    return Effects.causeLater(this,c);
+  static public function cause_later<E>(e:Effect<E>,c:Cause<E>):Effect<E>{
+    function f(e:EffectDef<E>):EffectDef<E> { return cause_later(e,c); }
+    return Effect.lift(switch(e){
+      case Wait(fn)                 : __.wait(fn.mod(f));
+      case Emit(head,rest)          : f(rest);
+      case Hold(pull)               : __.hold(pull.mod(f));
+      case Halt(Terminated(cause))  : __.term(cause.next(c));
+      case Halt(Production(Noise))  : __.term(c);
+    });
   }
 }

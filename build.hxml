@@ -1,21 +1,13 @@
--main Test
--lib arrowlets
--lib tink_streams
-
--lib tink_runloop
--lib stx_core
--lib stx_transducers
--lib stx_fp
-
--lib figah
+-main Main
 
 -lib utest
--lib pointwise
--lib arrowlets
--lib tink_http
 
--lib thx.core
+-lib stx_pico
+-lib stx_nano
+-lib stx_fp
+-lib stx_fn
+
 -cp src/main/haxe
 -cp src/test/haxe
--cp src/std/haxe
+
 --interp

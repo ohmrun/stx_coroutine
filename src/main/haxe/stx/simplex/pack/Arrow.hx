@@ -1,8 +1,8 @@
 package stx.simplex.pack;
 
-typedef ArrowT<P,I,O,R> = P -> Simplex<I,O,R>;
+typedef ArrowT<P,I,O,R> = P -> Simplex<I,O,R,E>;
 
-@:forward @:callable abstract Arrow<P,I,O,R>(ArrowT<P,I,O,R>) from ArrowT<P,I,O,R> to ArrowT<P,I,O,R>{
+@:forward @:callable abstract Arrow<P,I,O,R,E>(ArrowT<P,I,O,R,E>) from ArrowT<P,I,O,R,E> to ArrowT<P,I,O,R,E>{
     public function new(self){
         this = self;
     }
@@ -52,4 +52,4 @@ typedef ArrowT<P,I,O,R> = P -> Simplex<I,O,R>;
         
     }*/
 }
-typedef BothT<P0,P1,I,O,R1,R2> = Arrow<Tuple2<P0,P1>,I,O,Tuple2<R1,R2>>;
+//typedef BothT<P0,P1,I,O,R1,R2> = Arrow<Tuple2<P0,P1>,I,O,Tuple2<R1,R2>>;

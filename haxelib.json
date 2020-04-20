@@ -13,13 +13,9 @@
     "version": "0.0.4",
     "url": "https://github.com/0b1kn00b/stx_simplex",
     "dependencies": {
-        "arrowlets": "",
-        "pointwise": "",
-        "tink_core": "",
-        "stx_fp": "",
-        "stx_core": "",
-        "tink_runloop": "",
-        "tink_streams": ""
+        "stx_fp"        : "",
+        "stx_pico"      : "",
+        "stx_nano"      : ""
     },
     "classPath": "src/main/haxe"
 }

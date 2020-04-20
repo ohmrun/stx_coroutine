@@ -1,18 +1,9 @@
 package stx.simplex;
 
-import stx.simplex.core.head.Data;
-
-
 using tink.CoreApi;
 
-import stx.core.Package;
-//import stx.arrowlet.Package;
+using stx.Pico;
+using stx.Nano;
+using stx.Fn;
 
-
-import stx.fp.Package;
-import stx.simplex.Package;
-import stx.simplex.core.Package;
-
-
-using stx.core.Lift;
-using stx.fn.Lift;
+using stx.simplex.Pack;

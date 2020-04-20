@@ -1,33 +1,88 @@
 package stx.simplex.pack;
 
-import stx.simplex.head.Data.Producer in ProducerT;
+typedef ProducerDef<R,E> = SimplexDef<Noise,Noise,R,E>;
 
-import stx.simplex.body.Producers;
-
-@:forward abstract Producer<R>(ProducerT<R>) from ProducerT<R> to ProducerT<R>{
-  @:from static public function fromSimplex<I,O,R>(spx:Simplex<Noise,Noise,R>):Producer<R>{
+@:using(stx.simplex.pack.Producer.ProducerLift)
+@:forward abstract Producer<R,E>(ProducerDef<R,E>) from ProducerDef<R,E> to ProducerDef<R,E>{
+  public function new(self:ProducerDef<R,E>) this = self;
+  @:noUsing static public function lift<R,E>(self:ProducerDef<R,E>) return new Producer(self);
+  @:from static public function fromSimplex<I,O,R,E>(spx:Simplex<Noise,Noise,R,E>):Producer<R,E>{
     return new Producer(spx);
   }
-  @:from static public function fromThunk<T>(thk:Void->T):Producer<T>{
-    return Producers.fromThunk(thk);
+  @:noUsing static public function fromThunk<R,E>(thk:Thunk<R>):Producer<R,E>{
+    return lift(__.lazy(
+      () -> __.done(thk())
+    ));
   }
-  public function new(self:ProducerT<R>){
-    this = self;
-  } 
+  @:to public function toSimplex():Simplex<Noise,Noise,R,E>{
+    return this;
+  }
+}
+
+class ProducerLift{
+  
   /*
-  @:to public function toSource<O>():Source<O,R>{
-    return Producers.toSource(this);
+  static public function toSource<O,R>(cncd:Producer<R,E>):Source<O,R>{
+    function recurse(cncd){
+      return switch(cncd){
+        case Halt(Terminated(cause))  : Halt(Terminated(cause));
+        case Halt(Production(ret))    : Halt(Production(ret));
+        case Emit(Noise,next)         : 
+          trace(next);
+          Constructors.kill();
+        case Wait(arw)                : Wait(arw.then(recurse));
+        case Hold(ft)                 : Hold(ft.map(recurse));
+      }
+    }
+    return recurse(cncd);
   }*/
-  public function complete(fn:R->Void):Effect{
-    return Producers.complete(this,fn);
+  static public function complete<R,E>(cncd:Producer<R,E>,cb:R->Void):Effect<E>{
+    function recurse(cncd){
+      return switch(cncd){
+        case Halt(Terminated(cause))  : __.term(cause);
+        case Halt(Production(ret))    :
+          cb(ret); 
+          __.stop();
+        case Emit(head,rest)          : rest.mod(recurse);
+        case Wait(arw)                : __.wait(arw.mod(recurse));
+        case Hold(ft)                 : __.hold(ft.mod(recurse));
+      } 
+    }
+    return Effect.lift(recurse(cncd));
   }
-  // public function drive(stream:Stream<Noise,Noise>):Future<Return<R>>{
-  //   return Producers.drive(this,stream);
-  // }
-  public function tap(fn):Producer<R>{
-    return this.tap(fn);
-  }
-  public function tapO(fn):Producer<R>{
-    return this.tapO(fn);
-  }
+  /*
+  static public function drive<R,E>(self:Producer<R,E>,stream:Stream<Noise,Noise>):Future<Return<R,E>>{
+    var done  = false;
+    var trg   = Future.trigger();
+    function recurse(self:Producer<R,E>,step:Step<Noise,Noise>){
+        //trace('recurse: $self $step');
+        switch(step){
+          case Data(_) if (!done) : 
+            switch(self){
+              case Halt(result)     : 
+                done = true;
+                trg.trigger(result);
+              case Wait(arw)        : 
+                stream.next().handle(recurse.bind(arw(Continue(Noise))));
+              case Emit(head,tail)  : 
+                stream.next().handle(recurse.bind(tail));
+              case Hold(ft)         : 
+                ft.handle(
+                  (self) -> stream.next().handle(recurse.bind(self))
+                );
+            }
+          case Data(_) : 
+          case End if (!done) : 
+            done = true;
+            switch(self){
+              case Halt(result) : trg.trigger(result);
+              default           : trg.trigger(Terminated(Exit(Errors.driver_ended())));
+            }
+          case End :
+          case Fail(e)          : trg.trigger(Terminated(Exit(stx.Error.fromTinkError(e))));
+        }
+      }
+    stream.next().handle(recurse.bind(self));
+    return trg.asFuture();
+  }*/
 }
