@@ -44,6 +44,12 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
       }
     ));
   }
+  @:from static public function fromSimplex<I,O,R,E>(self:Simplex<Noise,O,Noise,E>):Emiter<O,E>{
+    return lift(self);
+  }
+  @:to public function toSimplex():Simplex<Noise,O,Noise,E>{
+    return this;
+  }
   static public function ints(){
     var val = 0;
     function go(){
@@ -64,16 +70,19 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
   // }
 }
 class EmiterLift{
-  @:noUsing static public function lift<O,E>(self:EmiterDef<O,E>) return Emiter.lift(self);
+  @:noUsing static private function lift<O,E>(self:EmiterDef<O,E>) return Emiter.lift(self);
   static public function reduce<T,U,E>(source:Emiter<T,E>,fn:T->U->U,memo:U):Producer<U,E>{
     function f(source:Emiter<T,E>,memo) { return reduce(source,fn,memo); }
-    function c(memo){ return f.bind(_,memo); } 
+    function c(memo){ return __.into(f.bind(_,memo)); } 
     return Producer.lift(switch(source){
-      case Emit(head,rest)                      : f(head,rest.mod(fn.bind(_,memo)));
+      case Emit(head,rest)                      : 
+        rest.mod(
+          (spx) -> f(spx,fn(head,memo))
+        );
       case Halt(Production(Noise))              : __.done(memo);
       case Halt(Terminated(cause))              : __.term(cause);
       case Wait(arw)                            : __.wait(arw.mod(c(memo)));
-      case Hold(ft)                             : __.held(ft.mod(c(memo)));
+      case Hold(ft)                             : __.hold(ft.mod(c(memo)));
     });
   }
   static public function toArray<O,E>(emt:Emiter<O,E>):Producer<Array<O>,E>{
@@ -81,64 +90,63 @@ class EmiterLift{
       (next:O,memo:Array<O>) -> memo.concat([next])
    ,[]);
   }
-  static public function flat_map<O,O2,E>(prc:Emiter<O,E>,fn:O->Emiter<O2,E>):Emiter<O2,E>{
-    function f(prc) return flat_map(prc,fn);
-    return switch (prc){
-      case Emit(head,rest)        : append(fn(head),f.bind(rest));
-      case Wait(arw)              : __.wait(arw.mod(f));
-      case Halt(e)                : __.done(e);
-      case Hold(ft)               : __.held(ft.mod(f));
-    }
-  }
   static public function append<O,E>(prc0:Emiter<O,E>,prc1:Thunk<Emiter<O,E>>):Emiter<O,E>{
-    function f(prc0) return append(prc0,prc1);
+    var f = __.into(append.bind(_,prc1));
     return switch (prc0){
-      case Emit(head,rest)                   : __.emit(emit.mod(f));
+      case Emit(head,rest)              : __.emit(head,rest.mod(f));
       case Wait(arw)                    : __.wait(arw.mod(f));
       case Halt(Production(Noise))      : prc1();
       case Halt(Terminated(cause))      : __.term(cause);
-      case Hold(ft)                     : __.held(ft.mod(f));
+      case Hold(ft)                     : __.hold(ft.mod(f));
     }
   }
-  static public function search<O,E>(self:Emiter<O,E>,prd:O->Bool):Producer<O,E>{
+  static public function flat_map<O,O2,E>(prc:Emiter<O,E>,fn:O->Emiter<O2,E>):Emiter<O2,E>{
+    var f = flat_map.bind(_,fn);
+    return switch (prc){
+      case Emit(head,rest)        : append(fn(head),f.bind(rest));
+      case Wait(arw)              : __.wait(arw.mod(__.into(f)));
+      case Halt(e)                : __.halt(e);
+      case Hold(ft)               : __.hold(ft.mod(__.into(f)));
+    }
+  }
+  static public function search<O,E>(self:Emiter<O,E>,prd:O->Bool):Producer<Option<O>,E>{
     function f(self){ return search(self,prd); }
     return switch(self){
-      case Emit(head,rest)     if(prd(head))  : __.done(head);
-      case Emit(head,rest)                    : search(rest,prd);
-      case Wait(fn)                           : __.wait(fn.then(f));
-      case Hold(ft)                           : ft.map(f);
-      case Halt(Production(v))                : Errors.no_value_error();
-      case Halt(Terminated(cause))            : cause;
+      case Emit(head,rest)     if(prd(head))  : __.done(Some(head));
+      case Emit(head,rest)                    : rest.mod(__.into(search.bind(_,prd)));
+      case Wait(fn)                           : __.wait(fn.mod(__.into(f)));
+      case Hold(ft)                           : __.hold(ft.mod(__.into(f)));
+      case Halt(Production(v))                : __.done(None);
+      case Halt(Terminated(cause))            : __.term(cause);
     }
   }
-  static public function first<O,E>(self:Emiter<O,E>):Producer<O,E>{
+  static public function first<O,E>(self:Emiter<O,E>):Producer<Option<O>,E>{
     return search(self,(v) -> true);
   }
-  static public function last<O,E>(self:Emiter<O,E>):Producer<O,E>{
-    function recurse(self:Emiter<O,E>,lst:Option<O,E>):Producer<O,E>{
-      function f(self){
-        return recurse(self,lst);
-      }
+  static public function last<O,E>(self:Emiter<O,E>):Producer<Option<O>,E>{
+    function recurse(self:Emiter<O,E>,lst:Option<O>):Producer<Option<O>,E>{
+      var f = __.into(recurse.bind(_,lst));
       return switch([self,lst]){
-        case [Emit(emit),_]                     : recurse(rest,Some(head));
-        case [Wait(fn),_]                       : Wait(fn.then(f));
-        case [Hold(ft),_]                       : ft.map(f);
-        case [Halt(Production(Noise)),None]     : Errors.no_value_error();
-        case [Halt(Production(Noise)),Some(v)]  : __.done(v);
-        case [Halt(Terminated(cause)),_]        : cause;
+        case [Emit(head,rest),_]                : rest.mod(__.into(recurse.bind(_,Some(head))));
+        case [Wait(fn),_]                       : __.wait(fn.mod(f));
+        case [Hold(ft),_]                       : __.hold(ft.mod(f));
+        case [Halt(Production(Noise)),v]        : __.done(v);
+        case [Halt(Terminated(cause)),_]        : __.term(cause);
       }
     }
     return recurse(self,None);
   }
-  static public function at<O,E>(self:Emiter<O,E>,index:Int):Producer<O,E>{
+  static public function at<O,E>(self:Emiter<O,E>,index:Int):Producer<Option<O>,E>{
     function recurse(self:Emiter<O,E>,count = 0){
+      var f = (int) -> __.into(recurse.bind(_,int));
+      var c = f(count);
       return switch(self){
-        case Wait(fn)                               : Wait(fn.then(recurse.bind(_)));
-        case Emit(head,tail)  if(index == count)    : Halt(Production(head));
-        case Emit(head,tail)                        : recurse(tail,count++);
-        case Hold(ft)                               : Hold(ft.map(recurse.bind(_,count)));
-        case Halt(Terminated(cause))                : Halt(Terminated(cause));
-        case Halt(Production(_))                    : Constructors.fail(Errors.no_index_found(index));
+        case Wait(fn)                               : __.wait(fn.mod(c));
+        case Emit(head,tail)  if(index == count)    : __.done(Some(head));
+        case Emit(head,tail)                        : tail.mod(f(count + 1));
+        case Hold(ft)                               : __.hold(ft.mod(c));
+        case Halt(Terminated(cause))                : __.term(cause);
+        case Halt(Production(_))                    : __.done(None);
       }
     }
     return recurse(self);
@@ -146,52 +154,39 @@ class EmiterLift{
   static public function count<O,E>(self:Emiter<O,E>):Producer<Int,E>{
     return reduce(self,(next,memo) -> memo++,0);
   }
-  static public function filter<O,E>(self:Emiter<O,E>,prd:O->Bool):Emiter<O,E>{
-    return Sources.filter(self,prd);
-  }
   static public function until<O,E>(self:Emiter<O,E>,prd:O->Bool):Emiter<O,E>{
     function recurse(self,cont){
+      var f = __.into(recurse.bind(_,cont));
       return switch(cont){
-        case false : Halt(Production(Noise));
+        case false : __.done(Noise);
         case true   :
           switch(self){
-            case Wait(fn)         : Wait(fn.then(recurse.bind(_,cont)));
-            case Hold(ft)         : Hold(ft.map(recurse.bind(_,cont)));
-            case Halt(v)          : Halt(v);
-            case Emit(head,tail)  : Emit(head,recurse(tail,!prd(head)));
+            case Wait(fn)         : __.wait(fn.mod(f));
+            case Hold(ft)         : __.hold(ft.mod(f));
+            case Halt(v)          : __.halt(v);
+            case Emit(head,tail)  : tail.mod(
+              __.into((self) -> recurse(self,!prd(head)))
+            );
           } 
       }
     }
     return recurse(self,true);
   }
   static public function take<O,E>(self:Emiter<O,E>,max:Int){
-    function f(n){
-      return recurse.bind(_,n);
-    }
     function recurse(self,n){
+      var f = (n) -> __.into(recurse.bind(_,n));
       return n >= max ? Halt(Production(Noise))
         : switch(self){
-          case Wait(fn)         : Wait(fn.then(f(n)));
-          case Hold(ft)         : Hold(ft.map(f(n)));
-          case Halt(out)        : Halt(out);
-          case Emit(head,tail)  : Emit(head,f(n++)(tail));
+          case Wait(fn)         : __.wait(fn.mod(f(n)));
+          case Hold(ft)         : __.hold(ft.mod(f(n)));
+          case Halt(out)        : __.halt(out);
+          case Emit(head,tail)  : __.emit(head,f(n++)(tail));
         }
     }
     return recurse(self,1);
   }
-  static public function sink<O,E>(self:Emiter<O,E>,next:Sink<O>):Effect<E>{
-    function recurse(self,next){
-      return switch([self,next]){
-        case [Emit(head,tail),Wait(fn)] : recurse(tail,fn(Continue(head)));
-        case [Halt(out),_]              : Halt(out);
-        case [_,Halt(out)]              : Halt(out);
-        case [Wait(fn),_]               : Wait(fn.then(recurse.bind(_,next)));
-        case [Hold(ft),_]               : Hold(ft.map(recurse.bind(_,next)));
-        case [_,Emit(head,tail)]        : recurse(self,tail);
-        case [_,Hold(ft)]               : Hold(ft.map(recurse.bind(self)));
-      }
-    }
-    return recurse(self,next);
+  static public function cons<O,E>(self:Emiter<O,E>,v:O):Emiter<O,E>{
+    return __.emit(v,self);
   }
   /**
    *  Adds another value to the end of this Emiter *if* it terminates.
@@ -200,30 +195,44 @@ class EmiterLift{
    *  @return Emiter<O,E>
    */
   static public function snoc<O,E>(self:Emiter<O,E>,o:O):Emiter<O,E>{
-    function f(self:Emiter<O,E>) return snoc(self,o);
-
+    var f = __.into(snoc.bind(_,o));
     return switch(self){
       case Halt(Production(Noise))  : self.cons(o);
       case Halt(Terminated(cause))  : self;
-      case Emit(head,rest)          : __.emit(rest.mod(f)); 
+      case Emit(head,rest)          : __.emit(head,rest.mod(f)); 
       case Wait(fn)                 : __.wait(fn.mod(f));
       case Hold(ft)                 : __.hold(ft.mod(f));
       default                       : __.stop();
     };
   }
-  static public function cons<O,E>(self:Emiter<O,E>,v:O):Emiter<O,E>{
-    return Emit(v,self);
-  }
-   static public function span(last:Int,?start:Int=0){
+  static public function span(last:Int,?start:Int=0){
     var val = start;
     return Wait(
       function recurse(_){
         return if(val == last){
-          Halt(Production(Noise));
+          __.done(Noise);
         }else{
-          Emit(val++,Wait(recurse));
+          __.emit(val++,__.wait(recurse));
         };
       }
     );
+  }
+  static public function filter<O,E>(self:Emiter<O,E>,prd:O->Bool):Emiter<O,E>{
+    return Emiter.lift(Source._.filter(Source.lift(self),prd));
+  }
+  static public function sink<O,E>(self:Emiter<O,E>,next:Sink<O,E>):Effect<E>{
+    function recurse(self:Simplex<Noise,O,Noise,E>,next:Simplex<O,Noise,Noise,E>):Simplex<Noise,Noise,Noise,E>{
+      var fl = __.into(recurse.bind(_,next));
+      return Effect.lift(switch([self,next]){
+        case [Emit(head,tail),Wait(fn)] : recurse(tail,fn(Push(head)));
+        case [Halt(out),_]              : __.halt(out);
+        case [_,Halt(out)]              : __.halt(out);
+        case [Wait(fn),_]               : __.wait(fn.mod(fl));
+        case [Hold(ft),_]               : __.hold(ft.mod(fl));
+        case [_,Emit(head,tail)]        : recurse(self,tail);
+        case [_,Hold(ft)]               : __.hold(ft.mod(recurse.bind(self)));
+      });
     }
+    return recurse(self,next);
+  }
 }

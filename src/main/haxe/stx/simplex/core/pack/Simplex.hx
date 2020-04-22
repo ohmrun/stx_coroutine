@@ -1,6 +1,6 @@
 package stx.simplex.core.pack;
 
-enum SimplexDef<I,O,R,E>{
+enum SimplexSum<I,O,R,E>{
   Emit(o:O,next:Simplex<I,O,R,E>);
   Wait(fn:Transmission<I,O,R,E>);
   Hold(ft:Held<I,O,R,E>);
@@ -8,9 +8,12 @@ enum SimplexDef<I,O,R,E>{
 }
 
 @:using(stx.simplex.core.pack.Simplex.SimplexLift)
-@:forward abstract Simplex<I,O,R,E>(SimplexDef<I,O,R,E>) from SimplexDef<I,O,R,E> to SimplexDef<I,O,R,E>{
+@:forward abstract Simplex<I,O,R,E>(SimplexSum<I,O,R,E>) from SimplexSum<I,O,R,E> to SimplexSum<I,O,R,E>{
   static public var STOP = Halt(Production(Noise));
 
+  @:noUsing static public function lift<I,O,R,E>(self:SimplexSum<I,O,R,E>):Simplex<I,O,R,E>{
+    return new Simplex(self);
+  }
   static public var _(default,never) = SimplexLift;
   public function new(self) this = self;
 
@@ -42,7 +45,7 @@ class SimplexLift{
         function f(spx:Simplex<I,O,R,E>):Simplex<I1,O1,R1,E> return fn(rec)(spx);
         return switch(spx){
           case Emit(head,rest)      : f(spx);
-          case Wait(arw)            : f(spx);
+          case Wait(arw)            : f(spx);//NOTE
           case Hold(h)              : __.hold(h.mod(f));
           case Halt(Production(v))  : f(__.done(v));
           case Halt(Terminated(c))  : f(__.term(c));
@@ -112,8 +115,9 @@ class SimplexLift{
       function rec(f:Y<Simplex<I,O,R,E>,Simplex<I,O,R2,E>>):Simplex<I,O,R,E>->Simplex<I,O,R2,E>{
         return function(spx){
           return switch(spx){
-            case Halt(Production(v))  : fn(v);
-            default                   : f(rec)(spx);
+            case Halt(Production(v))      : fn(v);
+            case Halt(Terminated(cause))  : __.term(cause);
+            default                       : f(rec)(spx);
           }
         }
       }
@@ -153,8 +157,45 @@ class SimplexLift{
     }
     return recurse(self);
   }
-  static public function fold<I,O,R,Z,E>(prc:Simplex<I,O,R,E>,fn:Z->O->Z,unit:Z):Simplex<I,Z,R,E>{
-    return null;
+  static public function merge<I,O,R,E>(self:Simplex<I,O,R,E>,that:Simplex<I,O,R,E>,selector:Simplex<I,O,R,E>->Simplex<I,O,R,E>->Bool):Simplex<I,O,R,E>{
+    var side = selector(self,that);
+    var data = side ? that : self;
+    var next = side ? self : that;
+    var f    = __.into(side ? merge.bind(self,_,selector) : merge.bind(_,self,selector));
+
+    if(side){that = data;}else{self = data;}
+    return switch(data){
+      case Emit(head,rest)                  : __.emit(head,Held.lazy(() -> f(rest)));
+      case Wait(arw)                        : __.wait(arw.mod(f));
+      case Hold(h)                          : __.hold(h.mod(f));
+      case Halt(r)                          : 
+        function res(spx) {
+          return switch(spx){
+            case Emit(_, _)                 : __.fail(__.fault().err(E_IndexOutOfBounds));
+            case Wait(_)                    : __.fail(__.fault().any("produced Wait after `escape` called"));
+            case Hold(ft)                   : __.hold(ft.mod(res));//be nice to the asynhronous.
+            case Halt(Terminated(Stop))     : __.halt(r);
+            case Halt(Terminated(Exit(e)))  : __.fail(e);
+            case Halt(Production(t))        : __.fail(__.fault().any("produced Return after `escape` called"));
+          }
+        }
+        res(next.escape());
+    }
+  }
+  static public function escape<I,O,R,E>(self:Simplex<I,O,R,E>):Simplex<I,O,R,E>{
+    return switch(self){
+      case Emit(head,rest)              : rest.mod(escape);
+      case Wait(arw)                    : arw(Quit(Stop)).mod(escape);
+      case Hold(h)                      : __.hold(h.mod(__.into(escape)));
+      case Halt(e)                      : __.halt(e);
+    }
+  }
+  static public function touch<I,O,R,E>(self:Simplex<I,O,R,E>,before:Void->Void,after:Void->Void):Simplex<I,O,R,E>{
+    return switch(self){
+      case Wait(arw)  : __.wait(arw.touch(before,after));
+      case Hold(h)    : __.hold(h.touch(before,after));
+      default         : self;
+    }
   }
 }
 

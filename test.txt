@@ -1,0 +1,2018 @@
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:10: rec: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Wait(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:98: Hold(#fun)
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+src/main/haxe/stx/simplex/core/body/Simplexs.hx:31: recurse: stx.simplex.core.head.data.Simplex
+src/test/haxe/stx/simplex/TestSimplex.hx:94: Hold(#fun)
+utest/ui/text/PrintReport.hx:52: 
+assertations: 1
+successes: 0
+errors: 0
+failures: 0
+warnings: 1
+execution time: 0.095
+
+results: SOME TESTS FAILURES (success: false)
+stx.simplex.TestSimplex
+  testProvide: WARNING W
+    no assertions
+

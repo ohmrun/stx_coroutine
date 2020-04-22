@@ -1,6 +1,6 @@
 package stx.simplex.pack;
 
-typedef EffectDef<E> = SimplexDef<Noise,Noise,Noise,E>;
+typedef EffectDef<E> = SimplexSum<Noise,Noise,Noise,E>;
 
 @:using(stx.simplex.pack.Effect.EffectLift)
 @:forward abstract Effect<E>(EffectDef<E>) from EffectDef<E> to EffectDef<E>{
@@ -13,6 +13,9 @@ typedef EffectDef<E> = SimplexDef<Noise,Noise,Noise,E>;
 
   @:to public function toSimplex():Simplex<Noise,Noise,Noise,E>{
     return this;
+  }
+  @:from static public function fromSimplex<E>(self:Simplex<Noise,Noise,Noise,E>):Effect<E>{
+    return lift(self);
   }
 }
 class EffectLift{

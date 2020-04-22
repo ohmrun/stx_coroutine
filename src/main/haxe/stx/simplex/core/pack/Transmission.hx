@@ -14,7 +14,20 @@ typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Simplex<I,O,R,E>;
       __.term      
     ));
   }
-  
+  public function touch(before:Void->Void,after:Void->Void):Transmission<I,O,R,E>{
+    return lift(
+      (control:Control<I,E>) -> {
+        before();
+        var value = this(control);
+        after();
+        return value;
+      }
+    );
+  }
+  @:noUsing static public function into<I,O,Oi,R,Ri,E>(fn:SimplexSum<I,O,R,E>->SimplexSum<I,Oi,Ri,E>):Simplex<I,O,R,E>->Simplex<I,Oi,Ri,E>{
+    return fn;
+  }
+
   public function prj():TransmissionDef<I,O,R,E> return this;
   private var self(get,never):Transmission<I,O,R,E>;
   private function get_self():Transmission<I,O,R,E> return lift(this);
