@@ -1,4 +1,4 @@
-package stx.simplex.channel;
+package stx.coroutine.channel;
 
 enum Pulse<K,V>{
   Give(v:V);

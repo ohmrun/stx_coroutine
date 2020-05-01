@@ -1,6 +1,6 @@
-package stx.simplex.pack.Simplex.parser;
+package stx.coroutine.pack.Coroutine.parser;
 
-import stx.simplex.pack.Simplex.parser.data.Produce as ProduceT;
+import stx.coroutine.pack.Coroutine.parser.data.Produce as ProduceT;
 
 abstract Produce<I,O>(ProduceT<I,O>) from ProduceT<I,O> to ProduceT<I,O>{
   public function new(self){

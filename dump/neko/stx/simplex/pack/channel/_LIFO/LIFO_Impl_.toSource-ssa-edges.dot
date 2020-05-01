@@ -70,14 +70,14 @@ subgraph cluster_22141 {
 label=22141;
 style=filled;
 color=lightblue;
-e22141_false_1[shape=box,label="return stx.simplex.core.data.Simplex.Halt(cause)"];
+e22141_false_1[shape=box,label="return stx.coroutine.core.data.Coroutine.Halt(cause)"];
 e22141_false_0[shape=box,label="var cause = cast channel[0]"];
 }
 subgraph cluster_22140 {
 label=22140;
 style=filled;
 color=lightblue;
-e22140_false_2[shape=box,label="return stx.simplex.core.data.Simplex.Held(handler)"];
+e22140_false_2[shape=box,label="return stx.coroutine.core.data.Coroutine.Held(handler)"];
 e22140_false_1[shape=box,label="var handler = tink.core._Future.Future_Impl_.map(ft, handler, null)"];
 e22140_false_0[shape=box,label="var ft = cast channel[0]"];
 }
@@ -87,14 +87,14 @@ style=filled;
 color=lightblue;
 e22139_false_3[shape=box,label="return handler(handler)"];
 e22139_false_2[shape=box,label="var handler = fn(handler)"];
-e22139_false_1[shape=box,label="var handler = stx.simplex.core.data.Control.Continue(stx.simplex.core.data.ChannelOp.Pull)"];
+e22139_false_1[shape=box,label="var handler = stx.coroutine.core.data.Control.Continue(stx.coroutine.core.data.ChannelOp.Pull)"];
 e22139_false_0[shape=box,label="var fn = cast channel[0]"];
 }
 subgraph cluster_22138 {
 label=22138;
 style=filled;
 color=lightblue;
-e22138_false_3[shape=box,label="return stx.simplex.core.data.Simplex.Emit(head, handler)"];
+e22138_false_3[shape=box,label="return stx.coroutine.core.data.Coroutine.Emit(head, handler)"];
 e22138_false_2[shape=box,label="var handler = handler(tail)"];
 e22138_false_1[shape=box,label="var head = cast channel[0]"];
 e22138_false_0[shape=box,label="var tail = cast channel[1]"];
@@ -116,6 +116,6 @@ subgraph cluster_22130 {
 label=22130;
 style=filled;
 color=lightblue;
-e22130_false_0[shape=box,label="var swallow = stx.simplex.pack.Processes.swallow"];
+e22130_false_0[shape=box,label="var swallow = stx.coroutine.pack.Processes.swallow"];
 }
 }

@@ -1,5 +1,5 @@
-package stx.simplex.pack.Simplex.parser;
+package stx.coroutine.pack.Coroutine.parser;
 
-import stx.simplex.pack.Simplex.parser.data.Rejection as RejectionT;
+import stx.coroutine.pack.Coroutine.parser.data.Rejection as RejectionT;
 
 @:forward abstract Rejection(RejectionT) from RejectionT to RejectionT{}

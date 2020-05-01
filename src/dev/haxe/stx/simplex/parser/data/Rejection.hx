@@ -1,3 +1,3 @@
-package stx.simplex.pack.Simplex.parser.data;
+package stx.coroutine.pack.Coroutine.parser.data;
 
 typedef Rejection = TypedError<Fault>;

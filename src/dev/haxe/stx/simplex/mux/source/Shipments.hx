@@ -1,12 +1,12 @@
-package stx.simplex.pack.source;
+package stx.coroutine.pack.source;
 
 import stx.Chunk;
-import stx.simplex.core.Data;
-using stx.simplex.Package;
+import stx.coroutine.core.Data;
+using stx.coroutine.Package;
 
 class Shipments{
   static public function slice<T>(pt:Shipment<T>,fn:T->Bool):Shipment<T>{
-    function recurse(pt:Simplex<Noise,Either<Chunk<T>,Chunk<T>>,Noise>){
+    function recurse(pt:Coroutine<Noise,Either<Chunk<T>,Chunk<T>>,Noise>){
       return switch(pt){
         case Emit(head,tail) :
           switch(head){

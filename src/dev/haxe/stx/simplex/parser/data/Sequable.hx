@@ -1,5 +1,5 @@
-package stx.simplex.pack.Simplex.parser.data;
+package stx.coroutine.pack.Coroutine.parser.data;
 
 typedef Sequable<T> = {
-  function seq():stx.simplex.pack.Simplex.parser.Seq<T>;
+  function seq():stx.coroutine.pack.Coroutine.parser.Seq<T>;
 }

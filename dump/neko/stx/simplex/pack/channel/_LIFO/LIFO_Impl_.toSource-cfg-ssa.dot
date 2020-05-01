@@ -10,7 +10,7 @@ n22144[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="ep5" align="left">handler = \"phi\"(handler, handler)</td></tr>
 	<tr><td port="e0" align="left">var recurse = \"fun\"(22132)</td></tr>
 	<tr><td port="e1" align="left">var out = recurse</td></tr>
-	<tr><td port="e2" align="left">var out = stx.simplex.core.data.Simplex.Wait(out)</td></tr>
+	<tr><td port="e2" align="left">var out = stx.coroutine.core.data.Coroutine.Wait(out)</td></tr>
 	<tr><td port="e3" align="left">return null</td></tr>
 	<tr><td port="out"></td></tr>
 </table>>];
@@ -21,7 +21,7 @@ n22143[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="ep2" align="left">channel = \"phi\"(channel, channel)</td></tr>
 	<tr><td port="ep3" align="left">channel = \"phi\"(channel, channel)</td></tr>
 	<tr><td port="ep4" align="left">handler = \"phi\"(handler, handler)</td></tr>
-	<tr><td port="e0" align="left">return stx.simplex.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))</td></tr>
+	<tr><td port="e0" align="left">return stx.coroutine.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))</td></tr>
 	<tr><td port="out"></td></tr>
 </table>>];
 n22142[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
@@ -36,20 +36,20 @@ n22142[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 n22141[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="in" bgcolor="lightgray">(22141) BKConditional</td></tr>
 	<tr><td port="e0" align="left">var cause = cast channel[0]</td></tr>
-	<tr><td port="e1" align="left">return stx.simplex.core.data.Simplex.Halt(cause)</td></tr>
+	<tr><td port="e1" align="left">return stx.coroutine.core.data.Coroutine.Halt(cause)</td></tr>
 	<tr><td port="out"></td></tr>
 </table>>];
 n22140[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="in" bgcolor="lightgray">(22140) BKConditional</td></tr>
 	<tr><td port="e0" align="left">var ft = cast channel[0]</td></tr>
 	<tr><td port="e1" align="left">var handler = tink.core._Future.Future_Impl_.map(ft, handler, null)</td></tr>
-	<tr><td port="e2" align="left">return stx.simplex.core.data.Simplex.Held(handler)</td></tr>
+	<tr><td port="e2" align="left">return stx.coroutine.core.data.Coroutine.Held(handler)</td></tr>
 	<tr><td port="out"></td></tr>
 </table>>];
 n22139[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="in" bgcolor="lightgray">(22139) BKConditional</td></tr>
 	<tr><td port="e0" align="left">var fn = cast channel[0]</td></tr>
-	<tr><td port="e1" align="left">var handler = stx.simplex.core.data.Control.Continue(stx.simplex.core.data.ChannelOp.Pull)</td></tr>
+	<tr><td port="e1" align="left">var handler = stx.coroutine.core.data.Control.Continue(stx.coroutine.core.data.ChannelOp.Pull)</td></tr>
 	<tr><td port="e2" align="left">var handler = fn(handler)</td></tr>
 	<tr><td port="e3" align="left">return handler(handler)</td></tr>
 	<tr><td port="out"></td></tr>
@@ -59,7 +59,7 @@ n22138[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="e0" align="left">var tail = cast channel[1]</td></tr>
 	<tr><td port="e1" align="left">var head = cast channel[0]</td></tr>
 	<tr><td port="e2" align="left">var handler = handler(tail)</td></tr>
-	<tr><td port="e3" align="left">return stx.simplex.core.data.Simplex.Emit(head, handler)</td></tr>
+	<tr><td port="e3" align="left">return stx.coroutine.core.data.Coroutine.Emit(head, handler)</td></tr>
 	<tr><td port="out"></td></tr>
 </table>>];
 n22137[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
@@ -95,7 +95,7 @@ n22131[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 </table>>];
 n22130[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">
 	<tr><td port="in" bgcolor="lightgray">(22130) BKFunctionBegin</td></tr>
-	<tr><td port="e0" align="left">var swallow = stx.simplex.pack.Processes.swallow</td></tr>
+	<tr><td port="e0" align="left">var swallow = stx.coroutine.pack.Processes.swallow</td></tr>
 	<tr><td port="out"></td></tr>
 </table>>];
 n1[label=<<table BORDER="0" CELLBORDER="1" CELLSPACING="0">

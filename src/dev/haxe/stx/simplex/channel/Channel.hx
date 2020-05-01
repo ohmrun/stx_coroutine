@@ -1,3 +1,3 @@
-package stx.simplex.channel;
+package stx.coroutine.channel;
 
-typedef Channel<K,V> = stx.simplex.Package.Pipe<Pulse<K,V>,V>;
+typedef Channel<K,V> = stx.coroutine.Package.Pipe<Pulse<K,V>,V>;

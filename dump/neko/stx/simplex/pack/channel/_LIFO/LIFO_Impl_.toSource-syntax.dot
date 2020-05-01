@@ -1,11 +1,11 @@
 digraph graphname {
-n22144 [shape=box,label="(22144)\nvar recurse = \"fun\"(22132)\nvar out = recurse\nvar out = stx.simplex.core.data.Simplex.Wait(out)\nreturn null"];
-n22143 [shape=box,label="(22143)\nreturn stx.simplex.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))"];
+n22144 [shape=box,label="(22144)\nvar recurse = \"fun\"(22132)\nvar out = recurse\nvar out = stx.coroutine.core.data.Coroutine.Wait(out)\nreturn null"];
+n22143 [shape=box,label="(22143)\nreturn stx.coroutine.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))"];
 n22142 [shape=box,label="(22142)\nhandler = \"fun\"(22136)\nvar handler = handler\nreturn handler(`this)"];
-n22141 [shape=box,label="(22141)\nvar cause = cast channel[0]\nreturn stx.simplex.core.data.Simplex.Halt(cause)"];
-n22140 [shape=box,label="(22140)\nvar ft = cast channel[0]\nvar handler = tink.core._Future.Future_Impl_.map(ft, handler, null)\nreturn stx.simplex.core.data.Simplex.Held(handler)"];
-n22139 [shape=box,label="(22139)\nvar fn = cast channel[0]\nvar handler = stx.simplex.core.data.Control.Continue(stx.simplex.core.data.ChannelOp.Pull)\nvar handler = fn(handler)\nreturn handler(handler)"];
-n22138 [shape=box,label="(22138)\nvar tail = cast channel[1]\nvar head = cast channel[0]\nvar handler = handler(tail)\nreturn stx.simplex.core.data.Simplex.Emit(head, handler)"];
+n22141 [shape=box,label="(22141)\nvar cause = cast channel[0]\nreturn stx.coroutine.core.data.Coroutine.Halt(cause)"];
+n22140 [shape=box,label="(22140)\nvar ft = cast channel[0]\nvar handler = tink.core._Future.Future_Impl_.map(ft, handler, null)\nreturn stx.coroutine.core.data.Coroutine.Held(handler)"];
+n22139 [shape=box,label="(22139)\nvar fn = cast channel[0]\nvar handler = stx.coroutine.core.data.Control.Continue(stx.coroutine.core.data.ChannelOp.Pull)\nvar handler = fn(handler)\nreturn handler(handler)"];
+n22138 [shape=box,label="(22138)\nvar tail = cast channel[1]\nvar head = cast channel[0]\nvar handler = handler(tail)\nreturn stx.coroutine.core.data.Coroutine.Emit(head, handler)"];
 n22137 [shape=box,label="<function-end>
 (22137)"];
 n22136 [shape=box,label="<function-begin>
@@ -28,7 +28,7 @@ n22132 -> n22143[style="dashed",color="gray",label="merge"];
 n22131 [shape=box,label="<function-end>
 (22131)"];
 n22130 [shape=box,label="<function-begin>
-(22130)\nvar swallow = stx.simplex.pack.Processes.swallow"];
+(22130)\nvar swallow = stx.coroutine.pack.Processes.swallow"];
 n22130 -> n22144[style="dashed",color="gray",label="merge"];
 n1 [shape=box,label="<root>
 (1)"];

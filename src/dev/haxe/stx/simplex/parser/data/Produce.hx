@@ -1,4 +1,4 @@
-package stx.simplex.pack.Simplex.parser.data;
+package stx.coroutine.pack.Coroutine.parser.data;
 
 enum Produce<I ,O>{
   Accept(i: Null<I>, o : Null<O>);

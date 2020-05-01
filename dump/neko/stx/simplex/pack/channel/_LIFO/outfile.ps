@@ -3,7 +3,7 @@ digraph graphname {
 	node [label="\N"];
 	n22144	 [height=2.6111,
 		label="(22144)\nScopes: 0\nctrl = \"phi\"(ctrl, ctrl)\n_ = \"phi\"(_, _)\nhandler = \"phi\"(handler, handler)\nchannel = \"phi\"(channel, channel)\nchannel = \"\
-phi\"(channel, channel)\nhandler = \"phi\"(handler, handler)\nvar recurse = \"fun\"(22132)\nvar out = recurse\nvar out = stx.simplex.core.data.Simplex.Wait(\
+phi\"(channel, channel)\nhandler = \"phi\"(handler, handler)\nvar recurse = \"fun\"(22132)\nvar out = recurse\nvar out = stx.coroutine.core.data.Coroutine.Wait(\
 out)\nreturn null",
 		pos="169,184",
 		shape=box,
@@ -19,7 +19,7 @@ out)\nreturn null",
 		pos="e,169,38.216 169,89.599 169,74.568 169,60.089 169,48.266"];
 	n22143	 [height=1.7778,
 		label="(22143)\nScopes: 0\n_ = \"phi\"(_, _)\nhandler = \"phi\"(handler, handler)\nchannel = \"phi\"(channel, channel)\nchannel = \"phi\"(channel, \
-channel)\nhandler = \"phi\"(handler, handler)\nreturn stx.simplex.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))",
+channel)\nhandler = \"phi\"(handler, handler)\nreturn stx.coroutine.pack._Control.Control_Impl_.lift(ctrl, \"fun\"(22134))",
 		pos="364,484",
 		shape=box,
 		width=5.6528];
@@ -48,7 +48,7 @@ handler\nreturn handler(`this)",
 		lp="376.5,664",
 		pos="e,364,638.01 364,690.37 364,675.78 364,660.67 364,648.2"];
 	n22141	 [height=0.94444,
-		label="(22141)\nScopes: 4, 0\nvar cause = cast channel[0]\nreturn stx.simplex.core.data.Simplex.Halt(cause)",
+		label="(22141)\nScopes: 4, 0\nvar cause = cast channel[0]\nreturn stx.coroutine.core.data.Coroutine.Halt(cause)",
 		pos="477,995",
 		shape=box,
 		width=3.9444];
@@ -62,7 +62,7 @@ handler\nreturn handler(`this)",
 		lp="728.5,920",
 		pos="e,780.43,892.86 576.08,960.97 638.66,940.11 717.48,913.84 770.78,896.07"];
 	n22140	 [height=1.1528,
-		label="(22140)\nScopes: 3, 0\nvar ft = cast channel[0]\nvar handler = tink.core._Future.Future_Impl_.map(ft, handler, null)\nreturn stx.simplex.core.data.Simplex.Held(\
+		label="(22140)\nScopes: 3, 0\nvar ft = cast channel[0]\nvar handler = tink.core._Future.Future_Impl_.map(ft, handler, null)\nreturn stx.coroutine.core.data.Coroutine.Held(\
 handler)",
 		pos="831,995",
 		shape=box,
@@ -71,7 +71,7 @@ handler)",
 		lp="843.5,920",
 		pos="e,831,894.22 831,953.39 831,937.19 831,918.93 831,904.22"];
 	n22139	 [height=1.3611,
-		label="(22139)\nScopes: 2, 0\nvar fn = cast channel[0]\nvar handler = stx.simplex.core.data.Control.Continue(stx.simplex.core.data.ChannelOp.Pull)\nvar \
+		label="(22139)\nScopes: 2, 0\nvar fn = cast channel[0]\nvar handler = stx.coroutine.core.data.Control.Continue(stx.coroutine.core.data.ChannelOp.Pull)\nvar \
 handler = fn(handler)\nreturn handler(handler)",
 		pos="1305,995",
 		shape=box,
@@ -80,7 +80,7 @@ handler = fn(handler)\nreturn handler(handler)",
 		lp="1051.5,920",
 		pos="e,881.7,888.62 1111.9,945.92 1033,926.29 947.45,904.99 891.75,891.12"];
 	n22138	 [height=1.3611,
-		label="(22138)\nScopes: 1, 0\nvar tail = cast channel[1]\nvar head = cast channel[0]\nvar handler = handler(tail)\nreturn stx.simplex.core.data.Simplex.Emit(\
+		label="(22138)\nScopes: 1, 0\nvar tail = cast channel[1]\nvar head = cast channel[0]\nvar handler = handler(tail)\nreturn stx.coroutine.core.data.Coroutine.Emit(\
 head, handler)",
 		pos="1751,995",
 		shape=box,
@@ -141,7 +141,7 @@ head, handler)",
 		pos="e,286.28,1300.2 245.95,1352.3 256.08,1339.2 268.63,1323 280.07,1308.2"];
 	n22130	 [height=0.94444,
 		label="<function-begin>
-(22130)\nScopes: 0\nvar swallow = stx.simplex.pack.Processes.swallow",
+(22130)\nScopes: 0\nvar swallow = stx.coroutine.pack.Processes.swallow",
 		pos="148,1492",
 		shape=box,
 		width=4.1111];

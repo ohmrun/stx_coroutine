@@ -1,5 +1,5 @@
 class Main{
   static function main(){
-    stx.simplex.Test.main();
+    stx.coroutine.Test.main();
   }
 }

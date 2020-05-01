@@ -1,4 +1,4 @@
-package stx.simplex.pack.mux;
+package stx.coroutine.pack.mux;
 
 class PartitionMuxs{
  

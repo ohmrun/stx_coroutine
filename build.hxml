@@ -8,6 +8,5 @@
 -lib stx_fn
 
 -cp src/main/haxe
--cp src/test/haxe
 
 --interp

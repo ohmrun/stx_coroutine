@@ -1,6 +1,6 @@
-package stx.simplex.pack.channel;
+package stx.coroutine.pack.channel;
 
-import stx.simplex.core.data.Channel in ChannelT;
+import stx.coroutine.core.data.Channel in ChannelT;
 
 abstract FIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
   static public function unit<T>():FIFO<T>{
@@ -28,7 +28,7 @@ abstract FIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
     this = self;
   }
   public function push(i:T):FIFO<T>{
-    return new FIFO(Simplexs.push(this,Push(i)));
+    return new FIFO(Coroutines.push(this,Push(i)));
   }
   /*
   public function pull():Tuple2<Future<Option<T>>,FIFO<T>>{

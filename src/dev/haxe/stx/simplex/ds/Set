@@ -1,4 +1,4 @@
-package stx.simplex.pack.Simplex;
+package stx.coroutine.pack.Coroutine;
 
 enum SetOp<K,V>{
   Add(v:V);

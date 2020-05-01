@@ -1,6 +1,6 @@
-package stx.simplex.pack.Simplex.parser;
+package stx.coroutine.pack.Coroutine.parser;
 
-import stx.simplex.pack.Simplex.parser.data.Seq as SeqT;
+import stx.coroutine.pack.Coroutine.parser.data.Seq as SeqT;
 
 @:forward abstract Seq<T>(SeqT<T>) from SeqT<T> to SeqT<T>{
   public function new(self){

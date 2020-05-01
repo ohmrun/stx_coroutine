@@ -1,17 +1,17 @@
 package stx.http;
 
-import stx.simplex.pack.Simplex;
+import stx.coroutine.pack.Coroutine;
 
 import haxe.Bytes;
 
 import tink.http.Request;
 import tink.http.Response;
 
-typedef HttpProducer = Simplex<Noise,Bytes,Error>;
-typedef HttpDecoder  = Simplex<Bytes,IncomingRequest,Error>;
-typedef HttpHandler  = Simplex<IncomingRequest,Bytes,Error>;
-typedef HttpConsumer = Simplex<Bytes,Noise,Error>;
+typedef HttpProducer = Coroutine<Noise,Bytes,Error>;
+typedef HttpDecoder  = Coroutine<Bytes,IncomingRequest,Error>;
+typedef HttpHandler  = Coroutine<IncomingRequest,Bytes,Error>;
+typedef HttpConsumer = Coroutine<Bytes,Noise,Error>;
 
-typedef WebHandler   = Simplex<Noise,Noise> -> Future<Maybe<Error>>;
+typedef WebHandler   = Coroutine<Noise,Noise> -> Future<Maybe<Error>>;
 
 //producer.pipe(decoder).pipe(handler).pipe(consumer);

@@ -1,11 +1,11 @@
-package stx.simplex.pack.Simplex.db;
+package stx.coroutine.pack.Coroutine.db;
 
 import sys.db.Mysql;
 
 
-import stx.simplex.pack.core.Data.Simplex;
-import stx.simplex.pack.core.Data.Control;
-import stx.simplex.pack.Simplex.Control;
+import stx.coroutine.pack.core.Data.Coroutine;
+import stx.coroutine.pack.core.Data.Control;
+import stx.coroutine.pack.Coroutine.Control;
 using tink.CoreApi;
 import sys.db.ResultSet;
 
@@ -20,14 +20,14 @@ enum SQLInput{
 }
 typedef SQLOptions  = { user : String, pass : String, host : String, database: String, ?socket : Null<String>, ?port : Null<Int> };
 
-abstract Connection(Simplex<SQLInput,ResultSet,Error>){
+abstract Connection(Coroutine<SQLInput,ResultSet,Error>){
   public function new(connector:SQLOptions->sys.db.Connection){
     this = Wait(apply.bind(connector));
   }
   @:from static public function fromMySql(m:Class<Mysql>){
     return new Connection(Mysql.connect);
   }
-  static function apply(connector:SQLOptions->sys.db.Connection,input:Control<SQLInput>):Simplex<SQLInput,ResultSet,Error>{
+  static function apply(connector:SQLOptions->sys.db.Connection,input:Control<SQLInput>):Coroutine<SQLInput,ResultSet,Error>{
     return input.lift(
       function(input){
         return switch(input){

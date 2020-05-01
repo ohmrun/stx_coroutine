@@ -1,9 +1,9 @@
-package stx.simplex.pack;
+package stx.coroutine.pack;
 
 import tink.core.Either;
 
-import stx.simplex.core.Data;
-using stx.simplex.Package;
+import stx.coroutine.core.Data;
+using stx.coroutine.Package;
 
 class Muxs{
   static public function then<L,R>(sel0:Mux<L,R>,sel1:Mux<L,R>):Mux<L,R>{

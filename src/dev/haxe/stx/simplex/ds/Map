@@ -1,8 +1,8 @@
-package stx.simplex.pack.Simplex.ds;
+package stx.coroutine.pack.Coroutine.ds;
 
 import fig.Variable;
 
-typedef MapSimplex<K,V> = stx.simplex.pack.Simplex<MapInput<K,V>,MapOutput<K,V>,Any>;
+typedef MapCoroutine<K,V> = stx.coroutine.pack.Coroutine<MapInput<K,V>,MapOutput<K,V>,Any>;
 
 enum MapInput<K,V>{
   Set(k:K,v:V);
@@ -11,8 +11,8 @@ enum MapInput<K,V>{
 typedef MapOutput<K,V> = Array<Variable<K,V>>;
 
 
-@:forward abstract Map<K,V>(MapSimplex<K,V>) from MapSimplex<K,V> to MapSimplex<K,V>{
-  public function new(zero:Void->std.Map<K,V>):MapSimplex<K,V>{
+@:forward abstract Map<K,V>(MapCoroutine<K,V>) from MapCoroutine<K,V> to MapCoroutine<K,V>{
+  public function new(zero:Void->std.Map<K,V>):MapCoroutine<K,V>{
     function copy(map:std.Map<K,V>):std.Map<K,V>{
       var next_map = zero();
       for(key in map.keys()){
@@ -21,7 +21,7 @@ typedef MapOutput<K,V> = Array<Variable<K,V>>;
       return next_map;
     }
     return Wait(
-      function waiting(map:std.Map<K,V>,ipt:MapInput<K,V>):MapSimplex<K,V>{
+      function waiting(map:std.Map<K,V>,ipt:MapInput<K,V>):MapCoroutine<K,V>{
         return switch(ipt){
           case Set(k,v) :
             var next = copy(map);
@@ -29,7 +29,7 @@ typedef MapOutput<K,V> = Array<Variable<K,V>>;
             Wait(waiting.bind(next));
           case Get(k) :
             var val                      = thx.Options.toOption(map.get(k));
-            var op  : MapSimplex<K,V>    = Wait(waiting.bind(map));
+            var op  : MapCoroutine<K,V>    = Wait(waiting.bind(map));
             var out : MapOutput<K,V>     = [tuple2(k,val)];
             Emit(out,op);
         }

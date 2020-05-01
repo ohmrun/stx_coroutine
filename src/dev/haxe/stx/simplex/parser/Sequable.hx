@@ -1,6 +1,6 @@
-package stx.simplex.pack.Simplex.parser;
+package stx.coroutine.pack.Coroutine.parser;
 
-import stx.simplex.pack.Simplex.parser.data.Sequable as SequableT;
+import stx.coroutine.pack.Coroutine.parser.data.Sequable as SequableT;
 
 abstract Sequable<T>(SequableT<T>) from SequableT<T> to SequableT<T>{
   public function new(self){

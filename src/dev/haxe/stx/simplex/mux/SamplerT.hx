@@ -1,7 +1,7 @@
-package stx.simplex.core.data;
+package stx.coroutine.core.data;
 
 import tink.core.Either;
 
-import stx.simplex.pack.Simplex;
+import stx.coroutine.pack.Coroutine;
 
-typedef SamplerT<I,O,R> = Simplex<I,Either<I,O>,R>;
+typedef SamplerT<I,O,R> = Coroutine<I,Either<I,O>,R>;
