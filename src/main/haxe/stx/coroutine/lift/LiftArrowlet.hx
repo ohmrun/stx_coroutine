@@ -1,4 +1,4 @@
 class LiftArrowlet{
-  static public function asPipe<I,O>(arw:Arrowlet<I,O>):Pipe<I,O>{
-      return stx.coroutine.body.Pipes.fromArrowlet(arw);
+  static public function asTunnel<I,O>(arw:Arrowlet<I,O>):Tunnel<I,O>{
+      return stx.coroutine.body.Tunnels.fromArrowlet(arw);
   }

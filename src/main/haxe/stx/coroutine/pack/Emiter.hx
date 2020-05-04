@@ -65,16 +65,16 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
   static public function one(){
     return Emiter.fromThunk(()->1);
   }
-  // @:to public function toPipe():Pipe<Noise,O>{
+  // @:to public function toTunnel():Tunnel<Noise,O>{
   //   return this;
   // }
 }
 class EmiterLift{
   @:noUsing static private function lift<O,E>(self:EmiterDef<O,E>) return Emiter.lift(self);
-  static public function reduce<T,U,E>(source:Emiter<T,E>,fn:T->U->U,memo:U):Producer<U,E>{
+  static public function reduce<T,U,E>(source:Emiter<T,E>,fn:T->U->U,memo:U):Derive<U,E>{
     function f(source:Emiter<T,E>,memo) { return reduce(source,fn,memo); }
     function c(memo){ return __.into(f.bind(_,memo)); } 
-    return Producer.lift(switch(source){
+    return Derive.lift(switch(source){
       case Emit(head,rest)                      : 
         rest.mod(
           (spx) -> f(spx,fn(head,memo))
@@ -85,7 +85,7 @@ class EmiterLift{
       case Hold(ft)                             : __.hold(ft.mod(c(memo)));
     });
   }
-  static public function toArray<O,E>(emt:Emiter<O,E>):Producer<Array<O>,E>{
+  static public function toArray<O,E>(emt:Emiter<O,E>):Derive<Array<O>,E>{
     return reduce(emt,
       (next:O,memo:Array<O>) -> memo.concat([next])
    ,[]);
@@ -109,7 +109,7 @@ class EmiterLift{
       case Hold(ft)               : __.hold(ft.mod(__.into(f)));
     }
   }
-  static public function search<O,E>(self:Emiter<O,E>,prd:O->Bool):Producer<Option<O>,E>{
+  static public function search<O,E>(self:Emiter<O,E>,prd:O->Bool):Derive<Option<O>,E>{
     function f(self){ return search(self,prd); }
     return switch(self){
       case Emit(head,rest)     if(prd(head))  : __.done(Some(head));
@@ -120,11 +120,11 @@ class EmiterLift{
       case Halt(Terminated(cause))            : __.term(cause);
     }
   }
-  static public function first<O,E>(self:Emiter<O,E>):Producer<Option<O>,E>{
+  static public function first<O,E>(self:Emiter<O,E>):Derive<Option<O>,E>{
     return search(self,(v) -> true);
   }
-  static public function last<O,E>(self:Emiter<O,E>):Producer<Option<O>,E>{
-    function recurse(self:Emiter<O,E>,lst:Option<O>):Producer<Option<O>,E>{
+  static public function last<O,E>(self:Emiter<O,E>):Derive<Option<O>,E>{
+    function recurse(self:Emiter<O,E>,lst:Option<O>):Derive<Option<O>,E>{
       var f = __.into(recurse.bind(_,lst));
       return switch([self,lst]){
         case [Emit(head,rest),_]                : rest.mod(__.into(recurse.bind(_,Some(head))));
@@ -136,7 +136,7 @@ class EmiterLift{
     }
     return recurse(self,None);
   }
-  static public function at<O,E>(self:Emiter<O,E>,index:Int):Producer<Option<O>,E>{
+  static public function at<O,E>(self:Emiter<O,E>,index:Int):Derive<Option<O>,E>{
     function recurse(self:Emiter<O,E>,count = 0){
       var f = (int) -> __.into(recurse.bind(_,int));
       var c = f(count);
@@ -151,7 +151,7 @@ class EmiterLift{
     }
     return recurse(self);
   }
-  static public function count<O,E>(self:Emiter<O,E>):Producer<Int,E>{
+  static public function count<O,E>(self:Emiter<O,E>):Derive<Int,E>{
     return reduce(self,(next,memo) -> memo++,0);
   }
   static public function until<O,E>(self:Emiter<O,E>,prd:O->Bool):Emiter<O,E>{
@@ -220,7 +220,7 @@ class EmiterLift{
   static public function filter<O,E>(self:Emiter<O,E>,prd:O->Bool):Emiter<O,E>{
     return Emiter.lift(Source._.filter(Source.lift(self),prd));
   }
-  static public function sink<O,E>(self:Emiter<O,E>,next:Sink<O,E>):Effect<E>{
+  static public function sink<O,E>(self:Emiter<O,E>,next:Accept<O,E>):Effect<E>{
     function recurse(self:Coroutine<Noise,O,Noise,E>,next:Coroutine<O,Noise,Noise,E>):Coroutine<Noise,Noise,Noise,E>{
       var fl = __.into(recurse.bind(_,next));
       return Effect.lift(switch([self,next]){

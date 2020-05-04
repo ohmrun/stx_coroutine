@@ -75,6 +75,7 @@ class CoroutineLift{
             var tail  = f(rec)(rest);
             __.emit(head,tail);
           case Wait(arw)  : __.wait(arw.mod(f(rec)));
+          case Halt(halt) : __.halt(halt);
           default         : f(rec)(spx);
         }
       }
@@ -86,6 +87,7 @@ class CoroutineLift{
         return function(spx){
           return switch(spx){
             case Halt(Production(v))  : __.done(fn(v));
+            case Halt(Terminated(c))  : __.term(c);
             default                   : f(rec)(spx);
           }
         }

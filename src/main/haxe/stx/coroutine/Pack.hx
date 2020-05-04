@@ -1,8 +1,30 @@
 package stx.coroutine;
 
-typedef CoroutineSum<I,O,R,E>             = stx.coroutine.core.pack.Coroutine.CoroutineSum<I,O,R,E>; 
-typedef Coroutine<I,O,R,E>                = stx.coroutine.core.pack.Coroutine<I,O,R,E>; 
- 
+
+
+typedef Effect<E>                       = stx.coroutine.pack.Effect<E>;                               //000 
+typedef EffectDef<E>                    = stx.coroutine.pack.Effect.EffectDef<E>;                     //000
+
+typedef DeriveDef<R,E>                  = stx.coroutine.pack.Derive.DeriveDef<R,E>;                   //001
+typedef Derive<R,E>                     = stx.coroutine.pack.Derive<R,E>;                             //001
+
+typedef Emiter<O,E>                     = stx.coroutine.pack.Emiter<O,E>;                             //010
+
+typedef SourceDef<O,R,E>                = stx.coroutine.pack.Source.SourceDef<O,R,E>;                 //011
+typedef Source<O,R,E>                   = stx.coroutine.pack.Source<O,R,E>;                           //011
+
+typedef Accept<I,E>                     = stx.coroutine.pack.Accept<I,E>;                             //100
+
+typedef Relate<I,R,E>                   = stx.coroutine.pack.Relate<I,R,E>;                           //101
+
+typedef Tunnel<I,O,E>                   = stx.coroutine.pack.Tunnel<I,O,E>;                           //110
+
+typedef CoroutineSum<I,O,R,E>           = stx.coroutine.core.pack.Coroutine.CoroutineSum<I,O,R,E>;    //111
+typedef Coroutine<I,O,R,E>              = stx.coroutine.core.pack.Coroutine<I,O,R,E>;                 //111
+
+/**
+  Control Structures
+**/
 typedef ControlSum<I,E>                 = stx.coroutine.core.pack.Control.ControlSum<I,E>;
 typedef Control<I,E>                    = stx.coroutine.core.pack.Control<I,E>;
  
@@ -19,32 +41,6 @@ typedef Phase<I,O,R,E>                  = stx.coroutine.core.pack.Phase<I,O,R,E>
 typedef ReturnSum<R,E>                  = stx.coroutine.core.pack.Return.ReturnSum<R,E>;
 typedef Return<R,E>                     = stx.coroutine.core.pack.Return<R,E>;
 
-typedef SourceDef<O,R,E>                = stx.coroutine.pack.Source.SourceDef<O,R,E>;   //011
-typedef Source<O,R,E>                   = stx.coroutine.pack.Source<O,R,E>;             //011
-
-typedef Emiter<O,E>                     = stx.coroutine.pack.Emiter<O,E>;             //010
-typedef Effect<E>                       = stx.coroutine.pack.Effect<E>;                  //000
-typedef EffectDef<E>                    = stx.coroutine.pack.Effect.EffectDef<E>;                  //000
-
-typedef ProducerDef<R,E>                = stx.coroutine.pack.Producer.ProducerDef<R,E>;             //001
-typedef Producer<R,E>                   = stx.coroutine.pack.Producer<R,E>;             //001
-
-
-typedef Sink<I,E>                       = stx.coroutine.pack.Sink<I,E>;                 //100
-typedef Fold<I,R,E>                     = stx.coroutine.pack.Fold<I,R,E>;               //101
-typedef Pipe<I,O,E>                     = stx.coroutine.pack.Pipe<I,O,E>;               //110
-//typedef Coroutine<I,O,R,E>      = stx.coroutine.core.Package.Coroutine<I,O,R,E>;  //111
-
-//typedef Tween               = stx.coroutine.pack.Tween;
-//typedef Producers           = stx.coroutine.body.Producers;
-//typedef Emiters             = stx.coroutine.body.Emiters;
-//typedef Folds               = stx.coroutine.body.Folds;
-//typedef Reactor<I,O,R,E>      = stx.coroutine.pack.Reactor<I,O,R,E>;
-//typedef Arrow<P,I,O,R>      = stx.coroutine.pack.Arrow<P,I,O,R>;
-#if sys
-  //  typedef Sleep            = stx.coroutine.pack.Sleep;
-#end
-
 
 class LiftCoroutine{
   static public function upcast<I,O,R,E>(wildcard:Wildcard,spx:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
@@ -53,8 +49,8 @@ class LiftCoroutine{
   // static public function asEmiter<O>(wildcard:Wildcard,spx:Coroutine<Noise,O,Noise>):Emiter<O>{
   //   return new Emiter(spx);
   // }
-  // static public function asPipe<I,O>(wildcard:Wildcard,spx:Coroutine<I,O,Noise>):Pipe<I,O>{
-  //   return new Pipe(spx);
+  // static public function asTunnel<I,O>(wildcard:Wildcard,spx:Coroutine<I,O,Noise>):Tunnel<I,O>{
+  //   return new Tunnel(spx);
   // }
 
   static public function fail<I,O,R,E>(wildcard:Wildcard,er:Err<E>):Coroutine<I,O,R,E>{
@@ -87,4 +83,7 @@ class LiftCoroutine{
   static public function into<I,O,Oi,R,Ri,E>(wildcard:Wildcard,fn:CoroutineSum<I,O,R,E>->CoroutineSum<I,Oi,Ri,E>):Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>{
     return Transmission.into(fn);
   }
+}
+class LiftSource{
+  
 }

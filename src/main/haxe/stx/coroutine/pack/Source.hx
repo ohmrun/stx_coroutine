@@ -11,6 +11,21 @@ typedef SourceDef<O,R,E> = CoroutineSum<Noise,O,R,E>;
   @:from static public function fromCoroutine<O,R,E>(self:Coroutine<Noise,O,R,E>):Source<O,R,E>{
     return lift(self);
   }
+  @:from static public function fromSourceOfFuture<T>(src:Source<Future<T>>):Source<T>{
+    function recurse(src:Source<Future<T>>):Source<T>{
+      return switch(src){
+        case Hold(ft)           : Hold(ft.map(recurse));
+        case Halt(ret)          : Halt(ret);
+        case Emit(head,tail)    : Hold(head.map(
+          function(v:T){
+            return Emit(v,recurse(tail));
+          }
+        ));
+        case Wait(arw)          : Wait(arw.then(recurse)); 
+      }
+    }
+    return recurse(src);
+  }
   @:to public function toCoroutine():Coroutine<Noise,O,R,E>{
     return this;
   }
