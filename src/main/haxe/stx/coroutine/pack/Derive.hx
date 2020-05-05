@@ -17,6 +17,22 @@ typedef DeriveDef<R,E> = CoroutineSum<Noise,Noise,R,E>;
   @:to public function toCoroutine():Coroutine<Noise,Noise,R,E>{
     return this;
   }
+  /*
+  @:from static public function fromDeriveOfFuture<T,E>(src:Derive<Future<T>,E>):Derive<T,E>{
+    function recurse(src:Derive<Future<T>,E>):Derive<T,E>{
+      return switch(src){
+        case Hold(ft)           : Hold(ft.mod(recurse));
+        case Halt(ret)          : Halt(ret);
+        case Emit(head,tail)    : Hold(head.map(
+          function(v:T){
+            return Emit(v,recurse(tail));
+          }
+        ));
+        case Wait(arw)          : Wait(arw.then(recurse)); 
+      }
+    }
+    return recurse(src);
+  }*/
 }
 
 class DeriveLift{
