@@ -51,6 +51,39 @@ class EffectLift{
     handler(eff);
     return t;
   }
+  static public function crunch<E>(eff:Effect<E>):Void{
+    var cursor        = eff;
+    var suspended     = false;
+    var done          = false;
+
+    function handler(){
+      switch(cursor){
+        case Halt(h) :
+          switch(h){
+            case Terminated(Exit(error))      : throw error;
+              default                         : 
+          }
+          done = true;
+        case Hold(held)             :
+            suspended = true;
+            held().handle(
+              (eff) -> {
+                cursor    = eff;
+                suspended = false;
+              }
+            );
+        case Wait(fn)               :
+            cursor = fn(Noise);
+        case Emit(_,tail)           : 
+            cursor = tail;
+      }
+    }
+    while(!done){
+      if(!suspended){
+        handler();
+      }
+    }
+  }
   static public function cause_later<E>(e:Effect<E>,c:Cause<E>):Effect<E>{
     function f(e:EffectDef<E>):EffectDef<E> { return cause_later(e,c); }
     return Effect.lift(switch(e){
