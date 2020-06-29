@@ -4,6 +4,7 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
 
 @:using(stx.coroutine.pack.Emiter.EmiterLift)
 @:forward abstract Emiter<O,E>(EmiterDef<O,E>) from EmiterDef<O,E> to EmiterDef<O,E>{
+  
   public function new(self:EmiterDef<O,E>) this = self;
   @:noUsing static public function lift<O,E>(self:EmiterDef<O,E>) return new Emiter(self);
 
@@ -13,12 +14,11 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
     )));
   }
   @:noUsing static public function fromOption<O,E>(opt:Option<O>):Emiter<O,E>{
-    return lift(Held.lazy(
-      () -> switch (opt){
+    return lift(switch (opt){
         case None     : __.stop();
         case Some(v)  : __.stop().cons(v); 
       }
-    ));
+    );
   }
   
   @:noUsing static public function fromThunk<O,E>(thk:Thunk<O>):Emiter<O,E>{

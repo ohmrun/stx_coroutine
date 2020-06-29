@@ -33,7 +33,7 @@ class EffectLift{
           }
         case Hold(held)               : 
           var event = MainLoop.add(()->{});//TODO backoff?
-          held().handle(
+          held.handle(
             (eff) -> {
               event.stop();
               MainLoop.addThread(handler.bind(eff));
@@ -51,7 +51,7 @@ class EffectLift{
     handler(eff);
     return t;
   }
-  static public function crunch<E>(eff:Effect<E>):Void{
+  static public inline function crunch<E>(eff:Effect<E>):Void{
     var cursor        = eff;
     var suspended     = false;
     var done          = false;
@@ -66,7 +66,7 @@ class EffectLift{
           done = true;
         case Hold(held)             :
             suspended = true;
-            held().handle(
+            held.handle(
               (eff) -> {
                 cursor    = eff;
                 suspended = false;

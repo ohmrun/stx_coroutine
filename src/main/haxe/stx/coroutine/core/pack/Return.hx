@@ -31,6 +31,9 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
       case Production(v)          : Some(__.success(v));
     }
   }
+  public function prj():ReturnSum<T,E>{
+    return this;
+  }
 }
 
 class ReturnLift{

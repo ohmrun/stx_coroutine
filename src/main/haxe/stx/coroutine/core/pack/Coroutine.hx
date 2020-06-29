@@ -1,5 +1,8 @@
 package stx.coroutine.core.pack;
 
+import haxe.CallStack;
+import stx.alias.StdType;
+
 enum CoroutineSum<I,O,R,E>{
   Emit(o:O,next:Coroutine<I,O,R,E>);
   Wait(fn:Transmission<I,O,R,E>);
@@ -25,7 +28,7 @@ enum CoroutineSum<I,O,R,E>{
   }
 }
 class CoroutineLift{
-  static public function change<I,O,R,R1,E>():Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>{
+  static public inline function change<I,O,R,R1,E>():Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>{
     return function rec(fn:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>){
       return function(spx:Coroutine<I,O,R,E>):Coroutine<I,O,R1,E>{
         function f(spx:Coroutine<I,O,R,E>):Coroutine<I,O,R1,E> return fn(rec)(spx);
@@ -35,6 +38,7 @@ class CoroutineLift{
           case Hold(h)              : __.hold(h.mod(f));
           case Halt(Production(v))  : f(__.done(v));
           case Halt(Terminated(c))  : f(__.term(c));
+          //case null                 : __.term(CauseSum.Stop);
         }
       }
     }
@@ -81,14 +85,46 @@ class CoroutineLift{
       }
     })(transform())(prc);
   }
-  static public function map_r<I,O,R,R1,E>(prc:Coroutine<I,O,R,E>,fn:R->R1):Coroutine<I,O,R1,E>{
+  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Err<E>->Err<EE>):Coroutine<I,O,R,EE>{
+    var f : Coroutine<I,O,R,E> -> Coroutine<I,O,R,EE> = errata.bind(_,fn);
+    return switch prc {
+      case Emit(o, next)    : __.emit(o,f(next));
+      case Wait(fn)         : __.wait(
+        (ctl:Control<I,EE>) -> ctl.fold(
+          (v) -> f(fn(Push(v))),
+          (c) -> switch(c){
+            case Stop     : Halt(Terminated(Stop));
+            case Exit(e)  : Halt(Terminated(Exit(e)));
+          }
+        )
+      );
+      case Hold(ft)         : __.hold(ft.map(v -> f(v)));
+      case Halt(e)          : switch e.prj() {
+        case Terminated(Stop)     : Halt(Terminated(Stop));
+        case Terminated(Exit(e))  : Halt(Terminated(Exit(fn(e))));
+        case Production(v)        : Halt(Production(v));
+      }
+    }
+  }
+  static public inline function map_r<I,O,R,R1,E>(prc:Coroutine<I,O,R,E>,fn:R->R1):Coroutine<I,O,R1,E>{
     return (
       function rec(f:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>):Coroutine<I,O,R,E>->Coroutine<I,O,R1,E>{
-        return function(spx){
+        return function(spx:Coroutine<I,O,R,E>){
+          // switch(StdType.typeof(spx)){
+          //   case TEnum(e) if (StdType.getEnumName(e) == "stx.coroutine.core.pack.CoroutineSum") : 
+          //   case x : 
+          //     for(x in CallStack.callStack()){
+          //       trace(x);
+          //     }
+          //     throw "";
+          // }
           return switch(spx){
             case Halt(Production(v))  : __.done(fn(v));
             case Halt(Terminated(c))  : __.term(c);
-            default                   : f(rec)(spx);
+            case Wait(_)              : f(rec)(spx);
+            case Emit(_, _)           : f(rec)(spx);
+            case Hold(_)              : f(rec)(spx);
+            default                   : throw(spx);
           }
         }
       }
@@ -112,7 +148,7 @@ class CoroutineLift{
       }
     )(transform())(prc);
   }
-  static public function flat_map_r<I,O,R,R2,E>(prc:Coroutine<I,O,R,E>,fn:R->Coroutine<I,O,R2,E>):Coroutine<I,O,R2,E>{
+  static public inline function flat_map_r<I,O,R,R2,E>(prc:Coroutine<I,O,R,E>,fn:R->Coroutine<I,O,R2,E>):Coroutine<I,O,R2,E>{
     return (
       function rec(f:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R2,E>>):Coroutine<I,O,R,E>->Coroutine<I,O,R2,E>{
         return function(spx){
@@ -137,9 +173,11 @@ class CoroutineLift{
     );
   }
   static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
-    return Held.lazy(
-      () -> fn(self)
-    );
+    return switch(self){
+      case Hold(Ready(v)) : Hold(Ready(()->fn(v())));
+      case Hold(guard)    : Hold(guard.map(fn));
+      default             : Held.lazy(() -> fn(self));
+    }
   }
   static public function returns<I,O,R,E>(spx:Coroutine<I,O,R,E>):Return<R,E>{
     return switch(spx){
