@@ -10,3 +10,5 @@
 -cp src/main/haxe
 
 --interp
+#--hl bin/main.hl
+#--cpp bin/cpp

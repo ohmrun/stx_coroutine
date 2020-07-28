@@ -26,6 +26,9 @@ enum CoroutineSum<I,O,R,E>{
       default       : false; 
     }
   }
+  public function prj():CoroutineSum<I,O,R,E>{
+    return this;
+  }
 }
 class CoroutineLift{
   static public inline function change<I,O,R,R1,E>():Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>{
@@ -60,7 +63,7 @@ class CoroutineLift{
   static public function cons<I,O,R,E>(spx:Coroutine<I,O,R,E>,o:O):Coroutine<I,O,R,E>{
     return __.emit(o,spx);
   }
-  @:noUsing static public function provide<I,O,R,E>(prc:Coroutine<I,O,R,E>,p:I):Coroutine<I,O,R,E>{
+  static public function provide<I,O,R,E>(prc:Coroutine<I,O,R,E>,p:I):Coroutine<I,O,R,E>{
       return (function rec(fn:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R,E>>):Coroutine<I,O,R,E>->Coroutine<I,O,R,E>{
         return function(spx){
           return switch(spx){
@@ -164,19 +167,19 @@ class CoroutineLift{
   @:noUsing static public function one<I,O,R,E>(v:O):Coroutine<I,O,R,E>{
     return __.emit(v,__.stop());
   }
-  static public function each<I,O,R,E>(prc:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
-    return map(prc,
-      (x) -> {
-        fn(x);
-        return x;
-      }
-    );
-  }
+  // static public function each<I,O,R,E>(prc:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
+  //   return map(prc,
+  //     (x) -> {
+  //       fn(x);
+  //       return x;
+  //     }
+  //   );
+  // }
   static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
-      case Hold(Ready(v)) : Hold(Ready(()->fn(v())));
-      case Hold(guard)    : Hold(guard.map(fn));
-      default             : Held.lazy(() -> fn(self));
+      case Wait(arw)                    : Wait(arw.mod(fn));
+      case Hold(slot)                   : Hold(slot.map(fn));
+      default                           : fn(self);
     }
   }
   static public function returns<I,O,R,E>(spx:Coroutine<I,O,R,E>):Return<R,E>{
@@ -223,4 +226,5 @@ class CoroutineLift{
         __.halt(ret);
     }
   }
+  //static public function fold<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:)
 }

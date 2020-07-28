@@ -42,9 +42,11 @@ class DeriveLift{
       return switch(cncd){
         case Halt(Terminated(cause))  : Halt(Terminated(cause));
         case Halt(Production(ret))    : Halt(Production(ret));
+        case Halt(e)                  : Halt(e);
         case Emit(Noise,next)         : __.stop();
         case Wait(arw)                : Wait(arw.mod(recurse));
         case Hold(ft)                 : Hold(ft.mod(recurse));
+        case _                        : throw "This is a regression";
       }
     }
     return recurse(cncd);

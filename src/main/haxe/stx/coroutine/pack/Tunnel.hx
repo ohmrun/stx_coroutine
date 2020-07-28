@@ -12,17 +12,15 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
   @:noUsing static public function fromFun2CallbackVoid<I,O,E>(arw:I->(O->Void)->Void):Tunnel<I,O,E>{
     return lift(__.wait(
       Transmission.fromFun1R(
-        function rec(i:I){ return __.hold(
-          Guard(() -> {
-            var future : FutureTrigger<Slot<Coroutine<I,O,Noise,E>>> = Future.trigger();
-            arw(i,
-              (o) -> {
-                future.trigger(Ready(()->lift(__.emit(o,__.wait(Transmission.fromFun1R(rec))))));
-              }
-            );
-            return future.asFuture();
-          }
-        ));}
+        function rec(i:I){ 
+          var future : FutureTrigger<Coroutine<I,O,Noise,E>> = Future.trigger();
+          arw(i,
+            (o) -> {
+              future.trigger(__.emit(o,__.wait(Transmission.fromFun1R(rec))));
+            }
+          );
+          return __.hold(Slot.Guard(future));
+        }
       )
     ));
   }
@@ -71,6 +69,7 @@ class TunnelLift{
       case Wait(arw)                    : Wait(arw.mod(__.into(append.bind(_,prc1))));
       case Halt(Production(Noise))      : prc1();
       case Halt(Terminated(cause))      : Halt(Terminated(cause));
+      case Halt(e)                      : Halt(e);
       case Hold(ft)                     : Hold(ft.mod(__.into(append.bind(_,prc1))));
     }
   }

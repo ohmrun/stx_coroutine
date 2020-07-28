@@ -81,6 +81,7 @@ class EmiterLift{
         );
       case Halt(Production(Noise))              : __.done(memo);
       case Halt(Terminated(cause))              : __.term(cause);
+      case Halt(_)                              : throw "Pattern match regression 062020";
       case Wait(arw)                            : __.wait(arw.mod(c(memo)));
       case Hold(ft)                             : __.hold(ft.mod(c(memo)));
     });
@@ -97,6 +98,7 @@ class EmiterLift{
       case Wait(arw)                    : __.wait(arw.mod(f));
       case Halt(Production(Noise))      : prc1();
       case Halt(Terminated(cause))      : __.term(cause);
+      case Halt(_)                      : throw "Pattern match regression 30/06/2020";
       case Hold(ft)                     : __.hold(ft.mod(f));
     }
   }
@@ -132,6 +134,7 @@ class EmiterLift{
         case [Hold(ft),_]                       : __.hold(ft.mod(f));
         case [Halt(Production(Noise)),v]        : __.done(v);
         case [Halt(Terminated(cause)),_]        : __.term(cause);
+        case [Halt(_),v]                        : __.done(v);
       }
     }
     return recurse(self,None);

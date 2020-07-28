@@ -8,7 +8,7 @@ typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Coroutine<I,O,R,E>;
   public function new(self) this = self;
   static public function lift<I,O,R,E>(self:TransmissionDef<I,O,R,E>):Transmission<I,O,R,E> return new Transmission(self);
   
-  @:noUsing static public function fromFun1R<I,O,R,E>(fn:I->Coroutine<I,O,R,E>){
+  @:noUsing static public inline function fromFun1R<I,O,R,E>(fn:I->Coroutine<I,O,R,E>){
     return lift((control:Control<I,E>) -> control.fold(
       fn,
       __.term      
@@ -24,7 +24,7 @@ typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Coroutine<I,O,R,E>;
       }
     );
   }
-  @:noUsing static public function into<I,O,Oi,R,Ri,E>(fn:CoroutineSum<I,O,R,E>->CoroutineSum<I,Oi,Ri,E>):Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>{
+  @:noUsing static public inline function into<I,O,Oi,R,Ri,E>(fn:CoroutineSum<I,O,R,E>->CoroutineSum<I,Oi,Ri,E>):Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>{
     return fn;
   }
 

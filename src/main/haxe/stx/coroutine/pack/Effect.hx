@@ -21,7 +21,32 @@ typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
   }
 }
 class EffectLift{
-  static public function run<E>(eff:Effect<E>):Future<Option<Cause<E>>>{   
+  static public function run<E>(eff:Effect<E>):Future<Option<Cause<E>>>{
+    var t     = Future.trigger();
+    run1Inner(eff,t);
+    return t;
+  }
+  static function run1Inner<E>(eff:EffectDef<E>,f:FutureTrigger<Option<Cause<E>>>){
+    var now = eff;
+
+    while(true){
+      switch(now){
+        case Halt(h)      : switch(h){
+          case Terminated(cause)    : f.trigger(Some(cause));
+          default                   : f.trigger(None);
+        }
+        break;
+        case Hold(ft)     : 
+          ft.handle((x) -> run1Inner(x,f));
+          break;
+        case Wait(fn)     :
+          now = fn(Push(Noise));
+        case Emit(_,nxt)  :
+          now = nxt;
+      }
+    }
+  }
+  static public function run1<E>(eff:Effect<E>):Future<Option<Cause<E>>>{   
     var uuid  = __.uuid();
     var t     = Future.trigger();
     function handler(eff:Effect<E>){
@@ -51,12 +76,18 @@ class EffectLift{
     handler(eff);
     return t;
   }
+  static public inline function crunch1<E>(eff:Effect<E>):Void{
+    run(eff).handle(
+      __.crack
+    );
+  }
   static public inline function crunch<E>(eff:Effect<E>):Void{
     var cursor        = eff;
     var suspended     = false;
     var done          = false;
 
     function handler(){
+      //trace(cursor);
       switch(cursor){
         case Halt(h) :
           switch(h){
@@ -92,6 +123,7 @@ class EffectLift{
       case Hold(pull)               : __.hold(pull.mod(f));
       case Halt(Terminated(cause))  : __.term(cause.next(c));
       case Halt(Production(Noise))  : __.term(c);
+      case Halt(e)                  : __.halt(e);
     });
   }
 }

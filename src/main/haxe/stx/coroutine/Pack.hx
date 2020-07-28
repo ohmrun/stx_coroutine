@@ -43,7 +43,7 @@ typedef Return<R,E>                     = stx.coroutine.core.pack.Return<R,E>;
 
 
 class LiftCoroutine{
-  static public function upcast<I,O,R,E>(wildcard:Wildcard,spx:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public inline function upcast<I,O,R,E>(wildcard:Wildcard,spx:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return spx;
   }
   // static public function asEmiter<O>(wildcard:Wildcard,spx:Coroutine<Noise,O,Noise>):Emiter<O>{
@@ -53,35 +53,38 @@ class LiftCoroutine{
   //   return new Tunnel(spx);
   // }
 
-  static public function fail<I,O,R,E>(wildcard:Wildcard,er:Err<E>):Coroutine<I,O,R,E>{
+  static public inline function fail<I,O,R,E>(wildcard:Wildcard,er:Err<E>):Coroutine<I,O,R,E>{
     return term(__,Exit(er));
   }
-  static public function halt<I,O,R,E>(wildcard:Wildcard,ret:Return<R,E>):Coroutine<I,O,R,E>{
+  static public inline function halt<I,O,R,E>(wildcard:Wildcard,ret:Return<R,E>):Coroutine<I,O,R,E>{
     return Halt(ret);
   }
-  static public function term<I,O,R,E>(wildcard:Wildcard,cause:Cause<E>):Coroutine<I,O,R,E>{
+  static public inline function term<I,O,R,E>(wildcard:Wildcard,cause:Cause<E>):Coroutine<I,O,R,E>{
     return Halt(Terminated(cause));
   }
-  static public function stop<I,O,R,E>(wildcard:Wildcard):Coroutine<I,O,R,E>{
+  static public inline function stop<I,O,R,E>(wildcard:Wildcard):Coroutine<I,O,R,E>{
     return Halt(Terminated(Stop));
   }
-  static public function done<I,O,R,E>(wildcard:Wildcard,v:R):Coroutine<I,O,R,E>{
+  static public inline function done<I,O,R,E>(wildcard:Wildcard,v:R):Coroutine<I,O,R,E>{
     return Halt(Production(v));
   }
-  static public function wait<I,O,R,E>(wildcard:Wildcard,fn:Transmission<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public inline function wait<I,O,R,E>(wildcard:Wildcard,fn:Transmission<I,O,R,E>):Coroutine<I,O,R,E>{
     return Wait(fn);
   }
-  static public function emit<I,O,R,E>(wildcard:Wildcard,head:O,next:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public inline function emit<I,O,R,E>(wildcard:Wildcard,head:O,next:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return Emit(head,next);
   }
-  static public function hold<I,O,R,E>(wildcard:Wildcard,h:Held<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public inline function hold<I,O,R,E>(wildcard:Wildcard,h:Held<I,O,R,E>):Coroutine<I,O,R,E>{
     return Hold(h);
   }
-  static public function lazy<I,O,R,E>(wildcard:Wildcard,self:Void->Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public inline function lazy<I,O,R,E>(wildcard:Wildcard,self:Void->Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
     return Held.lazy(self);
   }
-  static public function into<I,O,Oi,R,Ri,E>(wildcard:Wildcard,fn:CoroutineSum<I,O,R,E>->CoroutineSum<I,Oi,Ri,E>):Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>{
+  static public inline function into<I,O,Oi,R,Ri,E>(wildcard:Wildcard,fn:CoroutineSum<I,O,R,E>->CoroutineSum<I,Oi,Ri,E>):Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>{
     return Transmission.into(fn);
+  }
+  static public inline function tran<I,O,R,E>(wildcard:Wildcard,fn:I->CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
+    return __.wait(Transmission.fromFun1R(fn));
   }
 }
 class LiftSource{

@@ -27,8 +27,8 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
   public function toOptionRes():Option<Res<T,E>>{
     return switch(this){
       case Terminated(Stop)       : None;
-      case Terminated(Exit(err))  : Some(__.failure(err));
-      case Production(v)          : Some(__.success(v));
+      case Terminated(Exit(err))  : Some(__.reject(err));
+      case Production(v)          : Some(__.accept(v));
     }
   }
   public function prj():ReturnSum<T,E>{
