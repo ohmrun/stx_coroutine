@@ -32,8 +32,8 @@ class EffectLift{
     while(true){
       switch(now){
         case Halt(h)      : switch(h){
-          case Terminated(cause)    : f.trigger(Some(cause));
-          default                   : f.trigger(None);
+          case Terminated(cause)    : f.trigger(Option.pure(cause));
+          default                   : f.trigger(Option.unit());
         }
         break;
         case Hold(ft)     : 
@@ -53,8 +53,8 @@ class EffectLift{
       switch(eff){
         case Halt(h) : 
           switch(h){
-            case Terminated(cause)    : t.trigger(Some(cause));
-            default                   : t.trigger(None);
+            case Terminated(cause)    : t.trigger(Option.pure(cause));
+            default                   : t.trigger(Option.unit());
           }
         case Hold(held)               : 
           var event = MainLoop.add(()->{});//TODO backoff?
@@ -74,7 +74,7 @@ class EffectLift{
       }
     }
     handler(eff);
-    return t;
+    return t.asFuture();
   }
   static public inline function crunch1<E>(eff:Effect<E>):Void{
     run(eff).handle(

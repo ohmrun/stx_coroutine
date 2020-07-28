@@ -7,17 +7,19 @@ enum ControlSum<T,E>{
 
 @:using(stx.coroutine.core.pack.Control.ControlLift)
 @:forward abstract Control<T,E>(ControlSum<T,E>) from ControlSum<T,E> to ControlSum<T,E>{
-  public function new(self){
-    this = self;
+  @:noUsing static public function lift<T,E>(self:ControlSum<T,E>):Control<T,E>{
+    return new Control(self);
   }
+  public function new(self) this = self;
+  
   @:from static public function fromCause<T,E>(c:Cause<E>):Control<T,E>{
     return Quit(c);
   }
   @:from static public function fromT<T,E>(v:T):Control<T,E>{
     return Push(v);
   }
-  @:noUsing static public function exit<T,E>(c):Control<T,E>{
-    return Exit(c);
+  @:noUsing static public function quit<T,E>(c):Control<T,E>{
+    return lift(Quit(c));
   }
 }
 class ControlLift{

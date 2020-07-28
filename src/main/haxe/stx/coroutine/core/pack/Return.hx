@@ -9,9 +9,10 @@ package stx.coroutine.core.pack;
 }
 @:using(stx.coroutine.core.pack.Return.ReturnLift)
 abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
-  public function new(self){
-    this = self;
+  @:noUsing static public function lift<T,E>(self:ReturnSum<T,E>):Return<T,E>{
+    return new Return(self);
   }
+  public function new(self) this = self;
   @:from static public function fromError<T,E>(e:Err<E>):Return<T,E>{
     return fromCause(Exit(e));
   }
@@ -21,8 +22,8 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
   @:from static public function fromT<T,E>(v:T):Return<T,E>{
     return Production(v);
   }
-  @:to public function toCoroutine<I,O,E>():Coroutine<I,O,T,E>{
-    return Halt(this);
+  @:to public function toCoroutine<I,O>():Coroutine<I,O,T,E>{
+    return Halt(lift(this));
   }
   public function toOptionRes():Option<Res<T,E>>{
     return switch(this){
