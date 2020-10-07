@@ -31,64 +31,30 @@ enum CoroutineSum<I,O,R,E>{
   }
 }
 class CoroutineLift{
-  static public inline function change<I,O,R,R1,E>():Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>{
-    return function rec(fn:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>){
-      return function(spx:Coroutine<I,O,R,E>):Coroutine<I,O,R1,E>{
-        function f(spx:Coroutine<I,O,R,E>):Coroutine<I,O,R1,E> return fn(rec)(spx);
-        return switch(spx){
-          case Emit(head,rest)      : f(rest);
-          case Wait(arw)            : __.wait(arw.mod(f));
-          case Hold(h)              : __.hold(h.mod(f));
-          case Halt(Production(v))  : f(__.done(v));
-          case Halt(Terminated(c))  : f(__.term(c));
-          //case null                 : __.term(CauseSum.Stop);
-        }
-      }
-    }
-  }
-  static public function transform<I,O,R,I1,O1,R1,E>():Y<Coroutine<I,O,R,E>,Coroutine<I1,O1,R1,E>>{
-    return function rec(fn:Y<Coroutine<I,O,R,E>,Coroutine<I1,O1,R1,E>>){
-      return function(spx:Coroutine<I,O,R,E>):Coroutine<I1,O1,R1,E>{
-        function f(spx:Coroutine<I,O,R,E>):Coroutine<I1,O1,R1,E> return fn(rec)(spx);
-        return switch(spx){
-          case Emit(head,rest)      : f(spx);
-          case Wait(arw)            : f(spx);//NOTE
-          case Hold(h)              : __.hold(h.mod(f));
-          case Halt(Production(v))  : f(__.done(v));
-          case Halt(Terminated(c))  : f(__.term(c));
-        }
-      }
-    }
-  }
   static public function cons<I,O,R,E>(spx:Coroutine<I,O,R,E>,o:O):Coroutine<I,O,R,E>{
     return __.emit(o,spx);
   }
-  static public function provide<I,O,R,E>(prc:Coroutine<I,O,R,E>,p:I):Coroutine<I,O,R,E>{
-      return (function rec(fn:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R,E>>):Coroutine<I,O,R,E>->Coroutine<I,O,R,E>{
-        return function(spx){
-          return switch(spx){
-            case Wait(arw)  : arw(Push(p));
-            default         : fn(rec)(spx);
-          }  
-        }
-      })(change())(prc);
+  static public function provide<I,O,R,E>(self:Coroutine<I,O,R,E>,i:I):Coroutine<I,O,R,E>{
+    var f = provide.bind(_,i);
+    return switch(self){
+      case Emit(head,rest)            : __.emit(head,f(rest));
+      case Wait(arw)                  : arw(Push(i));
+      case Hold(h)                    : __.hold(h.mod(f));
+      case Halt(Production(v))        : __.exit(__.fault().of(E_Coroutine_Note(E_Coroutine_Note_HangingInput).and(E_Coroutine_Input(i).and(E_Coroutine_Output(v)))));
+      case Halt(Terminated(Stop))     : __.exit(__.fault().of(E_Coroutine_Note(E_Coroutine_Note_UnexpectedStop).and(E_Coroutine_Input(i))));
+      case Halt(Terminated(Exit(e)))  : __.exit(e.map(E_Coroutine_Both.bind(E_Coroutine_Input(i))));
+    }
   }
-  static public function map<I,O,O2,R,E>(prc:Coroutine<I,O,R,E>,fn:O->O2):Coroutine<I,O2,R,E>{
-    return (function rec(f:Y<Coroutine<I,O,R,E>,Coroutine<I,O2,R,E>>):Coroutine<I,O,R,E>->Coroutine<I,O2,R,E>{
-      return function(spx){
-        return switch(spx){
-          case Emit(head,rest) :
-            var head  = fn(head);
-            var tail  = f(rec)(rest);
-            __.emit(head,tail);
-          case Wait(arw)  : __.wait(arw.mod(f(rec)));
-          case Halt(halt) : __.halt(halt);
-          default         : f(rec)(spx);
-        }
-      }
-    })(transform())(prc);
+  static public function map<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn:O->Oi):Coroutine<I,Oi,R,E>{
+    var f = map.bind(_,fn);
+    return switch(self){
+      case Emit(head,rest)            : __.emit(fn(head),f(rest));
+      case Wait(arw)                  : __.wait(arw.mod(f));
+      case Hold(h)                    : __.hold(h.mod(f));
+      case Halt(r)                    : __.halt(r);
+    }
   }
-  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Err<E>->Err<EE>):Coroutine<I,O,R,EE>{
+  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Err<CoroutineFailure<E>>->Err<CoroutineFailure<EE>>):Coroutine<I,O,R,EE>{
     var f : Coroutine<I,O,R,E> -> Coroutine<I,O,R,EE> = errata.bind(_,fn);
     return switch prc {
       case Emit(o, next)    : __.emit(o,f(next));
@@ -102,79 +68,47 @@ class CoroutineLift{
         )
       );
       case Hold(ft)         : __.hold(ft.map(v -> f(v)));
-      case Halt(e)          : switch e.prj() {
-        case Terminated(Stop)     : Halt(Terminated(Stop));
-        case Terminated(Exit(e))  : Halt(Terminated(Exit(fn(e))));
-        case Production(v)        : Halt(Production(v));
-      }
+      case Halt(Terminated(Stop))       : __.stop();
+      case Halt(Terminated(Exit(e)))    : __.exit(fn(e));
+      case Halt(Production(r))          : __.prod(r);
     }
   }
-  static public inline function map_r<I,O,R,R1,E>(prc:Coroutine<I,O,R,E>,fn:R->R1):Coroutine<I,O,R1,E>{
-    return (
-      function rec(f:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R1,E>>):Coroutine<I,O,R,E>->Coroutine<I,O,R1,E>{
-        return function(spx:Coroutine<I,O,R,E>){
-          // switch(StdType.typeof(spx)){
-          //   case TEnum(e) if (StdType.getEnumName(e) == "stx.coroutine.core.pack.CoroutineSum") : 
-          //   case x : 
-          //     for(x in CallStack.callStack()){
-          //       trace(x);
-          //     }
-          //     throw "";
-          // }
-          return switch(spx){
-            case Halt(Production(v))  : __.done(fn(v));
-            case Halt(Terminated(c))  : __.term(c);
-            case Wait(_)              : f(rec)(spx);
-            case Emit(_, _)           : f(rec)(spx);
-            case Hold(_)              : f(rec)(spx);
-            default                   : throw(spx);
-          }
-        }
-      }
-    )(change())(prc);
+  static public function map_r<I,O,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:R->Ri):Coroutine<I,O,Ri,E>{
+    var f = map_r.bind(_,fn);
+    return switch(self){
+      case Emit(head,rest)            : __.emit(head,f(rest));
+      case Wait(arw)                  : __.wait(arw.mod(f));
+      case Hold(h)                    : __.hold(h.mod(f));
+      case Halt(Production(r))        : __.prod(fn(r));
+      case Halt(Terminated(e))        : __.term(e);
+    }
   }
-  static public function map_or_halt<I,O,O2,R,E>(prc:Coroutine<I,O,R,E>,fn: O -> Either<Cause<E>,O2>):Coroutine<I,O2,R,E>{
-    return (
-      function rec(f:Y<Coroutine<I,O,R,E>,Coroutine<I,O2,R,E>>):Coroutine<I,O,R,E>->Coroutine<I,O2,R,E>{
-        return function (spx){
-          return switch(spx){
-            case Emit(head,rest) : 
-              var tail = fn(head);
-              switch(tail){
-                case Left(cause) : __.term(cause);
-                case Right(o)    : __.emit(o,f(rec)(rest));
-              }
-            case Wait(arw)  : __.wait(arw.mod(f(rec)));
-            default         : f(rec)(spx);
-          }
-        }
-      }
-    )(transform())(prc);
+  static public function map_or_halt<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn: O -> Either<Cause<E>,Oi>):Coroutine<I,Oi,R,E>{
+    var f = map_or_halt.bind(_,fn);
+    return switch(self){
+      case Emit(head,rest)            : fn(head).fold(
+        (l) -> __.term(l),
+        (r) -> __.emit(r,f(rest))
+      );
+      case Wait(arw)                  : __.wait(arw.mod(f));
+      case Hold(h)                    : __.hold(h.mod(f));
+      case Halt(Production(r))        : __.prod(r);
+      case Halt(Terminated(e))        : __.term(e);
+    }
   }
-  static public inline function flat_map_r<I,O,R,R2,E>(prc:Coroutine<I,O,R,E>,fn:R->Coroutine<I,O,R2,E>):Coroutine<I,O,R2,E>{
-    return (
-      function rec(f:Y<Coroutine<I,O,R,E>,Coroutine<I,O,R2,E>>):Coroutine<I,O,R,E>->Coroutine<I,O,R2,E>{
-        return function(spx){
-          return switch(spx){
-            case Halt(Production(v))      : fn(v);
-            case Halt(Terminated(cause))  : __.term(cause);
-            default                       : f(rec)(spx);
-          }
-        }
-      }
-    )(change())(prc);
+  static public function flat_map_r<I,O,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:R->Coroutine<I,O,Ri,E>):Coroutine<I,O,Ri,E>{
+    var f = flat_map_r.bind(_,fn);
+    return switch(self){
+      case Emit(head,rest)            : __.emit(head,f(rest));
+      case Wait(arw)                  : __.wait(arw.mod(f));
+      case Hold(h)                    : __.hold(h.mod(f));
+      case Halt(Production(r))        : fn(r);
+      case Halt(Terminated(e))        : __.term(e);
+    }
   }
   @:noUsing static public function one<I,O,R,E>(v:O):Coroutine<I,O,R,E>{
     return __.emit(v,__.stop());
   }
-  // static public function each<I,O,R,E>(prc:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
-  //   return map(prc,
-  //     (x) -> {
-  //       fn(x);
-  //       return x;
-  //     }
-  //   );
-  // }
   static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
       case Wait(arw)                    : Wait(arw.mod(fn));
@@ -226,5 +160,4 @@ class CoroutineLift{
         __.halt(ret);
     }
   }
-  //static public function fold<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:)
 }

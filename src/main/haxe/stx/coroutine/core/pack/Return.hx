@@ -14,7 +14,7 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
   }
   public function new(self) this = self;
   @:from static public function fromError<T,E>(e:Err<E>):Return<T,E>{
-    return fromCause(Exit(e));
+    return fromCause(Exit(e.map(E_Coroutine_Subsystem)));
   }
   @:from static public function fromCause<T,E>(c:Cause<E>):Return<T,E>{
     return Terminated(c);
@@ -25,7 +25,7 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
   @:to public function toCoroutine<I,O>():Coroutine<I,O,T,E>{
     return Halt(lift(this));
   }
-  public function toOptionRes():Option<Res<T,E>>{
+  public function toOptionRes():Option<Res<T,CoroutineFailure<E>>>{
     return switch(this){
       case Terminated(Stop)       : None;
       case Terminated(Exit(err))  : Some(__.reject(err));

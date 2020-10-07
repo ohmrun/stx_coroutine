@@ -11,7 +11,7 @@ typedef DeriveDef<R,E> = CoroutineSum<Noise,Noise,R,E>;
   }
   @:noUsing static public function fromThunk<R,E>(thk:Thunk<R>):Derive<R,E>{
     return lift(__.lazy(
-      () -> __.done(thk())
+      () -> __.prod(thk())
     ));
   }
   @:to public function toCoroutine():Coroutine<Noise,Noise,R,E>{
@@ -58,7 +58,7 @@ class DeriveLift{
         case Halt(Production(ret))    :
           cb(ret); 
           __.stop();
-        case Emit(head,rest)          : rest.mod(recurse);
+        case Emit(head,rest)          : __.emit(head,complete(rest,cb));
         case Wait(arw)                : __.wait(arw.mod(recurse));
         case Hold(ft)                 : __.hold(ft.mod(recurse));
       } 

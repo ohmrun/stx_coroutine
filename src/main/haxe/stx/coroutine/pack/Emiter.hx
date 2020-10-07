@@ -79,7 +79,7 @@ class EmiterLift{
         rest.mod(
           (spx) -> f(spx,fn(head,memo))
         );
-      case Halt(Production(Noise))              : __.done(memo);
+      case Halt(Production(Noise))              : __.prod(memo);
       case Halt(Terminated(cause))              : __.term(cause);
       case Halt(_)                              : throw "Pattern match regression 062020";
       case Wait(arw)                            : __.wait(arw.mod(c(memo)));
@@ -114,11 +114,11 @@ class EmiterLift{
   static public function search<O,E>(self:Emiter<O,E>,prd:O->Bool):Derive<Option<O>,E>{
     function f(self){ return search(self,prd); }
     return switch(self){
-      case Emit(head,rest)     if(prd(head))  : __.done(Some(head));
+      case Emit(head,rest)     if(prd(head))  : __.prod(Some(head));
       case Emit(head,rest)                    : rest.mod(__.into(search.bind(_,prd)));
       case Wait(fn)                           : __.wait(fn.mod(__.into(f)));
       case Hold(ft)                           : __.hold(ft.mod(__.into(f)));
-      case Halt(Production(v))                : __.done(None);
+      case Halt(Production(v))                : __.prod(None);
       case Halt(Terminated(cause))            : __.term(cause);
     }
   }
@@ -132,9 +132,9 @@ class EmiterLift{
         case [Emit(head,rest),_]                : rest.mod(__.into(recurse.bind(_,Some(head))));
         case [Wait(fn),_]                       : __.wait(fn.mod(f));
         case [Hold(ft),_]                       : __.hold(ft.mod(f));
-        case [Halt(Production(Noise)),v]        : __.done(v);
+        case [Halt(Production(Noise)),v]        : __.prod(v);
         case [Halt(Terminated(cause)),_]        : __.term(cause);
-        case [Halt(_),v]                        : __.done(v);
+        case [Halt(_),v]                        : __.prod(v);
       }
     }
     return recurse(self,None);
@@ -145,11 +145,11 @@ class EmiterLift{
       var c = f(count);
       return switch(self){
         case Wait(fn)                               : __.wait(fn.mod(c));
-        case Emit(head,tail)  if(index == count)    : __.done(Some(head));
+        case Emit(head,tail)  if(index == count)    : __.prod(Some(head));
         case Emit(head,tail)                        : tail.mod(f(count + 1));
         case Hold(ft)                               : __.hold(ft.mod(c));
         case Halt(Terminated(cause))                : __.term(cause);
-        case Halt(Production(_))                    : __.done(None);
+        case Halt(Production(_))                    : __.prod(None);
       }
     }
     return recurse(self);
@@ -161,7 +161,7 @@ class EmiterLift{
     function recurse(self,cont){
       var f = __.into(recurse.bind(_,cont));
       return switch(cont){
-        case false : __.done(Noise);
+        case false : __.prod(Noise);
         case true   :
           switch(self){
             case Wait(fn)         : __.wait(fn.mod(f));
@@ -213,7 +213,7 @@ class EmiterLift{
     return Wait(
       function recurse(_){
         return if(val == last){
-          __.done(Noise);
+          __.prod(Noise);
         }else{
           __.emit(val++,__.wait(recurse));
         };

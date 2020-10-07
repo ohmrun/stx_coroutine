@@ -17,11 +17,11 @@ typedef RelateDef<I,R,E> = CoroutineSum<I,Noise,R,E>;
     ));
   }
   @:noUsing static public function pure<T,R,E>(r:R):Relate<T,R,E>{
-    return lift(__.done(r));
+    return lift(__.prod(r));
   }
   @:noUsing static public function fromFunction<I,O,E>(fn:I->O):Relate<I,O,E>{
     return lift(__.wait(
-      Transmission.fromFun1R((x:I) -> __.done(fn(x)))
+      Transmission.fromFun1R((x:I) -> __.prod(fn(x)))
     ));
   }
 }
