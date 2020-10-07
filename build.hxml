@@ -5,7 +5,7 @@
 -lib stx_pico
 -lib stx_nano
 -lib stx_fp
--lib stx_fn
+-lib stx_fn:1.0.0
 
 -cp src/main/haxe
 

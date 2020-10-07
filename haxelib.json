@@ -9,8 +9,8 @@
     "contributors": [
         "0b1kn00b"
     ],
-    "releasenote": "Update dependencies",
-    "version": "0.0.4",
+    "releasenote": "see CHANGELOG.md",
+    "version": "0.1.0",
     "url": "https://github.com/0b1kn00b/stx_coroutine",
     "dependencies": {
         "stx_fp"        : "",
