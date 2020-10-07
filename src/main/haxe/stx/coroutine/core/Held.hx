@@ -1,4 +1,4 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 
 typedef HeldDef<I,O,R,E> = Slot<Coroutine<I,O,R,E>>;
 

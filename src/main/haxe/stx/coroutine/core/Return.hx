@@ -1,13 +1,13 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 
 /**
  *  Coroutine's return value can contain either a Production of a value or a Terminated.
  */ 
  enum ReturnSum<O,E>{
-  Terminated(c:stx.coroutine.core.pack.Cause<E>);
+  Terminated(c:stx.coroutine.core.Cause<E>);
   Production(v:O);
 }
-@:using(stx.coroutine.core.pack.Return.ReturnLift)
+@:using(stx.coroutine.core.Return.ReturnLift)
 abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
   @:noUsing static public function lift<T,E>(self:ReturnSum<T,E>):Return<T,E>{
     return new Return(self);

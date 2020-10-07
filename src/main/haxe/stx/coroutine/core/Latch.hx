@@ -1,4 +1,4 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 import haxe.ds.StringMap;
 
 enum LatchState{

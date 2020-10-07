@@ -1,4 +1,4 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 
 enum Phase<I,O,R,E>{
   Ipt(i:Control<I,E>);

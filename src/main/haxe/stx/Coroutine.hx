@@ -1,4 +1,4 @@
-package stx.coroutine;
+package stx;
 
 typedef CoroutineFailureSum<E>          = stx.fail.CoroutineFailure.CoroutineFailureSum<E>;
 typedef CoroutineFailure<E>             = stx.fail.CoroutineFailure<E>;
@@ -22,27 +22,8 @@ typedef Relate<I,R,E>                   = stx.coroutine.pack.Relate<I,R,E>;     
 
 typedef Tunnel<I,O,E>                   = stx.coroutine.pack.Tunnel<I,O,E>;                           //110
 
-typedef CoroutineSum<I,O,R,E>           = stx.coroutine.core.pack.Coroutine.CoroutineSum<I,O,R,E>;    //111
-typedef Coroutine<I,O,R,E>              = stx.coroutine.core.pack.Coroutine<I,O,R,E>;                 //111
-
-/**
-  Control Structures
-**/
-typedef ControlSum<I,E>                 = stx.coroutine.core.pack.Control.ControlSum<I,E>;
-typedef Control<I,E>                    = stx.coroutine.core.pack.Control<I,E>;
- 
-typedef CauseSum<E>                     = stx.coroutine.core.pack.Cause.CauseSum<E>;
-typedef Cause<E>                        = stx.coroutine.core.pack.Cause<E>;
- 
-typedef Held<I,O,R,E>                   = stx.coroutine.core.pack.Held<I,O,R,E>;
- 
-typedef TransmissionDef<I,O,R,E>        = stx.coroutine.core.pack.Transmission.TransmissionDef<I,O,R,E>;
-typedef Transmission<I,O,R,E>           = stx.coroutine.core.pack.Transmission<I,O,R,E>;
-
-typedef Phase<I,O,R,E>                  = stx.coroutine.core.pack.Phase<I,O,R,E>;
- 
-typedef ReturnSum<R,E>                  = stx.coroutine.core.pack.Return.ReturnSum<R,E>;
-typedef Return<R,E>                     = stx.coroutine.core.pack.Return<R,E>;
+typedef CoroutineSum<I,O,R,E>           = stx.coroutine.core.Coroutine.CoroutineSum<I,O,R,E>;         //111
+typedef Coroutine<I,O,R,E>              = stx.coroutine.core.Coroutine<I,O,R,E>;                      //111
 
 
 class LiftCoroutine{

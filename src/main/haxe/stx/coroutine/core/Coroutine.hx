@@ -1,4 +1,4 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 
 import haxe.CallStack;
 import stx.alias.StdType;
@@ -10,7 +10,7 @@ enum CoroutineSum<I,O,R,E>{
   Halt(e:Return<R,E>);
 }
 
-@:using(stx.coroutine.core.pack.Coroutine.CoroutineLift)
+@:using(stx.coroutine.core.Coroutine.CoroutineLift)
 @:forward abstract Coroutine<I,O,R,E>(CoroutineSum<I,O,R,E>) from CoroutineSum<I,O,R,E> to CoroutineSum<I,O,R,E>{
   static public var STOP = Halt(Production(Noise));
 

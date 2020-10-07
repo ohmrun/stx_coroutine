@@ -5,7 +5,7 @@ import utest.Assert in Rig;
 import utest.Async;
 import utest.Test;
 
-using stx.coroutine.Pack;
+using stx.Coroutine;
 
 class Test{
   static public function main(){

@@ -1,4 +1,4 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 
 enum CauseSum<E>{
   Stop;
@@ -9,7 +9,7 @@ enum CauseSum<E>{
 /**
  *  Specifies the Cause of a Return if not a Production.
  */
-@:using(stx.coroutine.core.pack.Cause.CauseLift)
+@:using(stx.coroutine.core.Cause.CauseLift)
 abstract Cause<E>(CauseSum<E>) from CauseSum<E> to CauseSum<E>{
   public function new(self){
     this = self;

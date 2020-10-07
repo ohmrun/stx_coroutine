@@ -10,12 +10,12 @@
         "0b1kn00b"
     ],
     "releasenote": "see CHANGELOG.md",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "url": "https://github.com/0b1kn00b/stx_coroutine",
     "dependencies": {
-        "stx_fp"        : "",
-        "stx_pico"      : "",
-        "stx_nano"      : ""
+        "stx_fp"        : "1.0.0",
+        "stx_pico"      : "1.0.0",
+        "stx_nano"      : "0.1.5"
     },
     "classPath": "src/main/haxe"
 }

@@ -1,9 +1,9 @@
-package stx.coroutine.core.pack;
+package stx.coroutine.core;
 
 
 typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Coroutine<I,O,R,E>;
 
-@:using(stx.coroutine.core.pack.Transmission.TransmissionLift)
+@:using(stx.coroutine.core.Transmission.TransmissionLift)
 @:callable abstract Transmission<I,O,R,E>(TransmissionDef<I,O,R,E>) from TransmissionDef<I,O,R,E> to TransmissionDef<I,O,R,E>{
   public function new(self) this = self;
   static public function lift<I,O,R,E>(self:TransmissionDef<I,O,R,E>):Transmission<I,O,R,E> return new Transmission(self);
