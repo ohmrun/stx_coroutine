@@ -37,7 +37,9 @@ class EffectLift{
         }
         break;
         case Hold(ft)     : 
-          ft.handle((x) -> run1Inner(x,f));
+          ft.environment(
+            (x) -> run1Inner(x,f)
+          ).submit();
           break;
         case Wait(fn)     :
           now = fn(Push(Noise));
@@ -58,12 +60,12 @@ class EffectLift{
           }
         case Hold(held)               : 
           var event = MainLoop.add(()->{});//TODO backoff?
-          held.handle(
+          held.environment(
             (eff) -> {
               event.stop();
               MainLoop.addThread(handler.bind(eff));
             }
-          );
+          ).submit();
         case Wait(fn)                 : 
           MainLoop.addThread(
             () -> handler(fn(Push(Noise)))
@@ -97,12 +99,12 @@ class EffectLift{
           done = true;
         case Hold(held)             :
             suspended = true;
-            held.handle(
+            held.environment(
               (eff) -> {
                 cursor    = eff;
                 suspended = false;
               }
-            );
+            ).submit();
         case Wait(fn)               :
             cursor = fn(Noise);
         case Emit(_,tail)           : 

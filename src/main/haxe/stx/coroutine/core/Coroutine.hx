@@ -67,7 +67,7 @@ class CoroutineLift{
           }
         )
       );
-      case Hold(ft)         : __.hold(ft.map(v -> f(v)));
+      case Hold(ft)                     : __.hold(Held.lift(ft.postfix(v -> f(v))));
       case Halt(Terminated(Stop))       : __.stop();
       case Halt(Terminated(Exit(e)))    : __.exit(fn(e));
       case Halt(Production(r))          : __.prod(r);
@@ -112,7 +112,7 @@ class CoroutineLift{
   static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
       case Wait(arw)                    : Wait(arw.mod(fn));
-      case Hold(slot)                   : Hold(slot.map(fn));
+      case Hold(slot)                   : Hold(slot.convert(fn));
       default                           : fn(self);
     }
   }

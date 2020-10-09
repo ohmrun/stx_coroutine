@@ -19,7 +19,7 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
               future.trigger(__.emit(o,__.wait(Transmission.fromFun1R(rec))));
             }
           );
-          return __.hold(Slot.Guard(future));
+          return __.hold(Held.Guard(future));
         }
       )
     ));
@@ -36,7 +36,7 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
               case Emit(head,tail)  : __.emit(head,recurse(tail));
               case Halt(r)          : __.halt(r);
               case Hold(h)          : __.hold(
-                Held.lift(h.map(
+                Held.lift(h.postfix(
                   (pipe) -> Coroutine.lift(recurse(pipe))
                 ))
               );
@@ -91,9 +91,9 @@ class TunnelLift{
     return Emiter.lift(switch(prc){
       case Emit(head,tail)  : __.emit(head,f(tail));
       case Hold(ft)         : __.hold(
-        ft.map(
+        Held.lift(ft.postfix(
           (pipe) -> Coroutine.lift(always(pipe,v))
-        )
+        ))
       );
       case Halt(e)          : __.halt(e);
       case Wait(fn)         : always(fn(Push(v())),v);
