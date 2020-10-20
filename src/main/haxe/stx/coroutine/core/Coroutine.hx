@@ -214,12 +214,6 @@ class CoroutineLift{
       default                           : fn(self);
     }
   }
-  static public function returns<I,O,R,E>(spx:Coroutine<I,O,R,E>):Return<R,E>{
-    return switch(spx){
-      case Halt(r)  : r;
-      default       : Terminated(Stop);
-    }
-  }
   static public function toString<I,O,R,E>(self){
     function recurse(self:Coroutine<I,O,R,E>):String{
       return switch(self){
@@ -232,6 +226,7 @@ class CoroutineLift{
     }
     return recurse(self);
   }
+  /****/
   static public function escape<I,O,R,E>(self:Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
     return switch(self){
       case Emit(head,rest)              : rest.mod(escape);
