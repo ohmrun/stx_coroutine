@@ -25,7 +25,8 @@ typedef Tunnel<I,O,E>                   = stx.coroutine.pack.Tunnel<I,O,E>;     
 typedef CoroutineSum<I,O,R,E>           = stx.coroutine.core.Coroutine.CoroutineSum<I,O,R,E>;         //111
 typedef Coroutine<I,O,R,E>              = stx.coroutine.core.Coroutine<I,O,R,E>;                      //111
 
-
+typedef TransmissionDef<I,O,R,E>        = stx.coroutine.core.Transmission.TransmissionDef<I,O,R,E>;
+typedef Transmission<I,O,R,E>           = stx.coroutine.core.Transmission<I,O,R,E>;
 class LiftCoroutine{
   static public inline function upcast<I,O,R,E>(wildcard:Wildcard,spx:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return spx;
