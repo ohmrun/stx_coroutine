@@ -55,6 +55,9 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
   public function convert(that){
     return lift(Provide._.convert(this,that));
   }
+  public function toString(){
+    
+  }
 }
 class HeldLift{
   //static public function handle<I,O,R,E>(fn:Coroutine<I,O,R,E>->)
