@@ -5,9 +5,9 @@ import stx.alias.StdType;
 
 enum CoroutineSum<I,O,R,E>{
   Emit(o:O,next:Coroutine<I,O,R,E>);
-  Wait(fn:Transmission<I,O,R,E>);
-  Hold(ft:Held<I,O,R,E>);
-  Halt(e:Return<R,E>);
+  Wait(tran:Transmission<I,O,R,E>);
+  Hold(held:Held<I,O,R,E>);
+  Halt(r:Return<R,E>);
 }
 
 @:using(stx.coroutine.core.Coroutine.CoroutineLift)
@@ -96,6 +96,103 @@ class CoroutineLift{
       case Halt(Terminated(e))        : __.term(e);
     }
   }
+  static public function relate<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Report<E>):Relate<I,R,E>{
+    function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Noise,R,E>{
+      return switch self{
+        case Emit(o, next) : fn(o).fold(
+          (e) -> __.exit(e.map(E_Coroutine_Subsystem)),
+          ()  -> rec(next)
+        );
+        case Wait(fn) : __.wait(fn.mod(rec));
+        case Hold(ft) : __.hold(ft.mod(rec));
+        case Halt(e)  : __.halt(e);
+      };
+    }
+    return Relate.lift(rec(self));
+  }
+  static public function filter<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
+    function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,O,R,E>{
+      return switch self{
+        case Emit(o, next)  : fn(o).if_else(
+          () -> Emit(o,rec(next)),
+          () -> rec(next)
+        );
+        case Wait(fn)       : __.wait(fn.mod(rec));
+        case Hold(ft)       : __.hold(ft.mod(rec));
+        case Halt(e)        : __.halt(e);
+      };
+    }
+    return rec(self);
+  }
+  static public function map_filter<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn:O->Option<Oi>):Coroutine<I,Oi,R,E>{
+    function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Oi,R,E>{
+      return switch self{
+        case Emit(o, next)  : fn(o).fold(
+          (oI)  -> Emit(oI,rec(next)),
+          ()    -> rec(next)
+        );
+        case Wait(fn)       : __.wait(fn.mod(rec));
+        case Hold(ft)       : __.hold(ft.mod(rec));
+        case Halt(e)        : __.halt(e);
+      };
+    }
+    return rec(self);
+  }
+  /**
+    Anytime you produce a handler in capture, the value is pushed into it and removed from the stream.
+  **/
+  static public function partial<I,O,R,E>(self:Coroutine<I,O,R,E>,capture:O->Option<O->Void>):Coroutine<I,O,R,E>{
+    return map_filter(
+      self,
+      (o) -> capture(o).fold(
+        (ok) -> {
+          ok(o);
+          return Option.unit();
+        },
+        () -> Option.pure(o)
+      )
+    );
+  }
+  /**
+    As with partial but starts pulling values from the stream on the first success and stops on the first failure
+    after that.
+  **/
+  static public function window<I,O,R,E>(self:Coroutine<I,O,R,E>,capture:O->Option<O->Void>):Coroutine<I,O,R,E>{
+    var stage = 0;
+    return map_filter(
+      self,
+      (o) -> switch(stage){
+        case 0 : capture(o).fold(
+          (ok) -> {
+            stage = 1;
+            ok(o);
+            return None;
+          },
+          () -> Some(o)
+        );
+        case 1 : capture(o).fold(
+          (ok) -> {
+            ok(o);
+            return None;
+          },
+          () -> {
+            stage = 2;
+            return Some(o);
+          }
+        );
+        default : Some(o);
+      }
+    );
+  }
+  static public function immediate<I,O,R,E>(self:Coroutine<I,O,R,E>,effect:Thread):Coroutine<I,O,R,E>{
+    return __.hold(
+      Held.lift(
+        effect.then(
+          Provide.fromFunXR(() -> self)          
+        )
+      )
+    );
+  }
   static public function flat_map_r<I,O,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:R->Coroutine<I,O,Ri,E>):Coroutine<I,O,Ri,E>{
     var f = flat_map_r.bind(_,fn);
     return switch(self){
@@ -109,6 +206,7 @@ class CoroutineLift{
   @:noUsing static public function one<I,O,R,E>(v:O):Coroutine<I,O,R,E>{
     return __.emit(v,__.stop());
   }
+  /** **/
   static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
       case Wait(arw)                    : Wait(arw.mod(fn));
