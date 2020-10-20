@@ -253,4 +253,18 @@ class CoroutineLift{
         __.halt(ret);
     }
   }
+  static public function tap<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:Phase<I,O,R,E>->Void):Coroutine<I,O,R,E>{
+    var f = tap.bind(_,fn);
+    return switch self.prj() {
+      case Emit(o, next)  : fn(Opt(o)); __.emit(o,f(next));
+      case Wait(tran)     : __.wait(
+        (ctrl:Control<I,E>) -> {
+          fn(Ipt(ctrl));
+          return f(tran(ctrl));
+        }
+      );
+      case Hold(held)     : __.hold(held.mod(f));
+      case Halt(r)        : fn(Rtn(r)); __.halt(r);
+    }
+  }
 }
