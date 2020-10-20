@@ -4,6 +4,22 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
 @:using(stx.arw.Provide.ProvideLift)
 @:forward abstract Held<I,O,R,E>(HeldDef<I,O,R,E>) from HeldDef<I,O,R,E>{
   public function new(self:HeldDef<I,O,R,E>) this = self;
+  @:from static public function fromProvide<I,O,R,E>(self:Provide<Coroutine<I,O,R,E>>){
+    return lift(self);
+  }
+  @:from static public function fromProduce<I,O,R,E>(self:Produce<Coroutine<I,O,R,E>,E>){
+    return lift(
+      Arrowlet.Then(
+        self,
+        Arrowlet.Sync(
+          (res:Res<Coroutine<I,O,R,E>,E>) -> res.fold(
+            ok -> ok,
+            no -> __.exit(no.map(E_Coroutine_Subsystem))
+          )
+        )
+      )
+    );
+  }
   @:noUsing static public function Ready<I,O,R,E>(data:Coroutine<I,O,R,E>,?pos:Pos){
     return Provide.pure(data);
   }
@@ -30,9 +46,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       this,
       __.passthrough((_:Noise) -> before())
     ).postfix(
-      __.passthrough(
-        (_:Coroutine<I,O,R,E>) -> after()
-      )
+      __.passthrough((_:Coroutine<I,O,R,E>) -> after())
     ));
   }
   public function environment(handler):Thread{
