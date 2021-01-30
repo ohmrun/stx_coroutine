@@ -3,6 +3,7 @@ package stx.coroutine.core;
 import haxe.CallStack;
 import stx.alias.StdType;
 
+@:using(stx.coroutine.core.Coroutine.CoroutineLift)
 enum CoroutineSum<I,O,R,E>{
   Emit(o:O,next:Coroutine<I,O,R,E>);
   Wait(tran:Transmission<I,O,R,E>);
@@ -184,7 +185,7 @@ class CoroutineLift{
       }
     );
   }
-  static public function immediate<I,O,R,E>(self:Coroutine<I,O,R,E>,effect:Thread):Coroutine<I,O,R,E>{
+  static public function immediate<I,O,R,E>(self:Coroutine<I,O,R,E>,effect:Fiber):Coroutine<I,O,R,E>{
     return __.hold(
       Held.lift(
         effect.then(
@@ -206,7 +207,9 @@ class CoroutineLift{
   @:noUsing static public function one<I,O,R,E>(v:O):Coroutine<I,O,R,E>{
     return __.emit(v,__.stop());
   }
-  /** **/
+  /** 
+    
+  **/
   static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
       case Wait(arw)                    : Wait(arw.mod(fn));
@@ -214,8 +217,8 @@ class CoroutineLift{
       default                           : fn(self);
     }
   }
-  static public function toString<I,O,R,E>(self){
-    function recurse(self:Coroutine<I,O,R,E>):String{
+  static public function toString<I,O,R,E>(self:CoroutineSum<I,O,R,E>){
+    function recurse(self:CoroutineSum<I,O,R,E>):String{
       return switch(self){
         case Emit(head,rest)              : '!<${head}>${recurse(rest)}';
         case Wait(arw)                    : '->';
@@ -266,5 +269,41 @@ class CoroutineLift{
       case Hold(held)     : __.hold(held.mod(f));
       case Halt(r)        : fn(Rtn(r)); __.halt(r);
     }
+  }
+  static public function hook<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
+    return self.map(
+      __.passthrough(fn)
+    );
+  }
+  static public function once<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
+    var done = false;
+    return hook(
+      self,
+      (o) -> done.if_else(
+        () -> {},
+        () -> {
+          done = true;
+          fn(o);
+        }
+      )
+    );
+  }
+  static public function until<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
+    var cont = true;
+    return hook(
+      self,
+      (o) -> {
+        if(cont){
+          cont = fn(o);
+        }
+      }
+    );
+  }
+  static public function pause<I,O,R,E>(self:Coroutine<I,O,R,E>,ft:Future<Noise>):Coroutine<I,O,R,E>{
+    return __.hold(
+      Provide.fromFuture(
+        ft.map(_ -> self )
+      )
+    );
   }
 }

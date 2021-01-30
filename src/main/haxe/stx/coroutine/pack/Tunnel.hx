@@ -35,6 +35,7 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
               );
               case Emit(head,tail)  : __.emit(head,recurse(tail));
               case Halt(r)          : __.halt(r);
+
               case Hold(h)          : __.hold(
                 Held.lift(h.postfix(
                   (pipe) -> Coroutine.lift(recurse(pipe))

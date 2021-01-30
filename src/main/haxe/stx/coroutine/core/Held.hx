@@ -1,8 +1,10 @@
 package stx.coroutine.core;
 
 typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
+
+@:using(stx.arw.arrowlet.Lift)
 @:using(stx.arw.Provide.ProvideLift)
-@:forward abstract Held<I,O,R,E>(HeldDef<I,O,R,E>) from HeldDef<I,O,R,E>{
+@:forward abstract Held<I,O,R,E>(HeldDef<I,O,R,E>) from HeldDef<I,O,R,E> to HeldDef<I,O,R,E>{
   public function new(self:HeldDef<I,O,R,E>) this = self;
   @:from static public function fromProvide<I,O,R,E>(self:Provide<Coroutine<I,O,R,E>>){
     return lift(self);
@@ -49,14 +51,14 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       __.passthrough((_:Coroutine<I,O,R,E>) -> after())
     ));
   }
-  public function environment(handler):Thread{
+  public function environment(handler):Fiber{
     return Provide._.environment(this,handler);
   }
   public function convert(that){
     return lift(Provide._.convert(this,that));
   }
-  public function toString(){
-    
+  public function toString():String{
+    return 'HELD';
   }
 }
 class HeldLift{

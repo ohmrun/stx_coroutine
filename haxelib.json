@@ -13,9 +13,10 @@
     "version": "0.3.0",
     "url": "https://github.com/0b1kn00b/stx_coroutine",
     "dependencies": {
-        "stx_fp"        : "1.0.0",
-        "stx_pico"      : "1.0.0",
-        "stx_nano"      : "0.1.5"
+        "stx_pico"      : "git:https://github.com/ohmrun/stx_pico.git",
+        "stx_nano"      : "git:https://github.com/ohmrun/stx_nano.git",
+        "stx_fp"        : "git:https://github.com/ohmrun/stx_fp.git",
+        
     },
     "classPath": "src/main/haxe"
 }
