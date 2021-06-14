@@ -1,20 +1,20 @@
 package stx.coroutine;
 
 
-import utest.Assert in Rig;
-import utest.Async;
-import utest.Test;
+using stx.unit.Test;
 
 using stx.Coroutine;
 
 class Test{
   static public function main(){
-    utest.UTest.run([
-      new LatchTest(),
-    ]);
+    __.unit([
+        new LatchTest(),
+      ],
+      []
+    );
   }
 }
-class LatchTest extends utest.Test{
+class LatchTest extends TestCase{
   public function test(){
       
   }

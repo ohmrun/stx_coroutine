@@ -2,8 +2,8 @@ package stx.coroutine.core;
 
 typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
 
-@:using(stx.arw.arrowlet.Lift)
-@:using(stx.arw.Provide.ProvideLift)
+@:using(eu.ohmrun.Fletcher.FletcherLift)
+@:using(eu.ohmrun.fletcher.Provide.ProvideLift)
 @:forward abstract Held<I,O,R,E>(HeldDef<I,O,R,E>) from HeldDef<I,O,R,E> to HeldDef<I,O,R,E>{
   public function new(self:HeldDef<I,O,R,E>) this = self;
   @:from static public function fromProvide<I,O,R,E>(self:Provide<Coroutine<I,O,R,E>>){
@@ -11,9 +11,9 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
   }
   @:from static public function fromProduce<I,O,R,E>(self:Produce<Coroutine<I,O,R,E>,E>){
     return lift(
-      Arrowlet.Then(
+      Fletcher.Then(
         self,
-        Arrowlet.Sync(
+        Fletcher.Sync(
           (res:Res<Coroutine<I,O,R,E>,E>) -> res.fold(
             ok -> ok,
             no -> __.exit(no.map(E_Coroutine_Subsystem))
@@ -44,10 +44,10 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
     return new Held(Provide._.convert(this,fn));
   }
   public function touch(before:Void->Void,after:Void->Void):Held<I,O,R,E>{
-    return lift(Arrowlet._.prefix(
+    return lift(Fletcher._.mapi(
       this,
       __.passthrough((_:Noise) -> before())
-    ).postfix(
+    ).map(
       __.passthrough((_:Coroutine<I,O,R,E>) -> after())
     ));
   }

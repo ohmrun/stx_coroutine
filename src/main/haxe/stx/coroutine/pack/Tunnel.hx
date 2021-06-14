@@ -37,7 +37,7 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
               case Halt(r)          : __.halt(r);
 
               case Hold(h)          : __.hold(
-                Held.lift(h.postfix(
+                Held.lift(h.map(
                   (pipe) -> Coroutine.lift(recurse(pipe))
                 ))
               );
@@ -92,7 +92,7 @@ class TunnelLift{
     return Emiter.lift(switch(prc){
       case Emit(head,tail)  : __.emit(head,f(tail));
       case Hold(ft)         : __.hold(
-        Held.lift(ft.postfix(
+        Held.lift(ft.map(
           (pipe) -> Coroutine.lift(always(pipe,v))
         ))
       );

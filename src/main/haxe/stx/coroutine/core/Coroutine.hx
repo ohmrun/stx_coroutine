@@ -68,7 +68,7 @@ class CoroutineLift{
           }
         )
       );
-      case Hold(ft)                     : __.hold(Held.lift(ft.postfix(v -> f(v))));
+      case Hold(ft)                     : __.hold(Held.lift(ft.map(v -> f(v))));
       case Halt(Terminated(Stop))       : __.stop();
       case Halt(Terminated(Exit(e)))    : __.exit(fn(e));
       case Halt(Production(r))          : __.prod(r);
