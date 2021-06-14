@@ -15,8 +15,8 @@
     "dependencies": {
         "stx_pico"      : "git:https://github.com/ohmrun/stx_pico.git",
         "stx_nano"      : "git:https://github.com/ohmrun/stx_nano.git",
-        "stx_fp"        : "git:https://github.com/ohmrun/stx_fp.git"
-        
+        "stx_fp"        : "git:https://github.com/ohmrun/stx_fp.git",
+        "fletcher"      : "git:https://github.com/ohmrun/fletcher.git"
     },
     "classPath": "src/main/haxe"
 }
