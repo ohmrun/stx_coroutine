@@ -265,4 +265,24 @@ class EmiterLift{
     }
     return recurse(self,next);
   }
+  // static public function bless<I,O,R,E>(self:Emiter<O,E>,fn:Status -> Option<Coroutine<I,O,R,E>>):Coroutine<I,O,R,E>{
+  //   return switch __.hold(
+  //     Held.Guard(
+  //       new Future(
+  //         function rec(cb){
+  //           switch(self){
+  //             case Emit(o,n)  : fn(Emitting).fold(
+  //               ok -> Emit(
+  //                 o,
+  //                 switch(ok){
+  //                   case Emit()
+  //                 }
+  //               )
+  //             )
+  //           }       
+  //         }
+  //       )
+  //     )
+  //   );
+  // }
 }

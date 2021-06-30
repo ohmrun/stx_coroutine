@@ -306,4 +306,12 @@ class CoroutineLift{
       )
     );
   }
+  static public function source<I,O,R,E>(self:Coroutine<I,O,R,E>,sig:Void->Future<I>):Source<O,R,E>{
+    return Source.lift(switch(self){
+      case Emit(o,next) : __.emit(o,source(next,sig));
+      case Wait(arw)    : __.hold(Held.Guard(sig().map((v:I) -> (source(arw(v),sig):CoroutineSum<Noise,O,R,E>))));
+      case Hold(ft)     : __.hold(ft.mod(x -> (source(x,sig):CoroutineSum<Noise,O,R,E>)));
+      case Halt(done)   : __.halt(done);
+    });
+  }
 }

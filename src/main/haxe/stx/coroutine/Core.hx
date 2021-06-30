@@ -18,3 +18,5 @@ typedef Phase<I,O,R,E>                  = stx.coroutine.core.Phase<I,O,R,E>;
  
 typedef ReturnSum<R,E>                  = stx.coroutine.core.Return.ReturnSum<R,E>;
 typedef Return<R,E>                     = stx.coroutine.core.Return<R,E>;
+
+typedef Status                          = stx.coroutine.core.Status;
