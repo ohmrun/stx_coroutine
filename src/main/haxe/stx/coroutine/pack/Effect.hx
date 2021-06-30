@@ -59,19 +59,28 @@ class EffectLift{
             default                   : t.trigger(Option.unit());
           }
         case Hold(held)               : 
-          var event = MainLoop.add(()->{});//TODO backoff?
           held.environment(
             (eff) -> {
-              event.stop();
-              MainLoop.addThread(handler.bind(eff));
+              trace('hello');
+              handler(eff);
             }
           ).submit();
-        case Wait(fn)                 : 
-          MainLoop.addThread(
-            () -> handler(fn(Push(Noise)))
-          );
-        case Emit(_,tail)             : 
-            MainLoop.addThread(handler.bind(tail));
+        case Wait(fn)                   : 
+          var event = null;
+              event = MainLoop.add(
+                () -> {
+                  event.stop();
+                  handler(fn(Push(Noise)));
+                }
+              );
+        case Emit(_,tail)               :   
+            var event = null;            
+                event = MainLoop.add(
+                  () -> {
+                    event.stop();
+                    handler(tail);
+                  }
+                );
           
       }
     }
