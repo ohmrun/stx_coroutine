@@ -19,3 +19,6 @@ class LatchTest extends TestCase{
       
   }
 }
+class EmiterTest extends TestCase{
+
+}

@@ -44,6 +44,33 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
       }
     ));
   }
+  @:noUsing static public function fromTinkSignal<T>(self:tink.core.Signal<T>){
+    var buffer  = [];
+    var wake    = ()->{}
+    self.handle(
+      (x) -> {
+        buffer.push(x);
+        wake();
+      }
+    );
+
+    return __.hold(Held.Guard(
+      new Future(
+        function rec(cb){
+          final f = __.emit(buffer.shift(),__.hold(Held.Guard(new Future(rec))));
+          if (buffer.length == 0){
+            wake = () -> {
+              wake = () -> {};
+              cb(f);//TODO how does this perform?  
+            }
+          }else{
+            cb(f);
+          }
+          return () -> {};
+        }
+      )
+    ));
+  } 
   @:from static public function fromCoroutine<I,O,R,E>(self:Coroutine<Noise,O,Noise,E>):Emiter<O,E>{
     return lift(self);
   }
