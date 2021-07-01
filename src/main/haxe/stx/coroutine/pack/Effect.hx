@@ -1,5 +1,7 @@
 package stx.coroutine.pack;
 
+using stx.Log;
+
 import haxe.MainLoop;
 
 typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
@@ -69,6 +71,7 @@ class EffectLift{
           var event = null;
               event = MainLoop.add(
                 () -> {
+                  __.log().debug('wait');
                   event.stop();
                   handler(fn(Push(Noise)));
                 }
@@ -77,6 +80,7 @@ class EffectLift{
             var event = null;            
                 event = MainLoop.add(
                   () -> {
+                    __.log().debug('emit');
                     event.stop();
                     handler(tail);
                   }
