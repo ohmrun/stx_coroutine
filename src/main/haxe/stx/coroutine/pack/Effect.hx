@@ -1,7 +1,5 @@
 package stx.coroutine.pack;
 
-import haxe.MainLoop;
-
 typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
 
 @:using(stx.coroutine.pack.Effect.EffectLift)
@@ -21,12 +19,24 @@ typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
   }
 }
 class EffectLift{
+  static public function submit<E>(eff:Effect<E>):Void{
+    run(eff).handle(
+      (cause) -> switch(cause){
+        case Some(Exit(e))  :
+          __.log().fatal(_ -> _.pure(e));   
+          throw(e);
+        default             : 
+      } 
+    );
+  }
   static public function run<E>(eff:Effect<E>):Future<Option<Cause<E>>>{
+    __.log().info('run $eff');
     var t     = Future.trigger();
-    run1Inner(eff,t);
+    loop(eff,t);
     return t;
   }
-  static function run1Inner<E>(eff:EffectDef<E>,f:FutureTrigger<Option<Cause<E>>>){
+  static function loop<E>(eff:EffectDef<E>,f:FutureTrigger<Option<Cause<E>>>){
+    __.log().debug('loop $eff');
     var now = eff;
 
     while(true){
@@ -36,61 +46,22 @@ class EffectLift{
           default                   : f.trigger(Option.unit());
         }
         break;
-        case Hold(ft)     : 
+        case Hold(ft)     :
+          __.log().debug('hold'); 
           ft.environment(
-            (x) -> run1Inner(x,f)
-          ).submit();
-          break;
-        case Wait(fn)     :
-          now = fn(Push(Noise));
-        case Emit(_,nxt)  :
-          now = nxt;
-      }
-    }
-  }
-  static public function run1<E>(eff:Effect<E>):Future<Option<Cause<E>>>{   
-    var uuid  = __.uuid();
-    var t     = Future.trigger();
-    function handler(eff:Effect<E>){
-      switch(eff){
-        case Halt(h) : 
-          switch(h){
-            case Terminated(cause)    : t.trigger(Option.pure(cause));
-            default                   : t.trigger(Option.unit());
-          }
-        case Hold(held)               : 
-          held.environment(
-            (eff) -> {
-              trace('hello');
-              handler(eff);
+            (x) -> {
+              __.log().debug('hold:release');
+              loop(x,f);
             }
           ).submit();
-        case Wait(fn)                   : 
-          var event = null;
-              event = MainLoop.add(
-                () -> {
-                  event.stop();
-                  handler(fn(Push(Noise)));
-                }
-              );
-        case Emit(_,tail)               :   
-            var event = null;            
-                event = MainLoop.add(
-                  () -> {
-                    event.stop();
-                    handler(tail);
-                  }
-                );
-          
+          break;
+        case Wait(fn)     : now = fn(Push(Noise));
+        case Emit(_,nxt)  : now = nxt;
       }
     }
-    handler(eff);
-    return t.asFuture();
   }
   static public inline function crunch1<E>(eff:Effect<E>):Void{
-    run(eff).handle(
-      __.crack
-    );
+    run(eff).handle(__.crack);
   }
   static public inline function crunch<E>(eff:Effect<E>):Void{
     var cursor        = eff;

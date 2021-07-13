@@ -31,6 +31,19 @@ class SourceLift{
     }
     return Emiter.lift(recurse(self));
   }
+  static public function emiter<O,R,E>(self:Source<O,R,E>,cb:R->O):Emiter<O,E>{
+    function recurse(self:Source<O,R,E>):Source<O,Noise,E>{
+      var f = __.into(recurse);
+      return switch(self){
+        case Halt(Terminated(cause))  : __.term(cause);
+        case Halt(Production(ret))    : __.stop().cons(cb(ret));
+        case Emit(head,rest)          : __.emit(head,rest.mod(f));
+        case Wait(arw)                : __.wait(arw.mod(f));
+        case Hold(ft)                 : __.hold(ft.mod(f));
+      } 
+    }
+    return Emiter.lift(recurse(self));
+  }
   static public function filter<O,R,E>(self:Source<O,R,E>,fn:O->Bool):Source<O,R,E>{
     var f = __.into(filter.bind(_,fn));
     return lift(switch(self){

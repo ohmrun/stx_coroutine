@@ -6,6 +6,8 @@
 -lib stx_nano
 -lib stx_fp
 -lib stx_fn
+-lib stx_log
+-lib stx_pkg
 -lib fletcher 
 -lib stx_test
 

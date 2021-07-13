@@ -87,17 +87,27 @@ class TunnelLift{
       case Hold(ft)         : Hold(ft.mod(__.into(flat_map.bind(_,fn))));
     });
   }
-  static public function always<I,O,E>(prc:Tunnel<I,O,E>,v:Thunk<I>):Emiter<O,E>{
-    var f = always.bind(_,v);
-    return Emiter.lift(switch(prc){
+  static public function emiter<I,O,E>(self:Tunnel<I,O,E>,that:Emiter<I,E>):Emiter<O,E>{
+    __.log().debug('emiter: $self');
+    var f = emiter.bind(_,that);
+    return Emiter.lift(switch(self){
       case Emit(head,tail)  : __.emit(head,f(tail));
       case Hold(ft)         : __.hold(
         Held.lift(ft.map(
-          (pipe) -> Coroutine.lift(always(pipe,v))
+          (pipe) -> Coroutine.lift(emiter(pipe,that))
         ))
       );
-      case Halt(e)          : __.halt(e);
-      case Wait(fn)         : always(fn(Push(v())),v);
+      case Halt(e)           : __.halt(e);
+      case Wait(fn)          : 
+        switch(that){
+          case Emit(head,tail) : emiter(fn(head),tail);
+          case Hold(ft)        : __.hold(Held.lift(ft.map(
+            (pipe) -> Coroutine.lift(emiter(self,pipe))
+          )));
+          case Wait(arw)       : emiter(self,arw(Push(Noise)));
+          case Halt(done)      : __.halt(done);
+        }
     });
   }
+  //static public function tap<I,O,E>(self:Tu)
 }

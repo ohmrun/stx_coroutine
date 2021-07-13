@@ -30,6 +30,9 @@ enum CoroutineSum<I,O,R,E>{
   public function prj():CoroutineSum<I,O,R,E>{
     return this;
   }
+  public function provide(v:I){
+    return lift(Coroutine._.provide(this,v));
+  }
 }
 class CoroutineLift{
   static public function cons<I,O,R,E>(spx:Coroutine<I,O,R,E>,o:O):Coroutine<I,O,R,E>{
@@ -306,10 +309,19 @@ class CoroutineLift{
       )
     );
   }
-  static public function source<I,O,R,E>(self:Coroutine<I,O,R,E>,sig:Void->Future<I>):Source<O,R,E>{
+  static public function source<I,O,R,E>(self:Coroutine<I,O,R,E>,sig:Void->Future<Either<I,Cause<E>>>):Source<O,R,E>{
     return Source.lift(switch(self){
       case Emit(o,next) : __.emit(o,source(next,sig));
-      case Wait(arw)    : __.hold(Held.Guard(sig().map((v:I) -> (source(arw(v),sig):CoroutineSum<Noise,O,R,E>))));
+      case Wait(arw)    : __.hold(
+        Held.Guard(
+          sig().map(
+            (either:Either<I,Cause<E>>) -> either.fold(
+              l -> (source(arw(l),sig):CoroutineSum<Noise,O,R,E>),
+              r -> __.term(r)
+            )
+          )
+        )
+      );
       case Hold(ft)     : __.hold(ft.mod(x -> (source(x,sig):CoroutineSum<Noise,O,R,E>)));
       case Halt(done)   : __.halt(done);
     });

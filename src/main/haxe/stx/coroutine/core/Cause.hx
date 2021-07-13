@@ -33,7 +33,7 @@ class CauseLift{
   static public function next<E>(thiz:Cause<E>,that:Cause<E>):Cause<E>{
     return switch([thiz,that]){
       case [Stop,Stop]                  : Stop;
-      case [Exit(e0),Exit(e1)]          : Exit(e0.next(e1));
+      case [Exit(e0),Exit(e1)]          : Exit(e0.merge(e1));
       case [Exit(err),_]                : Exit(err);
       case [_,Exit(err)]                : Exit(err);
     }
