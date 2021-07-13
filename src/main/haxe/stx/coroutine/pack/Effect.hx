@@ -1,5 +1,7 @@
 package stx.coroutine.pack;
 
+using stx.Log;
+
 typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
 
 @:using(stx.coroutine.pack.Effect.EffectLift)
