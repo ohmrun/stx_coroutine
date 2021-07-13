@@ -1,9 +1,9 @@
 class Main{
   static function main(){
-    final facade = stx.log.Facade.instance;
-          facade.includes.push("stx/coroutine");
-          facade.includes.push("stx/test");
-          facade.includes.push('haxe/overrides');
+    final logger = __.log().global;
+          logger.includes.push("stx/coroutine");
+          logger.includes.push("stx/test");
+          logger.includes.push('haxe/overrides');
     stx.coroutine.Test.main();
   }
 }
