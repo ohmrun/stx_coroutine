@@ -1,4 +1,4 @@
-* 	 ff9c88c 2021-08-06  (HEAD -> master) added quit wildcard and module
+* 	 e72dc1a 2021-08-06  (HEAD -> master) added quit wildcard and module
 * 	 fc6e36e 2021-07-13  (github/master) new log declarations
 *   	 d8f7b41 2021-07-13  Effect merge
 |\  
