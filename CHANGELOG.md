@@ -1,10 +1,25 @@
-* 	 17be9bb 2020-10-20  (HEAD -> master, tag: v0.3.1, tag: v0.3.0) chore: bump to 0.3.0
+* 	 ff9c88c 2021-08-06  (HEAD -> master) added quit wildcard and module
+* 	 fc6e36e 2021-07-13  (github/master) new log declarations
+*   	 d8f7b41 2021-07-13  Effect merge
+|\  
+| * 	 dc3fc06 2021-07-01  logging
+* | 	 d254c83 2021-07-13  scheduler fixed
+|/  
+* 	 57c67fc 2021-06-30  Scheduler change
+* 	 619e289 2021-06-30  Coroutine._.source
+* 	 9629c77 2021-06-30  TinkSignal Emiter
+* 	 e7be489 2021-06-14  include fletcher in haxelib.json
+* 	 cb21353 2021-06-14  update to Fletcher
+* 	 78a767c 2021-01-30  moving to git haxelibs
+* 	 a8780a2 2021-01-30  moving to git haxelibs
+* 	 a0d91aa 2020-10-20  using git to generate changelog
+* 	 17be9bb 2020-10-20  (tag: v0.3.1, tag: v0.3.0) chore: bump to 0.3.0
 * 	 9201645 2020-10-20  some autolifts around Held
 * 	 26ad527 2020-10-20  tap reinstated to help with debugging
 * 	 9d6d97d 2020-10-20  regression: `returns` is weird, removing
 * 	 f22f497 2020-10-20  feat: rename default variable names of Coroutine so as to less often override canonical names in the outer scope
 * 	 77bfba3 2020-10-20  feat: Transmission constructors available
-* 	 77e4ba9 2020-10-09  (github/master) fix: bump to v0.2.0
+* 	 77e4ba9 2020-10-09  fix: bump to v0.2.0
 * 	 115a8ec 2020-10-09  (tag: v0.2.0) feat: update to arrowlets 1
 | * 	 69ad772 2020-10-08  (refs/stash) WIP on master: c782079 doc: CHANGELOG.md
 |/| 

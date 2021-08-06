@@ -38,7 +38,9 @@ class LiftCoroutine{
   // static public function asTunnel<I,O>(wildcard:Wildcard,spx:Coroutine<I,O,Noise>):Tunnel<I,O>{
   //   return new Tunnel(spx);
   // }
-
+  static public inline function quit<I,O,R,E>(wildcard:Wildcard,er:Err<E>):Coroutine<I,O,R,E>{
+    return term(__,Exit(er.errate(E_Coroutine_Subsystem)));
+  }
   static public inline function exit<I,O,R,E>(wildcard:Wildcard,er:Err<CoroutineFailure<E>>):Coroutine<I,O,R,E>{
     return term(__,Exit(er));
   }
@@ -71,6 +73,9 @@ class LiftCoroutine{
   }
   static public inline function tran<I,O,R,E>(wildcard:Wildcard,fn:I->CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return __.wait(Transmission.fromFun1R(fn));
+  }
+  static public function coroutine(wildcard:Wildcard){
+    return new stx.coroutine.Module();
   }
 }
 class LiftSource{
