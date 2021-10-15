@@ -19,8 +19,10 @@ typedef Source<O,R,E>                   = stx.coroutine.pack.Source<O,R,E>;     
 typedef Accept<I,E>                     = stx.coroutine.pack.Accept<I,E>;                             //100
 
 typedef Relate<I,R,E>                   = stx.coroutine.pack.Relate<I,R,E>;                           //101
+typedef RelateDef<I,O,E>                = stx.coroutine.pack.Relate.RelateDef<I,O,E>;                 //110
 
 typedef Tunnel<I,O,E>                   = stx.coroutine.pack.Tunnel<I,O,E>;                           //110
+typedef TunnelDef<I,O,E>                = stx.coroutine.pack.Tunnel.TunnelDef<I,O,E>;                 //110
 
 typedef CoroutineSum<I,O,R,E>           = stx.coroutine.core.Coroutine.CoroutineSum<I,O,R,E>;         //111
 typedef Coroutine<I,O,R,E>              = stx.coroutine.core.Coroutine<I,O,R,E>;                      //111
