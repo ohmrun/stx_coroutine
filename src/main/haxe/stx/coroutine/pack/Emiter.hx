@@ -285,4 +285,33 @@ class EmiterLift{
   //     )
   //   );
   // }
+  static public function sample<O,R,E>(self:Emiter<O,E>,fn:O->R->Chunk<R,E>,init:R):Source<O,R,E>{
+    var data = init;
+    function rec(self:CoroutineSum<Noise,O,Noise,E>):Coroutine<Noise,O,R,E>{
+      return switch(self){
+        case Emit(o,next)   :
+          final step = fn(o,data);
+          switch(step){
+            case Val(v) : 
+              data = v;
+              rec(next);
+            case End(null) : 
+              __.prod(data);
+            case End(err)  : 
+              __.quit(err);
+            case Tap :
+              rec(next);
+          }
+        case Wait(tran)     :
+          __.wait(tran.mod(rec));
+        case Hold(held)     :
+          __.hold(held.mod(rec));
+        case Halt(Terminated(r))        :
+          __.halt(Terminated(r));
+        case Halt(Production(r))         :
+          __.halt(Production(data));
+      }
+    }
+    return rec(self);
+  }
 }
