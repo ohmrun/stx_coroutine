@@ -1,9 +1,11 @@
 {
   "build" : {
      "-lib" : ["stx_pico", "stx_nano", "stx_fp", "stx_fn", "stx_log", "stx_pkg", "fletcher ", "stx_test"],
-     "interp" : {
-       "-main"  : "Main",
-       "--interp" : true
+     "main" : {
+      "-main"  : "Main",
+      "interp" : {
+        "--interp" : true
+      }
      }  
   }
 }
