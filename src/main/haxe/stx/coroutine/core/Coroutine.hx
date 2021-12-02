@@ -58,7 +58,7 @@ class CoroutineLift{
       case Halt(r)                    : __.halt(r);
     }
   }
-  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Err<CoroutineFailure<E>>->Err<CoroutineFailure<EE>>):Coroutine<I,O,R,EE>{
+  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Error<CoroutineFailure<E>>->Error<CoroutineFailure<EE>>):Coroutine<I,O,R,EE>{
     var f : Coroutine<I,O,R,E> -> Coroutine<I,O,R,EE> = errata.bind(_,fn);
     return switch prc {
       case Emit(o, next)    : __.emit(o,f(next));
