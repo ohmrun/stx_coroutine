@@ -46,7 +46,7 @@ class CoroutineLift{
       case Hold(h)                    : __.hold(h.mod(f));
       case Halt(Production(v))        : __.exit(__.fault().of(E_Coroutine_Note(E_Coroutine_Note_HangingInput).and(E_Coroutine_Input(i).and(E_Coroutine_Output(v)))));
       case Halt(Terminated(Stop))     : __.exit(__.fault().of(E_Coroutine_Note(E_Coroutine_Note_UnexpectedStop).and(E_Coroutine_Input(i))));
-      case Halt(Terminated(Exit(e)))  : __.exit(e.map(E_Coroutine_Both.bind(E_Coroutine_Input(i))));
+      case Halt(Terminated(Exit(e)))  : __.exit(e.errate(E_Coroutine_Both.bind(E_Coroutine_Input(i))));
     }
   }
   static public function map<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn:O->Oi):Coroutine<I,Oi,R,E>{
@@ -58,7 +58,7 @@ class CoroutineLift{
       case Halt(r)                    : __.halt(r);
     }
   }
-  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Error<CoroutineFailure<E>>->Error<CoroutineFailure<EE>>):Coroutine<I,O,R,EE>{
+  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Rejection<CoroutineFailure<E>>->Rejection<CoroutineFailure<EE>>):Coroutine<I,O,R,EE>{
     var f : Coroutine<I,O,R,E> -> Coroutine<I,O,R,EE> = errata.bind(_,fn);
     return switch prc {
       case Emit(o, next)    : __.emit(o,f(next));
@@ -104,7 +104,7 @@ class CoroutineLift{
     function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Noise,R,E>{
       return switch self{
         case Emit(o, next) : fn(o).fold(
-          (e) -> __.exit(e.map(E_Coroutine_Subsystem)),
+          (e) -> __.exit(e.errate(E_Coroutine_Subsystem)),
           ()  -> rec(next)
         );
         case Wait(fn) : __.wait(fn.mod(rec));

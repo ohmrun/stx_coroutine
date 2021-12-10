@@ -13,8 +13,8 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
     return new Return(self);
   }
   public function new(self) this = self;
-  @:from static public function fromError<T,E>(e:Error<E>):Return<T,E>{
-    return fromCause(Exit(e.map(E_Coroutine_Subsystem)));
+  @:from static public function fromRejection<T,E>(e:Rejection<E>):Return<T,E>{
+    return fromCause(Exit(e.errate(E_Coroutine_Subsystem)));
   }
   @:from static public function fromCause<T,E>(c:Cause<E>):Return<T,E>{
     return Terminated(c);
