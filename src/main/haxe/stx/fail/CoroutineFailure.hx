@@ -1,5 +1,6 @@
 package stx.fail;
 
+//TODO what is this mess?
 @:using(stx.fail.CoroutineFailure.CoroutineFailureLift)
 enum CoroutineFailureSum<E>{
   E_Coroutine_Input(i:Dynamic);
