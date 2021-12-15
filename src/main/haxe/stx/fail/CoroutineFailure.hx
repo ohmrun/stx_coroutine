@@ -19,8 +19,6 @@ enum CoroutineFailureSum<E>{
   static public function lift<E>(self:CoroutineFailureSum<E>):CoroutineFailure<E> return new CoroutineFailure(self);
   
 
-  
-
   public function prj():CoroutineFailureSum<E> return this;
   private var self(get,never):CoroutineFailure<E>;
   private function get_self():CoroutineFailure<E> return lift(this);

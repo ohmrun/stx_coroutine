@@ -58,6 +58,14 @@ class CoroutineLift{
       case Halt(r)                    : __.halt(r);
     }
   }
+  static public function map_i<I,Ii,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:Ii->I):Coroutine<Ii,O,R,E>{
+    return switch(self){
+      case Emit(o,next) : Emit(o,map_i(next,fn));
+      case Wait(tran)   : Wait((i:Control<Ii,E>) -> map_i(tran(i.map(fn)),fn)); 
+      case Hold(held)   : __.hold(held.mod(map_i.bind(_,fn)));
+      case Halt(r)      : Halt(r);
+    }
+  }
   static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Rejection<CoroutineFailure<E>>->Rejection<CoroutineFailure<EE>>):Coroutine<I,O,R,EE>{
     var f : Coroutine<I,O,R,E> -> Coroutine<I,O,R,EE> = errata.bind(_,fn);
     return switch prc {
@@ -115,7 +123,8 @@ class CoroutineLift{
     return Relate.lift(rec(self));
   }
   static public function filter<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
-    function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,O,R,E>{
+    function rec(self:CoroutineSum<I,O,R,E
+      >):CoroutineSum<I,O,R,E>{
       return switch self{
         case Emit(o, next)  : fn(o).if_else(
           () -> Emit(o,rec(next)),

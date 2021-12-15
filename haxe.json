@@ -1,11 +1,20 @@
 {
   "build" : {
-     "-lib" : ["stx_pico", "stx_nano", "stx_fp", "stx_fn", "stx_log", "stx_pkg", "fletcher ", "stx_test"],
-     "main" : {
+    "-lib" : ["stx_pico", "stx_nano", "stx_fp", "stx_fn", "stx_log", "stx_pkg", "fletcher ", "stx_test"],
+    "unit"  : {
+      "--macro" : [
+        "include('stx.Coroutine',true)",      
+        "include('stx.coroutine',true)"
+      ],
+      "interp" : {
+        "--interp"  : true
+      }
+    },
+    "main" : {
       "-main"  : "Main",
       "interp" : {
         "--interp" : true
       }
-     }  
+    }  
   }
 }

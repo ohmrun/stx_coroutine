@@ -1,4 +1,7 @@
+package stx.coroutine.lift;
+
 class LiftArrowlet{
-  static public function asTunnel<I,O>(arw:Arrowlet<I,O>):Tunnel<I,O>{
-      return stx.coroutine.body.Tunnels.fromArrowlet(arw);
-  }
+  // static public function asTunnel<I,O,E>(arw:Fletcher<I,O,E>):Tunnel<I,O,E>{
+  //     return Tunnel.fromArrowlet(arw);
+  // }
+}

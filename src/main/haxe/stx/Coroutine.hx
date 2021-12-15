@@ -83,3 +83,8 @@ class LiftCoroutine{
 class LiftSource{
   
 }
+typedef LiftIterable    = stx.coroutine.lift.LiftIterable;
+//typedef LiftThunk       = stx.coroutine.lift.LiftThunk;
+typedef LiftOption      = stx.coroutine.lift.LiftOption;
+typedef LiftArrowlet    = stx.coroutine.lift.LiftArrowlet;
+typedef LiftFun         = stx.coroutine.lift.LiftFun;

@@ -5,7 +5,7 @@ class LiftIterable{
    *  @param fn - 
    *  @return stx.coroutine.head.Data.Unfold<I,O>
    */
-  static public function asEmiter<O>(itr:Iterable<O>):Emiter<O>{
-      return stx.coroutine.body.Emiters.fromIterable(itr);
+  static public function asEmiter<O,E>(itr:Iterator<O>):Emiter<O,E>{
+      return Emiter.fromIterator(itr);
   }
 }
