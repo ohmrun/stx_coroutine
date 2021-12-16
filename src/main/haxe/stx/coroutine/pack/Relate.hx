@@ -2,6 +2,7 @@ package stx.coroutine.pack;
 
 typedef RelateDef<I,R,E> = CoroutineSum<I,Noise,R,E>;
 
+@:using(stx.coroutine.pack.Relate.RelateLift)
 @:forward abstract Relate<T,R,E>(RelateDef<T,R,E>) from RelateDef<T,R,E> to RelateDef<T,R,E>{
   static public var _(default,never) = RelateLift;
 
@@ -35,9 +36,24 @@ class RelateLift{
         case Wait(tran)                 : __.wait(tran.mod(rec));
         case Hold(held)                 : __.hold(held.mod(rec));
         case Halt(Production(out))      : __.emit(out,Halt(Terminated(Stop)));
-        case Halt(Terminated(cause))    : __.term(cause); 
+        case Halt(Terminated(cause))    : __.term(cause);  
       }
     }
     return rec(self);
+  }
+  /**
+    Next time we hit an input request, Stop.
+  **/
+  static public function derive<I,R,E>(self:RelateDef<I,R,E>):Derive<R,E>{
+    function rec(self:RelateDef<I,R,E>):DeriveDef<R,E>{
+      final f = rec;
+      return switch(self){
+        case Emit(o,next) : __.emit(o,f(next));
+        case Wait(tran)   : __.stop();
+        case Hold(held)   : __.hold(held.mod(f));
+        case Halt(r)      : __.halt(r);
+      }
+    }
+    return Derive.lift(rec(self));
   }
 }

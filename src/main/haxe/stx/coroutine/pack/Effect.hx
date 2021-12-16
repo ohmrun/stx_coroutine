@@ -1,5 +1,6 @@
 package stx.coroutine.pack;
 
+//TODO:  implement using stx.Stream
 using stx.Log;
 
 typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
