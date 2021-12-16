@@ -111,30 +111,31 @@ class EffectLift{
       case Halt(e)                  : __.halt(e);
     });
   }
-  static public function toFiber<E>(self:Effect<E>):Fiber{
-    return Fiber.lift(new EffectFiber(self));
+  static public function toExecute<E>(self:Effect<E>):Execute<CoroutineFailure<E>>{
+    return Execute.lift(Fletcher.fromApi(new EffectExecute(self)));
   }
 }
-class EffectFiber implements FletcherApi<Noise,Noise,Noise>{
-  public var effect : Effect<Dynamic>;
+class EffectExecute<E> implements FletcherApi<Noise,Report<CoroutineFailure<E>>,Noise>{
+  public var effect : Effect<E>;
   public function new(effect){
     this.effect = effect;
   }
-  public function defer(_:Noise,cont:Terminal<Noise,Noise>):Work{
+  public function defer(_:Noise,cont:Terminal<Report<CoroutineFailure<E>>,Noise>):Work{
     return __.option(
       Future.irreversible(
         (cb:Cycle->Void) -> {
-          cb(handler(effect));
+          cb(handler(effect,(report) -> cont.receive(cont.value(report))));
         }
       )
     );
   }
-  private final function handler(self:EffectDef<Dynamic>):Cycle{
+  private final function handler(self:EffectDef<Dynamic>,cont:Report<CoroutineFailure<E>>->Void):Cycle{
+    final f = handler.bind(_,cont);
     return switch(self){
-      case Emit(_,next) : Future.irreversible(cb -> cb(handler(next)));
-      case Wait(tran)   : Future.irreversible(cb -> cb(handler(tran(Push(Noise)))));
+      case Emit(_,next) : Future.irreversible(cb -> cb(f(next)));
+      case Wait(tran)   : Future.irreversible(cb -> cb(f(tran(Push(Noise)))));
       case Hold(held)   : 
-        final provide : Provide<Cycle>  = Provide.lift(held.map(handler));
+        final provide : Provide<Cycle>  = Provide.lift(held.map(f));
         provide.then(
           Fletcher.Anon(
             (inpt:Cycle,cont:Terminal<Noise,Noise>) -> {
@@ -144,9 +145,15 @@ class EffectFiber implements FletcherApi<Noise,Noise,Noise>{
         ).environment(
           (noise:Noise) -> {}
         ).cycle();
-      case Halt(Production(_))                : Cycle.unit();
-      case Halt(Terminated(Stop))             : Cycle.unit();
-      case Halt(Terminated(Exit(rejection)))  : throw rejection;
+      case Halt(Production(_))                : 
+        cont(__.report());
+        Cycle.unit();
+      case Halt(Terminated(Stop))             : 
+        cont(__.report());
+        Cycle.unit();
+      case Halt(Terminated(Exit(rejection)))  : 
+        cont(__.report(_ -> rejection));
+        Cycle.unit();
     }
   }
 }
