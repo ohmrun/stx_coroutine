@@ -24,7 +24,19 @@ enum CoroutineFailureSum<E>{
   private function get_self():CoroutineFailure<E> return lift(this);
 }
 class CoroutineFailureLift{
-  static public function and<E>(self:CoroutineFailure<E>,that:CoroutineFailure<E>){
+  static public function and<E>(self:CoroutineFailureSum<E>,that:CoroutineFailure<E>){
     return E_Coroutine_Both(self,that);
+  }
+  static public function errate<E,EE>(self:CoroutineFailureSum<E>,fn:E->EE):CoroutineFailure<EE>{
+    return switch(self){
+      case E_Coroutine_Input(i)     : E_Coroutine_Input(i);
+      case E_Coroutine_Output(o)    : E_Coroutine_Output(o);
+      case E_Coroutine_Return(r)    : E_Coroutine_Return(r);
+
+      case E_Coroutine_Note(note)   : E_Coroutine_Note(note);
+      
+      case E_Coroutine_Subsystem(e) : E_Coroutine_Subsystem(fn(e));
+      case E_Coroutine_Both(l,r)    : E_Coroutine_Both(errate(l,fn),errate(r,fn));
+    }
   }
 }

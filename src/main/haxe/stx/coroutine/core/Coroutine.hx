@@ -318,7 +318,7 @@ class CoroutineLift{
       )
     );
   }
-  static public function source<I,O,R,E>(self:Coroutine<I,O,R,E>,sig:Void->Future<Either<I,Cause<E>>>):Source<O,R,E>{
+  static public function source<I,O,R,E>(self:CoroutineSum<I,O,R,E>,sig:Void->Future<Either<I,Cause<E>>>):Source<O,R,E>{
     return Source.lift(switch(self){
       case Emit(o,next) : __.emit(o,source(next,sig));
       case Wait(arw)    : __.hold(
@@ -334,5 +334,23 @@ class CoroutineLift{
       case Hold(ft)     : __.hold(ft.mod(x -> (source(x,sig):CoroutineSum<Noise,O,R,E>)));
       case Halt(done)   : __.halt(done);
     });
+  }
+  static public function errate<I,O,R,E,EE>(self:CoroutineSum<I,O,R,E>,fn:E->EE):Coroutine<I,O,R,EE>{
+    final f = errate.bind(_,fn);
+    return switch(self){
+      case Emit(o,next)                   : __.emit(o,f(next));
+      case Wait(tran)                     : __.wait(Transmission.lift(
+        function(ctrl:Control<I,EE>) : Coroutine<I,O,R,EE> {
+          return ctrl.fold(
+            ok -> f(tran(Push(ok))),
+            no -> __.term(no)
+          );
+        }
+      ));
+      case Hold(held)                     : __.hold(held.mod(f));
+      case Halt(Terminated(Exit(r)))      : __.exit(r.errate( e -> e.errate(fn)));
+      case Halt(Terminated(Stop))         : __.stop();
+      case Halt(Production(r))            : __.prod(r);
+    }
   }
 }

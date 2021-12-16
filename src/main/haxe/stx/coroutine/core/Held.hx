@@ -40,7 +40,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
   @:noUsing static public function lazy<I,O,R,E>(spx:Thunk<Coroutine<I,O,R,E>>):Coroutine<I,O,R,E>{
     return __.hold(lift(Provide.fromFunXR(spx.prj())));
   }
-  public inline function mod<I1,O1,R1>(fn:Coroutine<I,O,R,E>->Coroutine<I1,O1,R1,E>):Held<I1,O1,R1,E>{
+  public inline function mod<I1,O1,R1,E1>(fn:Coroutine<I,O,R,E>->Coroutine<I1,O1,R1,E1>):Held<I1,O1,R1,E1>{
     return new Held(Provide._.convert(this,fn));
   }
   public function touch(before:Void->Void,after:Void->Void):Held<I,O,R,E>{
