@@ -111,4 +111,42 @@ class EffectLift{
       case Halt(e)                  : __.halt(e);
     });
   }
+  static public function toFiber<E>(self:Effect<E>):Fiber{
+    return Fiber.lift(new EffectFiber(self));
+  }
+}
+class EffectFiber implements FletcherApi<Noise,Noise,Noise>{
+  public var effect : Effect<Dynamic>;
+  public function new(effect){
+    this.effect = effect;
+  }
+  public function defer(_:Noise,cont:Terminal<Noise,Noise>):Work{
+    return __.option(
+      Future.irreversible(
+        (cb:Cycle->Void) -> {
+          cb(handler(effect));
+        }
+      )
+    );
+  }
+  private final function handler(self:EffectDef<Dynamic>):Cycle{
+    return switch(self){
+      case Emit(_,next) : Future.irreversible(cb -> cb(handler(next)));
+      case Wait(tran)   : Future.irreversible(cb -> cb(handler(tran(Push(Noise)))));
+      case Hold(held)   : 
+        final provide : Provide<Cycle>  = Provide.lift(held.map(handler));
+        provide.then(
+          Fletcher.Anon(
+            (inpt:Cycle,cont:Terminal<Noise,Noise>) -> {
+              return Work.fromCycle(inpt).seq(cont.receive(cont.value(Noise)));
+            }
+          )
+        ).environment(
+          (noise:Noise) -> {}
+        ).cycle();
+      case Halt(Production(_))                : Cycle.unit();
+      case Halt(Terminated(Stop))             : Cycle.unit();
+      case Halt(Terminated(Exit(rejection)))  : throw rejection;
+    }
+  }
 }
