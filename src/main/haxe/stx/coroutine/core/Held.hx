@@ -22,32 +22,59 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       )
     );
   }
-  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,CoroutineFailure<E>>,Noise>){
-    return lift(
-      Fletcher.Anon(
-        (ipt:Noise,cont:Terminal<Coroutine<I,O,R,E>,Noise>) -> cont.receive(
-          self.forward(Noise).fold_mapp(
-            (ok) -> {
-              //$type(ok);
-              final result : CoroutineSum<I,O,R,E> = ok.fold(
-                x -> {
-                  $type(x);
-                  return x;
-                },
-                n -> {
-                  $type(n);
-                  final result = __.exit(n.errate(_ -> E_Coroutine_Note(E_Coroutine_Note_Requirement_Not_Encountered)));
-                  $type(result);
-                  result;
-                }//__.success(__.exit($type(n)))
-              );
-              $type(result);
-              null;
-            },
-            no -> {
-              __.failure($type(no));
-              return null;
-            }
+  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,CoroutineFailure<E>>,Noise>):Held<I,O,R,E>{
+    return new Held(
+      Provide.lift(
+        Fletcher.Anon(
+          (ipt:Noise,cont:Terminal<Coroutine<I,O,R,E>,Noise>) -> cont.receive(
+            self.forward(Noise).fold_mapp(
+              (ok) -> {
+                //$type(ok);
+                final result : CoroutineSum<I,O,R,E> = ok.fold(
+                  x -> {
+                    //$type(x);
+                    function f(self:CoroutineSum<I,O,R,CoroutineFailure<E>>):Coroutine<I,O,R,E>{
+                      return switch(self){
+                        case Emit(o,next)                           : __.emit(o,__.hold(Held.Pause(f.bind(next))));
+                        case Wait(tran)                             : __.wait(
+                          (ctrl:Control<I,E>) -> switch(ctrl){
+                            case Quit(Exit(e))  : f(tran(Quit(Exit(e.errate(E_Coroutine_Subsystem)))));
+                            case Quit(Stop)     : __.stop(); 
+                            case Push(i)        : f(tran(Push(i)));
+                          }
+                        );
+                        case Hold(held)                             : 
+                          final result = held.convert(f);
+                       //   $type(result);
+                          __.hold(
+                            result
+                          );
+                        case Halt(Terminated(Exit(rejection)))      : 
+                          final result = __.exit(rejection.errate(e -> e.flatten()));
+                         // $type(result);
+                          result;
+                        case Halt(Production(r))                    : __.prod(r);
+                        case Halt(Terminated(Stop))                 : __.stop();
+                      }
+                    }
+                    final result = f(x);
+                    //$type(result);
+                    result;
+                  },
+                  n -> {
+                    $type(n);
+                    final result = __.exit(n.errate(_ -> E_Coroutine_Note(E_Coroutine_Note_Requirement_Not_Encountered)));
+                  //  $type(result);
+                    result;
+                  }//__.success(__.exit($type(n)))
+                );
+                //$type(result);
+                __.success(result);
+              },
+              no -> {
+                return __.failure(no);
+              }
+            )
           )
         )
       )
@@ -88,8 +115,8 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
   public function environment(handler):Fiber{
     return Provide._.environment(this,handler);
   }
-  public function convert(that){
-    return lift(Provide._.convert(this,that));
+  public function convert<Z>(that:Convert<CoroutineSum<I,O,R,E>,Z>):Provide<Z>{
+    return Provide._.convert(this,that);
   }
   public function toString():String{
     return 'HELD';

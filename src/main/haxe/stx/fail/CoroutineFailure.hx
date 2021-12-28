@@ -39,4 +39,15 @@ class CoroutineFailureLift{
       case E_Coroutine_Both(l,r)    : E_Coroutine_Both(errate(l,fn),errate(r,fn));
     }
   }
+  static public function flatten<E>(self:CoroutineFailureSum<CoroutineFailure<E>>):CoroutineFailure<E>{
+    return switch(self){
+      case E_Coroutine_Input(i)      : E_Coroutine_Input(i);
+      case E_Coroutine_Output(o)     : E_Coroutine_Output(o);
+      case E_Coroutine_Return(r)     : E_Coroutine_Return(r);
+      case E_Coroutine_Note(note)    : E_Coroutine_Note(note);
+      
+      case E_Coroutine_Subsystem(e)  : e;
+      case E_Coroutine_Both(l,r)     : E_Coroutine_Both(flatten(l),flatten(r));
+    }
+  }
 }
