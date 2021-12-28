@@ -1,6 +1,5 @@
 package stx.coroutine.pack;
 
-//TODO:  implement using stx.Stream
 using stx.Log;
 
 typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
@@ -122,7 +121,7 @@ class EffectExecute<E> implements FletcherApi<Noise,Report<CoroutineFailure<E>>,
   }
   public function defer(_:Noise,cont:Terminal<Report<CoroutineFailure<E>>,Noise>):Work{
     return __.option(
-      Future.irreversible(
+      () -> Future.irreversible(
         (cb:Cycle->Void) -> {
           cb(handler(effect,(report) -> cont.receive(cont.value(report))));
         }

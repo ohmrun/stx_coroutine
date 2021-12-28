@@ -33,7 +33,8 @@ typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Coroutine<I,O,R,E>;
   private function get_self():Transmission<I,O,R,E> return lift(this);
 }
 class TransmissionLift{
-  static public function mod<I,O,Oi,R,Ri,E>(self:Transmission<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Transmission<I,Oi,Ri,E>{
+  static public function mod<I,O,Oi,R,Ri,E>(self:TransmissionDef<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Transmission<I,Oi,Ri,E>{
     return Transmission.lift(self.fn().then(fn));
   }
+  //static public function reply<O,R,E>(self:TransmissionDef<Noise,O,R,E>)
 }

@@ -22,11 +22,33 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       )
     );
   }
+  // @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,CoroutineFailure<E>>,Noise>){
+  //   return lift(
+  //     Fletcher.Anon(
+  //       (ipt:Noise,cont:Terminal<Coroutine<I,O,R,E>,Noise>) -> cont.receive(
+  //         self.forward(Noise).fold_mapp(
+  //           (ok) -> {
+  //             $type(ok);
+  //             final result = ok.fold(
+  //               x -> null,
+  //               n -> __.success(__.exit($type(n)))
+  //             );
+  //             null;
+  //           },
+  //           no -> __.failure($type(no))
+  //         )
+  //       )
+  //     )
+  //   );
+  // }
   @:noUsing static public function Ready<I,O,R,E>(data:Coroutine<I,O,R,E>,?pos:Pos){
     return Provide.pure(data);
   }
   @:noUsing static public function Guard<I,O,R,E>(guard:Future<Coroutine<I,O,R,E>>,?pos:Pos):Held<I,O,R,E>{
     return lift(Provide.fromFuture(guard));
+  }
+  @:noUsing static public function Pause<I,O,R,E>(self:Void->Coroutine<I,O,R,E>):Held<I,O,R,E>{
+    return lift(Provide.fromFunXR(self));
   }
   @:noUsing static public function lift<I,O,R,E>(fn:HeldDef<I,O,R,E>):Held<I,O,R,E>{
     return new Held(fn);

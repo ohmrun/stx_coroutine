@@ -353,4 +353,28 @@ class CoroutineLift{
       case Halt(Production(r))            : __.prod(r);
     }
   }
+  static public function mod_r<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:Modulate<R,Ri,Cause<E>>):Coroutine<I,O,Ri,E>{
+    function f(self:CoroutineSum<I,O,R,E>){
+      return switch(self){
+        case Emit(o,next)             : __.emit(o,f(next));
+        case Wait(tran)               : __.wait(tran.mod(f));
+        case Hold(held)               : __.hold(held.mod(f));
+        case Halt(Production(r))      : 
+          final result =  Provide.lift(fn.produce(__.accept(r)).prj().map(
+            (res:Res<Ri,Cause<E>>) -> res.fold(
+              ok -> __.prod(ok),
+              no -> switch(no.val){
+                case Some(EXCEPT(Stop))                     : __.stop();
+                case Some(REFUSE(code))                     : __.term(__.fault(no.pos.defv(null)).internal(code));
+                case Some(EXCEPT(Exit(rejection)))          : __.exit(rejection);
+                case None                                   : __.stop();
+              }
+            )
+          ));
+          __.hold(result);
+        case Halt(Terminated(e))    : __.term(e);
+      }
+    }
+    return Coroutine.lift(f(self));
+  }
 }

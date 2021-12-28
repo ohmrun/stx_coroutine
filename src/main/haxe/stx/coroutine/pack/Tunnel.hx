@@ -91,23 +91,36 @@ class TunnelLift{
     __.log().debug('emiter: $self');
     var f = emiter.bind(_,that);
     return Emiter.lift(switch(self){
-      case Emit(head,tail)  : __.emit(head,f(tail));
-      case Hold(ft)         : __.hold(
+      case Emit(head,tail)      : __.emit(head,f(tail));
+      case Hold(ft)             : __.hold(
         Held.lift(ft.map(
           (pipe) -> Coroutine.lift(emiter(pipe,that))
         ))
       );
-      case Halt(e)           : __.halt(e);
-      case Wait(fn)          : 
+      case Halt(e)              : __.halt(e);
+      case Wait(fn)             : 
         switch(that){
-          case Emit(head,tail) : emiter(fn(head),tail);
-          case Hold(ft)        : __.hold(Held.lift(ft.map(
+          case Emit(head,tail)  : emiter(fn(head),tail); 
+          case Hold(ft)         : __.hold(Held.lift(ft.map(
             (pipe) -> Coroutine.lift(emiter(self,pipe))
           )));
-          case Wait(arw)       : emiter(self,arw(Push(Noise)));
-          case Halt(done)      : __.halt(done);
+          case Wait(arw)        : emiter(self,arw(Push(Noise)));
+          case Halt(done)       : __.halt(done);
         }
     });
   }
+  // //request next value rudely
+  // static public function demand<I,O,E>(self:Tunner<I,O,E>,i:I,fn:O->Tunnel<I,O,E>):Tunnel<I,O,E>{
+  
+  // }
+  /**
+   Reorders the outputs such that the first `true` from `fn` is produced first. `Rejection` if the stream
+   terminates without ever returning `true`. Infinite `Tunnel` unaffected.
+  **/
+  // static public function require<I,O,Z,E>(self:TunnelDef<I,O,E>,fn:Arrange<O,Tunnel<I,O,E>>->Option<Tunnel<I,O,E>>):Tunnel<I,O,E>{
+  //   function rec(self:TunnelDef<I,O,E>):TunnelDef<I,O,E>{
+      
+  //   }
+  //}
   //static public function tap<I,O,E>(self:Tu)
 }

@@ -4,10 +4,13 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
 
 @:using(stx.coroutine.pack.Emiter.EmiterLift)
 @:forward abstract Emiter<O,E>(EmiterDef<O,E>) from EmiterDef<O,E> to EmiterDef<O,E>{
-  
+  static public var _(default,never) = EmiterLift;  
   public function new(self:EmiterDef<O,E>) this = self;
   @:noUsing static public function lift<O,E>(self:EmiterDef<O,E>) return new Emiter(self);
 
+  @:noUsing static public function pure<T,E>(self:T):Emiter<T,E>{
+    return __.emit(self,__.prod(Noise));
+  }
   @:noUsing static public function unit<T,E>():Emiter<T,E>{
     return lift(__.wait(
       Transmission.fromFun1R( (_:Noise) -> __.stop()
@@ -265,26 +268,6 @@ class EmiterLift{
     }
     return recurse(self,next);
   }
-  // static public function bless<I,O,R,E>(self:Emiter<O,E>,fn:Status -> Option<Coroutine<I,O,R,E>>):Coroutine<I,O,R,E>{
-  //   return switch __.hold(
-  //     Held.Guard(
-  //       new Future(
-  //         function rec(cb){
-  //           switch(self){
-  //             case Emit(o,n)  : fn(Emitting).fold(
-  //               ok -> Emit(
-  //                 o,
-  //                 switch(ok){
-  //                   case Emit()
-  //                 }
-  //               )
-  //             )
-  //           }       
-  //         }
-  //       )
-  //     )
-  //   );
-  // }
   static public function sample<O,R,E>(self:Emiter<O,E>,fn:O->R->Chunk<R,E>,init:R):Source<O,R,E>{
     var data = init;
     function rec(self:CoroutineSum<Noise,O,Noise,E>):Coroutine<Noise,O,R,E>{
@@ -313,5 +296,20 @@ class EmiterLift{
       }
     }
     return rec(self);
+  }
+  static public function derive<O,R,E>(self:EmiterDef<O,E>,pure:O->R,plus:R->R->R,zero:R):Derive<R,E>{
+    var value = zero;
+    function f(self){
+      return switch(self){
+        case Emit(o,next) : 
+          value = plus(pure(o),zero);
+          __.emit(Noise,__.hold(Held.Pause(f.bind(next))));
+        case Wait(tran)                   : __.wait(tran.mod(f));
+        case Hold(held)                   : __.hold(held.mod(f));
+        case Halt(Production(_))          : __.prod(value);
+        case Halt(Terminated(cause))      : __.term(cause);
+      }
+    }
+    return f(self);
   }
 }
