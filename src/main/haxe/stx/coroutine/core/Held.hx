@@ -22,25 +22,37 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       )
     );
   }
-  // @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,CoroutineFailure<E>>,Noise>){
-  //   return lift(
-  //     Fletcher.Anon(
-  //       (ipt:Noise,cont:Terminal<Coroutine<I,O,R,E>,Noise>) -> cont.receive(
-  //         self.forward(Noise).fold_mapp(
-  //           (ok) -> {
-  //             $type(ok);
-  //             final result = ok.fold(
-  //               x -> null,
-  //               n -> __.success(__.exit($type(n)))
-  //             );
-  //             null;
-  //           },
-  //           no -> __.failure($type(no))
-  //         )
-  //       )
-  //     )
-  //   );
-  // }
+  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,CoroutineFailure<E>>,Noise>){
+    return lift(
+      Fletcher.Anon(
+        (ipt:Noise,cont:Terminal<Coroutine<I,O,R,E>,Noise>) -> cont.receive(
+          self.forward(Noise).fold_mapp(
+            (ok) -> {
+              //$type(ok);
+              final result : CoroutineSum<I,O,R,E> = ok.fold(
+                x -> {
+                  $type(x);
+                  return x;
+                },
+                n -> {
+                  $type(n);
+                  final result = __.exit(n.errate(_ -> E_Coroutine_Note(E_Coroutine_Note_Requirement_Not_Encountered)));
+                  $type(result);
+                  result;
+                }//__.success(__.exit($type(n)))
+              );
+              $type(result);
+              null;
+            },
+            no -> {
+              __.failure($type(no));
+              return null;
+            }
+          )
+        )
+      )
+    );
+  }
   @:noUsing static public function Ready<I,O,R,E>(data:Coroutine<I,O,R,E>,?pos:Pos){
     return Provide.pure(data);
   }

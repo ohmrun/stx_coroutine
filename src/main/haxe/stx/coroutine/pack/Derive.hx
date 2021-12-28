@@ -65,36 +65,35 @@ class DeriveLift{
     }
     return Effect.lift(recurse(self));
   }
-  static public function modulate<R,Ri,E>(self:DeriveDef<R,E>,fn:Modulate<R,Ri,CoroutineFailure<E>>):Derive<R,E>{
-    function f(self:DeriveDef<R,E>):DeriveDef<R,E>{
-      return switch(self){
-        case Emit(o,next)                           : __.emit(o,f(next));
-        case Wait(tran)                             : __.wait(tran.mod(f));
-        case Hold(held)                             : __.hold(held.mod(f));
-        case Halt(Terminated(Exit(rejection)))      : 
-          final result = 
-            fn.prj().produce(__.reject(rejection)).map(
-              res -> res.fold(
-                ok -> __.prod(ok),
-                no -> __.term(no)
-              )
-            );
-          $type(result);
-          //__.hold(Held.Produce(result));
-          null;
-        // case Halt(Production(r))                    : __.hold(Held.Ready(fn.prj().produce(__.accept(r)).map(
-        //   (res) -> res.fold(
-        //     ok -> __.prod(ok),
-        //     no -> __.term(no)
-        //   )
-        // )));
-        null;
-        case Halt(Terminated(Stop))                 : __.stop();
-        default                                     : __.stop();
-      }
-    }
-    return Derive.lift(self);
-  }
+  // static public function modulate<R,Ri,E>(self:DeriveDef<R,E>,fn:Modulate<R,Ri,CoroutineFailure<E>>):Derive<Ri,E>{
+  //   function f(self:DeriveDef<R,E>):DeriveDef<R,E>{
+  //     return switch(self){
+  //       case Emit(o,next)                           : __.emit(o,f(next));
+  //       case Wait(tran)                             : __.wait(tran.mod(f));
+  //       case Hold(held)                             : __.hold(held.mod(f));
+  //       case Halt(Terminated(Exit(rejection)))      : 
+  //         final result = 
+  //           fn.prj().produce(__.reject(rejection)).map(
+  //             res -> res.fold(
+  //               ok -> __.prod(ok),
+  //               no -> __.term(no)
+  //             )
+  //           );
+  //         __.hold(Held.fromProduce(result));
+  //         null;
+  //       // case Halt(Production(r))                    : __.hold(Held.Ready(fn.prj().produce(__.accept(r)).map(
+  //       //   (res) -> res.fold(
+  //       //     ok -> __.prod(ok),
+  //       //     no -> __.term(no)
+  //       //   )
+  //       // )));
+  //       null;
+  //       case Halt(Terminated(Stop))                 : __.stop();
+  //       default                                     : __.stop();
+  //     }
+  //   }
+  //   return Derive.lift(self);
+  // }
   static public function zip<R,Ri,E>(self:DeriveDef<R,E>,that:DeriveDef<Ri,E>):Derive<Couple<R,Ri>,E>{
     function f(self,that):DeriveDef<Couple<R,Ri>,E>{
       return switch([self,that]){
@@ -112,7 +111,7 @@ class DeriveLift{
         case [Halt(Terminated(Exit(e0))),Halt(Terminated(Exit(e1)))]  : __.exit(e0.concat(e1));
         case [Halt(Terminated(Stop)),Halt(Terminated(Exit(e1)))]      : __.exit(e1);
         case [Halt(Terminated(Exit(e))),Halt(Terminated(Stop))]       : __.exit(e);
-        case [Halt(Terminated(Stop)),_]                                : __.stop();
+        case [Halt(Terminated(Stop)),_]                               : __.stop();
         case [Halt(_),Halt(Terminated(Stop))]                         : __.stop();
         case [_,Halt(Terminated(Stop))]                               : __.stop();
         case [_,Halt(Terminated(Exit(e)))]                            : __.exit(e);
