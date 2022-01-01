@@ -136,7 +136,7 @@ class DeriveLift{
     return Effect.lift(f(self));
   }
   static public function map<R,Ri,E>(self:DeriveDef<R,E>,fn:R->Ri):Derive<Ri,E>{
-    function f(self:DeriveDef<R,E>){
+    function f(self:DeriveDef<R,E>):DeriveDef<Ri,E>{
       return switch(self){
         case Emit(o,next)             : __.emit(o,f(next));
         case Wait(tran)               : __.wait(tran.mod(f));

@@ -36,5 +36,8 @@ class TransmissionLift{
   static public function mod<I,O,Oi,R,Ri,E>(self:TransmissionDef<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Transmission<I,Oi,Ri,E>{
     return Transmission.lift(self.fn().then(fn));
   }
+  static public function imply<I,O,R,E>(self:TransmissionDef<I,O,R,E>,input:I):Coroutine<I,O,R,E>{
+    return self(Push(input));
+  }
   //static public function reply<O,R,E>(self:TransmissionDef<Noise,O,R,E>)
 }
