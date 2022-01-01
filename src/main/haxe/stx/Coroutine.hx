@@ -16,7 +16,7 @@ typedef Emiter<O,E>                     = stx.coroutine.pack.Emiter<O,E>;       
 typedef SourceDef<O,R,E>                = stx.coroutine.pack.Source.SourceDef<O,R,E>;                 //011
 typedef Source<O,R,E>                   = stx.coroutine.pack.Source<O,R,E>;                           //011
 
-typedef Accept<I,E>                     = stx.coroutine.pack.Accept<I,E>;                             //100
+typedef Secure<I,E>                     = stx.coroutine.pack.Secure<I,E>;                             //100
 
 typedef Relate<I,R,E>                   = stx.coroutine.pack.Relate<I,R,E>;                           //101
 typedef RelateDef<I,O,E>                = stx.coroutine.pack.Relate.RelateDef<I,O,E>;                 //110

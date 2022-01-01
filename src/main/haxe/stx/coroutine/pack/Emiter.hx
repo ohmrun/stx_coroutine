@@ -253,7 +253,7 @@ class EmiterLift{
   static public function filter<O,E>(self:Emiter<O,E>,prd:O->Bool):Emiter<O,E>{
     return Emiter.lift(Source._.filter(Source.lift(self),prd));
   }
-  static public function accept<O,E>(self:Emiter<O,E>,next:Accept<O,E>):Effect<E>{
+  static public function secure<O,E>(self:Emiter<O,E>,next:Secure<O,E>):Effect<E>{
     function recurse(self:Coroutine<Noise,O,Noise,E>,next:Coroutine<O,Noise,Noise,E>):Coroutine<Noise,Noise,Noise,E>{
       var fl = __.into(recurse.bind(_,next));
       return Effect.lift(switch([self,next]){

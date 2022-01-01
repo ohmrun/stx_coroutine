@@ -123,4 +123,16 @@ class DeriveLift{
   // static public function regulate<R,E>(self:DeriveDef<R,E>,fn:Regulate<R,E>):Regulate<R,E>{
   //   return modulate(self,fn);
   // }
+  static public function secure<R,E>(self:DeriveDef<R,E>,that:Secure<R,E>):Effect<E>{
+    function f(self:DeriveDef<R,E>):EffectDef<E>{
+      return switch(self){
+        case Emit(o,next)             : __.emit(o,f(next));
+        case Wait(tran)               : __.wait(tran.mod(f));
+        case Hold(held)               : __.hold(held.mod(f));
+        case Halt(Production(r))      : that.provide(r).close();
+        case Halt(Terminated(e))      : __.term(e);
+      }
+    }
+    return Effect.lift(f(self));
+  }
 }
