@@ -365,7 +365,7 @@ class CoroutineLift{
               ok -> __.prod(ok),
               no -> switch(no.val){
                 case Some(EXCEPT(Stop))                     : __.stop();
-                case Some(REFUSE(code))                     : __.term(__.fault(no.pos.defv(null)).internal(code));
+                case Some(REFUSE(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
                 case Some(EXCEPT(Exit(rejection)))          : __.exit(rejection);
                 case None                                   : __.stop();
               }

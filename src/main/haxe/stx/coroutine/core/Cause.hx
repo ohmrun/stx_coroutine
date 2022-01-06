@@ -27,7 +27,7 @@ class CauseLift{
   static public function toOption<E>(self:Cause<E>):Option<Rejection<CoroutineFailure<E>>>{
     return switch(self){
       case Exit(err)      : Some(err);
-      case Stop           : Some(__.fault().external("STOP"));
+      case Stop           : Some(__.fault().explain(_ -> _.e_coroutine_stop()));
     }
   }
   static public function next<E>(thiz:Cause<E>,that:Cause<E>):Cause<E>{

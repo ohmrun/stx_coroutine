@@ -20,3 +20,4 @@ typedef ReturnSum<R,E>                  = stx.coroutine.core.Return.ReturnSum<R,
 typedef Return<R,E>                     = stx.coroutine.core.Return<R,E>;
 
 typedef Status                          = stx.coroutine.core.Status;
+typedef Errors                          = stx.coroutine.core.Errors;

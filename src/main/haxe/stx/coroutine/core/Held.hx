@@ -62,7 +62,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
                     result;
                   },
                   n -> {
-                    $type(n);
+                    //$type(n);
                     final result = __.exit(n.errate(_ -> E_Coroutine_Note(E_Coroutine_Note_Requirement_Not_Encountered)));
                   //  $type(result);
                     result;

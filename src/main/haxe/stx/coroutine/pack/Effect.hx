@@ -113,20 +113,20 @@ class EffectLift{
   static public function toExecute<E>(self:Effect<E>):Execute<CoroutineFailure<E>>{
     return Execute.lift(Fletcher.fromApi(new EffectExecute(self)));
   }
-  static public function then<I,O,R,E>(self:Effect<E>,that:Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public function next<I,O,R,E>(self:Effect<E>,that:Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
     function f(self:Effect<E>):CoroutineSum<I,O,R,E>{
       return switch(self){
         case Emit(o,next)                 : __.hold(Held.Pause(f.bind(next)));
-        // case Wait(tran)                   : __.tran(
-        //   (i:I) -> {
-        //     return f(__.hold(Held.Pause(tran.imply.fn().then(f).bind(i))));
-        //   }
-        // );
-        // case Hold(held)                   : __.hold(
-        //   held.convert(
-        //     self -> f(self)
-        //   )
-        // );
+        case Wait(tran)                   : __.tran(
+          (i:I) -> {
+            return __.hold(Held.Pause(f.bind(tran(Push(Noise))))).provide(i);
+          }
+        );
+        case Hold(held)                   : __.hold(
+          held.convert(
+            self -> f(self)
+          )
+        );
         case Halt(Production(_))          : that;
         case Halt(Terminated(c))          : __.term(c);
         default : null;
