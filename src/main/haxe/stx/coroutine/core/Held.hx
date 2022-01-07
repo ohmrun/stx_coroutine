@@ -16,13 +16,13 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
         Fletcher.Sync(
           (res:Res<Coroutine<I,O,R,E>,E>) -> res.fold(
             ok -> ok,
-            no -> __.exit(no.errate(E_Coroutine_Subsystem))
+            no -> __.exit(no)
           )
         )
       )
     );
   }
-  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,CoroutineFailure<E>>,Noise>):Held<I,O,R,E>{
+  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,E>,Noise>):Held<I,O,R,E>{
     return new Held(
       Provide.lift(
         Fletcher.Anon(
@@ -33,12 +33,12 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
                 final result : CoroutineSum<I,O,R,E> = ok.fold(
                   x -> {
                     //$type(x);
-                    function f(self:CoroutineSum<I,O,R,CoroutineFailure<E>>):Coroutine<I,O,R,E>{
+                    function f(self:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
                       return switch(self){
                         case Emit(o,next)                           : __.emit(o,__.hold(Held.Pause(f.bind(next))));
                         case Wait(tran)                             : __.wait(
                           (ctrl:Control<I,E>) -> switch(ctrl){
-                            case Quit(Exit(e))  : f(tran(Quit(Exit(e.errate(E_Coroutine_Subsystem)))));
+                            case Quit(Exit(e))  : f(tran(Quit(Exit(e))));
                             case Quit(Stop)     : __.stop(); 
                             case Push(i)        : f(tran(Push(i)));
                           }
@@ -50,7 +50,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
                             result
                           );
                         case Halt(Terminated(Exit(rejection)))      : 
-                          final result = __.exit(rejection.errate(e -> e.flatten()));
+                          final result = __.exit(rejection);
                          // $type(result);
                           result;
                         case Halt(Production(r))                    : __.prod(r);
@@ -63,7 +63,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
                   },
                   n -> {
                     //$type(n);
-                    final result = __.exit(n.errate(_ -> E_Coroutine_Note(E_Coroutine_Note_Requirement_Not_Encountered)));
+                    final result = __.exit(n.fault().explain(_ -> _.e_undefined()));//TODO what case is this?
                   //  $type(result);
                     result;
                   }//__.success(__.exit($type(n)))

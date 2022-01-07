@@ -2,7 +2,7 @@ package stx.coroutine.core;
 
 enum CauseSum<E>{
   Stop;
-  Exit(err:Rejection<CoroutineFailure<E>>);
+  Exit(err:Rejection<E>);
   //Timeout();
 }
 
@@ -17,14 +17,14 @@ abstract Cause<E>(CauseSum<E>) from CauseSum<E> to CauseSum<E>{
   //   return Exit(Rejection.fromTinkRejection(e));
   // }
   @:from static public function fromRejection<E>(e:Rejection<E>):Cause<E>{
-    return Exit(e.errate(E_Coroutine_Subsystem));
+    return Exit(e);
   }
-  static public function early<E>(e:Rejection<CoroutineFailure<E>>):Cause<E>{
+  static public function early<E>(e:Rejection<E>):Cause<E>{
     return Exit(e);
   }
 } 
 class CauseLift{
-  static public function toOption<E>(self:Cause<E>):Option<Rejection<CoroutineFailure<E>>>{
+  static public function toOption<E>(self:Cause<E>):Option<Rejection<E>>{
     return switch(self){
       case Exit(err)      : Some(err);
       case Stop           : Some(__.fault().explain(_ -> _.e_coroutine_stop()));

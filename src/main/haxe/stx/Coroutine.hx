@@ -1,9 +1,9 @@
-package stx;
+ package stx;
 
-typedef CoroutineFailureSum<E>          = stx.fail.CoroutineFailure.CoroutineFailureSum<E>;
-typedef CoroutineFailure<E>             = stx.fail.CoroutineFailure<E>;
+// typedef CoroutineFailureSum<E>          = stx.fail.CoroutineFailure.CoroutineFailureSum<E>;
+// typedef CoroutineFailure<E>             = stx.fail.CoroutineFailure<E>;
 
-typedef CoroutineFailureNote            = stx.fail.CoroutineFailureNote;
+// typedef CoroutineFailureNote            = stx.fail.CoroutineFailureNote;
 
 typedef Effect<E>                       = stx.coroutine.pack.Effect<E>;                               //000 
 typedef EffectDef<E>                    = stx.coroutine.pack.Effect.EffectDef<E>;                     //000
@@ -41,9 +41,9 @@ class LiftCoroutine{
   //   return new Tunnel(spx);
   // }
   static public inline function quit<I,O,R,E>(wildcard:Wildcard,er:Rejection<E>):Coroutine<I,O,R,E>{
-    return term(__,Exit(er.errate(E_Coroutine_Subsystem)));
+    return term(__,Exit(er));
   }
-  static public inline function exit<I,O,R,E>(wildcard:Wildcard,er:Rejection<CoroutineFailure<E>>):Coroutine<I,O,R,E>{
+  static public inline function exit<I,O,R,E>(wildcard:Wildcard,er:Rejection<E>):Coroutine<I,O,R,E>{
     return term(__,Exit(er));
   }
   static public inline function halt<I,O,R,E>(wildcard:Wildcard,ret:Return<R,E>):Coroutine<I,O,R,E>{

@@ -110,7 +110,7 @@ class EffectLift{
       case Halt(e)                  : __.halt(e);
     });
   }
-  static public function toExecute<E>(self:Effect<E>):Execute<CoroutineFailure<E>>{
+  static public function toExecute<E>(self:Effect<E>):Execute<E>{
     return Execute.lift(Fletcher.fromApi(new EffectExecute(self)));
   }
   static public function next<I,O,R,E>(self:Effect<E>,that:Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
@@ -135,12 +135,12 @@ class EffectLift{
     return f(self);
   }
 }
-class EffectExecute<E> implements FletcherApi<Noise,Report<CoroutineFailure<E>>,Noise>{
+class EffectExecute<E> implements FletcherApi<Noise,Report<E>,Noise>{
   public var effect : Effect<E>;
   public function new(effect){
     this.effect = effect;
   }
-  public function defer(_:Noise,cont:Terminal<Report<CoroutineFailure<E>>,Noise>):Work{
+  public function defer(_:Noise,cont:Terminal<Report<E>,Noise>):Work{
     return __.option(
       () -> Future.irreversible(
         (cb:Cycle->Void) -> {
@@ -149,7 +149,7 @@ class EffectExecute<E> implements FletcherApi<Noise,Report<CoroutineFailure<E>>,
       )
     );
   }
-  private final function handler(self:EffectDef<Dynamic>,cont:Report<CoroutineFailure<E>>->Void):Cycle{
+  private final function handler(self:EffectDef<Dynamic>,cont:Report<E>->Void):Cycle{
     final f = handler.bind(_,cont);
     return switch(self){
       case Emit(_,next) : Future.irreversible(cb -> cb(f(next)));
