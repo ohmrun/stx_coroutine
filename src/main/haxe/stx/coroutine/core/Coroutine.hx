@@ -38,7 +38,7 @@ class CoroutineLift{
   static public function cons<I,O,R,E>(spx:Coroutine<I,O,R,E>,o:O):Coroutine<I,O,R,E>{
     return __.emit(o,spx);
   }
-  static public function provide<I,O,R,E>(self:Coroutine<I,O,R,E>,i:I):Coroutine<I,O,R,E>{
+  static public function provide<I,O,R,E>(self:CoroutineSum<I,O,R,E>,i:I):Coroutine<I,O,R,E>{
     var f = provide.bind(_,i);
     return switch(self){
       case Emit(head,rest)            : __.emit(head,f(rest));
@@ -49,7 +49,7 @@ class CoroutineLift{
       case Halt(Terminated(Exit(e)))  : __.exit(e.concat(__.fault().explain(_ -> _.e_coroutine_provided_value_to_stopped_coroutine())));
     }
   }
-  static public function map<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn:O->Oi):Coroutine<I,Oi,R,E>{
+  static public function map<I,O,Oi,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Oi):Coroutine<I,Oi,R,E>{
     var f = map.bind(_,fn);
     return switch(self){
       case Emit(head,rest)            : __.emit(fn(head),f(rest));
@@ -83,7 +83,7 @@ class CoroutineLift{
       case Halt(Production(r))          : __.prod(r);
     }
   }
-  static public function map_r<I,O,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:R->Ri):Coroutine<I,O,Ri,E>{
+  static public function map_r<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:R->Ri):Coroutine<I,O,Ri,E>{
     var f = map_r.bind(_,fn);
     return switch(self){
       case Emit(head,rest)            : __.emit(head,f(rest));
@@ -93,7 +93,7 @@ class CoroutineLift{
       case Halt(Terminated(e))        : __.term(e);
     }
   }
-  static public function map_or_halt<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn: O -> Either<Cause<E>,Oi>):Coroutine<I,Oi,R,E>{
+  static public function map_or_halt<I,O,Oi,R,E>(self:CoroutineSum<I,O,R,E>,fn: O -> Either<Cause<E>,Oi>):Coroutine<I,Oi,R,E>{
     var f = map_or_halt.bind(_,fn);
     return switch(self){
       case Emit(head,rest)            : fn(head).fold(
@@ -106,7 +106,7 @@ class CoroutineLift{
       case Halt(Terminated(e))        : __.term(e);
     }
   }
-  static public function relate<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Report<E>):Relate<I,R,E>{
+  static public function relate<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Report<E>):Relate<I,R,E>{
     function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Noise,R,E>{
       return switch self{
         case Emit(o, next) : fn(o).fold(
@@ -120,7 +120,7 @@ class CoroutineLift{
     }
     return Relate.lift(rec(self));
   }
-  static public function filter<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
+  static public function filter<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
     function rec(self:CoroutineSum<I,O,R,E
       >):CoroutineSum<I,O,R,E>{
       return switch self{
@@ -135,7 +135,7 @@ class CoroutineLift{
     }
     return rec(self);
   }
-  static public function map_filter<I,O,Oi,R,E>(self:Coroutine<I,O,R,E>,fn:O->Option<Oi>):Coroutine<I,Oi,R,E>{
+  static public function map_filter<I,O,Oi,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Option<Oi>):Coroutine<I,Oi,R,E>{
     function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Oi,R,E>{
       return switch self{
         case Emit(o, next)  : fn(o).fold(
@@ -152,7 +152,7 @@ class CoroutineLift{
   /**
     Anytime you produce a handler in capture, the value is pushed into it and removed from the stream.
   **/
-  static public function partial<I,O,R,E>(self:Coroutine<I,O,R,E>,capture:O->Option<O->Void>):Coroutine<I,O,R,E>{
+  static public function partial<I,O,R,E>(self:CoroutineSum<I,O,R,E>,capture:O->Option<O->Void>):Coroutine<I,O,R,E>{
     return map_filter(
       self,
       (o) -> capture(o).fold(
@@ -168,7 +168,7 @@ class CoroutineLift{
     As with partial but starts pulling values from the stream on the first success and stops on the first failure
     after that.
   **/
-  static public function window<I,O,R,E>(self:Coroutine<I,O,R,E>,capture:O->Option<O->Void>):Coroutine<I,O,R,E>{
+  static public function window<I,O,R,E>(self:CoroutineSum<I,O,R,E>,capture:O->Option<O->Void>):Coroutine<I,O,R,E>{
     var stage = 0;
     return map_filter(
       self,
@@ -195,7 +195,7 @@ class CoroutineLift{
       }
     );
   }
-  static public function immediate<I,O,R,E>(self:Coroutine<I,O,R,E>,effect:Fiber):Coroutine<I,O,R,E>{
+  static public function immediate<I,O,R,E>(self:CoroutineSum<I,O,R,E>,effect:Fiber):Coroutine<I,O,R,E>{
     return __.hold(
       Held.lift(
         effect.then(
@@ -204,7 +204,7 @@ class CoroutineLift{
       )
     );
   }
-  static public function flat_map_r<I,O,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:R->Coroutine<I,O,Ri,E>):Coroutine<I,O,Ri,E>{
+  static public function flat_map_r<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:R->Coroutine<I,O,Ri,E>):Coroutine<I,O,Ri,E>{
     var f = flat_map_r.bind(_,fn);
     return switch(self){
       case Emit(head,rest)            : __.emit(head,f(rest));
@@ -220,7 +220,7 @@ class CoroutineLift{
   /** 
     
   **/
-  static public function mod<I,O,Oi,R,Ri,E>(self:Coroutine<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
+  static public function mod<I,O,Oi,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
       case Wait(arw)                    : Wait(arw.mod(fn));
       case Hold(slot)                   : Hold(slot.convert(fn));
@@ -240,7 +240,7 @@ class CoroutineLift{
     return recurse(self);
   }
   /****/
-  static public function escape<I,O,R,E>(self:Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
+  static public function escape<I,O,R,E>(self:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return switch(self){
       case Emit(head,rest)              : rest.mod(escape);
       case Wait(arw)                    : arw(Quit(None)).mod(escape);
@@ -248,14 +248,14 @@ class CoroutineLift{
       case Halt(e)                      : __.halt(e);
     }
   }
-  static public function touch<I,O,R,E>(self:Coroutine<I,O,R,E>,before:Void->Void,after:Void->Void):Coroutine<I,O,R,E>{
+  static public function touch<I,O,R,E>(self:CoroutineSum<I,O,R,E>,before:Void->Void,after:Void->Void):Coroutine<I,O,R,E>{
     return switch(self){
       case Wait(arw)  : __.wait(arw.touch(before,after));
       case Hold(h)    : __.hold(h.touch(before,after));
       default         : self;
     }
   }
-  static public function on_return<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:Return<R,E>->Void):Coroutine<I,O,R,E>{
+  static public function on_return<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:Return<R,E>->Void):Coroutine<I,O,R,E>{
     var f = __.into(on_return.bind(_,fn));
     return switch(self){
       case Wait(arw)        : __.wait(arw.mod(f));
@@ -266,9 +266,9 @@ class CoroutineLift{
         __.halt(ret);
     }
   }
-  static public function tap<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:Phase<I,O,R,E>->Void):Coroutine<I,O,R,E>{
+  static public function tap<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:Phase<I,O,R,E>->Void):Coroutine<I,O,R,E>{
     var f = tap.bind(_,fn);
-    return switch self.prj() {
+    return switch self {
       case Emit(o, next)  : fn(Opt(o)); __.emit(o,f(next));
       case Wait(tran)     : __.wait(
         (ctrl:Control<I>) -> {
@@ -280,12 +280,12 @@ class CoroutineLift{
       case Halt(r)        : fn(Rtn(r)); __.halt(r);
     }
   }
-  static public function hook<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
+  static public function hook<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
     return self.map(
       __.passthrough(fn)
     );
   }
-  static public function once<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
+  static public function once<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
     var done = false;
     return hook(
       self,
@@ -298,7 +298,7 @@ class CoroutineLift{
       )
     );
   }
-  static public function until<I,O,R,E>(self:Coroutine<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
+  static public function until<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Bool):Coroutine<I,O,R,E>{
     var cont = true;
     return hook(
       self,
@@ -309,7 +309,7 @@ class CoroutineLift{
       }
     );
   }
-  static public function pause<I,O,R,E>(self:Coroutine<I,O,R,E>,ft:Future<Noise>):Coroutine<I,O,R,E>{
+  static public function pause<I,O,R,E>(self:CoroutineSum<I,O,R,E>,ft:Future<Noise>):Coroutine<I,O,R,E>{
     return __.hold(
       Provide.fromFuture(
         ft.map(_ -> self )
