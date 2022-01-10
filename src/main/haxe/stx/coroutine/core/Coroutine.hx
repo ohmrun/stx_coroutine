@@ -61,7 +61,7 @@ class CoroutineLift{
   static public function map_i<I,Ii,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:Ii->I):Coroutine<Ii,O,R,E>{
     return switch(self){
       case Emit(o,next) : Emit(o,map_i(next,fn));
-      case Wait(tran)   : Wait((i:Control<Ii,E>) -> map_i(tran(i.map(fn)),fn)); 
+      case Wait(tran)   : Wait((i:Control<Ii>) -> map_i(tran(i.map(fn)),fn)); 
       case Hold(held)   : __.hold(held.mod(map_i.bind(_,fn)));
       case Halt(r)      : Halt(r);
     }
@@ -71,12 +71,10 @@ class CoroutineLift{
     return switch prc {
       case Emit(o, next)    : __.emit(o,f(next));
       case Wait(fn)         : __.wait(
-        (ctl:Control<I,EE>) -> ctl.fold(
+        (ctl:Control<I>) -> ctl.fold(
           (v) -> f(fn(Push(v))),
-          (c) -> switch(c){
-            case Stop     : Halt(Terminated(Stop));
-            case Exit(e)  : Halt(Terminated(Exit(e)));
-          }
+          (e) -> Halt(Terminated(Exit(e.toRejection()))),
+          ()  -> Halt(Terminated(Stop))
         )
       );
       case Hold(ft)                     : __.hold(Held.lift(ft.map(v -> f(v))));
@@ -245,7 +243,7 @@ class CoroutineLift{
   static public function escape<I,O,R,E>(self:Coroutine<I,O,R,E>):Coroutine<I,O,R,E>{
     return switch(self){
       case Emit(head,rest)              : rest.mod(escape);
-      case Wait(arw)                    : arw(Quit(Stop)).mod(escape);
+      case Wait(arw)                    : arw(Quit(None)).mod(escape);
       case Hold(h)                      : __.hold(h.mod(__.into(escape)));
       case Halt(e)                      : __.halt(e);
     }
@@ -273,7 +271,7 @@ class CoroutineLift{
     return switch self.prj() {
       case Emit(o, next)  : fn(Opt(o)); __.emit(o,f(next));
       case Wait(tran)     : __.wait(
-        (ctrl:Control<I,E>) -> {
+        (ctrl:Control<I>) -> {
           fn(Ipt(ctrl));
           return f(tran(ctrl));
         }
@@ -340,10 +338,11 @@ class CoroutineLift{
     return switch(self){
       case Emit(o,next)                   : __.emit(o,f(next));
       case Wait(tran)                     : __.wait(Transmission.lift(
-        function(ctrl:Control<I,EE>) : Coroutine<I,O,R,EE> {
+        function(ctrl:Control<I>) : Coroutine<I,O,R,EE> {
           return ctrl.fold(
             ok -> f(tran(Push(ok))),
-            no -> __.term(no)
+            no -> __.term(Exit(no.toRejection())),
+            () -> __.stop()
           );
         }
       ));

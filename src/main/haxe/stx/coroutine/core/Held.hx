@@ -37,10 +37,10 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
                       return switch(self){
                         case Emit(o,next)                           : __.emit(o,__.hold(Held.Pause(f.bind(next))));
                         case Wait(tran)                             : __.wait(
-                          (ctrl:Control<I,E>) -> switch(ctrl){
-                            case Quit(Exit(e))  : f(tran(Quit(Exit(e))));
-                            case Quit(Stop)     : __.stop(); 
-                            case Push(i)        : f(tran(Push(i)));
+                          (ctrl:Control<I>) -> switch(ctrl){
+                            case Quit(None)     : __.stop();
+                            case Quit(Some(e))  : f(tran(Control.quit(e))); 
+                            case Push(i)        : f(tran(Control.push(i)));
                           }
                         );
                         case Hold(held)                             : 

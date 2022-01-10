@@ -1,7 +1,7 @@
 package stx.coroutine.core;
 
 
-typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Coroutine<I,O,R,E>;
+typedef TransmissionDef<I,O,R,E> = Control<I> -> Coroutine<I,O,R,E>;
 
 @:using(stx.coroutine.core.Transmission.TransmissionLift)
 @:callable abstract Transmission<I,O,R,E>(TransmissionDef<I,O,R,E>) from TransmissionDef<I,O,R,E> to TransmissionDef<I,O,R,E>{
@@ -9,14 +9,15 @@ typedef TransmissionDef<I,O,R,E> = Control<I,E> -> Coroutine<I,O,R,E>;
   static public function lift<I,O,R,E>(self:TransmissionDef<I,O,R,E>):Transmission<I,O,R,E> return new Transmission(self);
   
   @:noUsing static public inline function fromFun1R<I,O,R,E>(fn:I->Coroutine<I,O,R,E>){
-    return lift((control:Control<I,E>) -> control.fold(
+    return lift((control:Control<I>) -> control.fold(
       fn,
-      __.term      
+      (e:Error<Digest>) -> __.term(e.toRejection()),
+      () -> __.stop()
     ));
   }
   public function touch(before:Void->Void,after:Void->Void):Transmission<I,O,R,E>{
     return lift(
-      (control:Control<I,E>) -> {
+      (control:Control<I>) -> {
         before();
         var value = this(control);
         after();

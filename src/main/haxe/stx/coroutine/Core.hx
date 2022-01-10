@@ -3,8 +3,8 @@ package stx.coroutine;
 /**
   Control Structures
 **/
-typedef ControlSum<I,E>                 = stx.coroutine.core.Control.ControlSum<I,E>;
-typedef Control<I,E>                    = stx.coroutine.core.Control<I,E>;
+typedef ControlSum<I>                   = stx.coroutine.core.Control.ControlSum<I>;
+typedef Control<I>                      = stx.coroutine.core.Control<I>;
  
 typedef CauseSum<E>                     = stx.coroutine.core.Cause.CauseSum<E>;
 typedef Cause<E>                        = stx.coroutine.core.Cause<E>;
