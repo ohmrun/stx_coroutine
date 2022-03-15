@@ -4,6 +4,7 @@ typedef DeriveDef<R,E> = CoroutineSum<Noise,Noise,R,E>;
 
 @:using(stx.coroutine.pack.Derive.DeriveLift)
 @:forward abstract Derive<R,E>(DeriveDef<R,E>) from DeriveDef<R,E> to DeriveDef<R,E>{
+  static public var _(default,never) = DeriveLift;
   public function new(self:DeriveDef<R,E>) this = self;
   @:noUsing static public function lift<R,E>(self:DeriveDef<R,E>) return new Derive(self);
   @:from static public function fromCoroutine<I,O,R,E>(spx:Coroutine<Noise,Noise,R,E>):Derive<R,E>{
@@ -147,5 +148,54 @@ class DeriveLift{
     }
     return Derive.lift(f(self));
   }
-  //static public function fiber<R,E>(self:Derive<R,E>):Fu
+  static public function produce<R,E>(self:DeriveDef<R,E>):Produce<R,E>{
+    final t = Future.trigger();
+    function f(v:R){
+      t.trigger(v);
+    }
+    return Produce.fromPledge(
+      Pledge.lift(@:privateAccess Future.either(secure(self,f).run(),t).map(
+        either -> switch(either) {
+          case Left(None)                   : __.reject(__.fault().explain(_ -> _.e_coroutine_stop()));
+          case Left(Some(Stop))             : __.reject(__.fault().explain(_ -> _.e_coroutine_stop()));
+          case Left(Some(Exit(rejection)))  : __.reject(rejection);
+          case Right(value)                 : __.accept(value);
+        }   
+      ))
+    );
+  }
+  ////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////
+  
+  static public function run<R,E>(eff:Derive<R,E>):Future<Outcome<R,Cause<E>>>{
+    __.log().info('run $eff');
+    var t     = Future.trigger();
+    loop(eff,t);
+    return t.asFuture();
+  }
+  static function loop<R,E>(eff:DeriveDef<R,E>,f:FutureTrigger<Outcome<R,Cause<E>>>){
+    __.log().debug('loop $eff');
+    var now = eff;
+
+    while(true){
+      switch(now){
+        case Halt(h)      : switch(h){
+          case Terminated(cause)    : f.trigger(__.failure(cause));
+          case Production(value)    : f.trigger(__.success(value));
+        }
+        break;
+        case Hold(ft)     :
+          __.log().debug('hold'); 
+          ft.environment(
+            (x) -> {
+              __.log().debug('hold:release');
+              loop(x,f);
+            }
+          ).submit();
+          break;
+        case Wait(fn)     : now = fn(Push(Noise));
+        case Emit(_,nxt)  : now = nxt;
+      }
+    }
+  }
 }

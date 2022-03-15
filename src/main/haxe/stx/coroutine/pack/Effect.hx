@@ -19,85 +19,26 @@ typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
   @:from static public function fromCoroutine<E>(self:Coroutine<Noise,Noise,Noise,E>):Effect<E>{
     return lift(self);
   }
+  public function prj():EffectDef<E>{
+    return this;
+  }
 }
 class EffectLift{
+  static public function run<E>(self:Effect<E>):Future<Option<Cause<E>>>{
+    return Derive._.run(self.prj()).map(outcome -> outcome.fold(ok -> None,no -> Some(no)));
+  }
   static public function submit<E>(eff:Effect<E>):Void{
-    run(eff).handle(
-      (cause) -> switch(cause){
-        case Some(Exit(e))  :
-          __.log().fatal(_ -> _.pure(e));   
-          throw(e);
-        default             : 
-      } 
+    Derive._.run(eff.prj()).handle(
+      (res) -> res.fold(
+        (_) -> {},
+        cause -> switch(cause){
+          case Exit(e)  :
+            __.log().fatal(_ -> _.pure(e));   
+            throw(e); 
+          default             : 
+        } 
+      )
     );
-  }
-  static public function run<E>(eff:Effect<E>):Future<Option<Cause<E>>>{
-    __.log().info('run $eff');
-    var t     = Future.trigger();
-    loop(eff,t);
-    return t;
-  }
-  static function loop<E>(eff:EffectDef<E>,f:FutureTrigger<Option<Cause<E>>>){
-    __.log().debug('loop $eff');
-    var now = eff;
-
-    while(true){
-      switch(now){
-        case Halt(h)      : switch(h){
-          case Terminated(cause)    : f.trigger(Option.pure(cause));
-          default                   : f.trigger(Option.unit());
-        }
-        break;
-        case Hold(ft)     :
-          __.log().debug('hold'); 
-          ft.environment(
-            (x) -> {
-              __.log().debug('hold:release');
-              loop(x,f);
-            }
-          ).submit();
-          break;
-        case Wait(fn)     : now = fn(Push(Noise));
-        case Emit(_,nxt)  : now = nxt;
-      }
-    }
-  }
-  static public inline function crunch1<E>(eff:Effect<E>):Void{
-    run(eff).handle(__.crack);
-  }
-  static public inline function crunch<E>(eff:Effect<E>):Void{
-    var cursor        = eff;
-    var suspended     = false;
-    var done          = false;
-
-    function handler(){
-      //trace(cursor);
-      switch(cursor){
-        case Halt(h) :
-          switch(h){
-            case Terminated(Exit(error))      : throw error;
-              default                         : 
-          }
-          done = true;
-        case Hold(held)             :
-            suspended = true;
-            held.environment(
-              (eff) -> {
-                cursor    = eff;
-                suspended = false;
-              }
-            ).submit();
-        case Wait(fn)               :
-            cursor = fn(Noise);
-        case Emit(_,tail)           : 
-            cursor = tail;
-      }
-    }
-    while(!done){
-      if(!suspended){
-        handler();
-      }
-    }
   }
   static public function cause_later<E>(e:Effect<E>,c:Cause<E>):Effect<E>{
     function f(e:EffectDef<E>):EffectDef<E> { return cause_later(e,c); }
@@ -175,6 +116,48 @@ class EffectExecute<E> extends FletcherCls<Noise,Report<E>,Noise>{
       case Halt(Terminated(Exit(rejection)))  : 
         cont(__.report(_ -> rejection));
         Cycle.unit();
+    }
+  }
+  static public inline function crunch1<E>(eff:Effect<E>):Void{
+    Derive._.run(eff.prj()).handle(
+      res -> res.fold(
+        (_) -> {},
+        __.crack
+      )
+    );
+  }
+  static public inline function crunch<E>(eff:Effect<E>):Void{
+    var cursor        = eff;
+    var suspended     = false;
+    var done          = false;
+
+    function handler(){
+      //trace(cursor);
+      switch(cursor){
+        case Halt(h) :
+          switch(h){
+            case Terminated(Exit(error))      : throw error;
+              default                         : 
+          }
+          done = true;
+        case Hold(held)             :
+            suspended = true;
+            held.environment(
+              (eff) -> {
+                cursor    = eff;
+                suspended = false;
+              }
+            ).submit();
+        case Wait(fn)               :
+            cursor = fn(Noise);
+        case Emit(_,tail)           : 
+            cursor = tail;
+      }
+    }
+    while(!done){
+      if(!suspended){
+        handler();
+      }
     }
   }
 }
