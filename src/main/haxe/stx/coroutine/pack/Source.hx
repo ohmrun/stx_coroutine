@@ -71,4 +71,15 @@ class SourceLift{
       case Halt(t)         : __.halt(t);
     });
   }
+  static public function derive<O,R,E>(self:Source<O,R,E>):Derive<R,E>{
+    function f(self:SourceDef<O,R,E>):DeriveDef<R,E>{
+      return switch(self){
+        case Emit(_m,tail)  : f(tail);
+        case Wait(arw)      : __.wait(arw.mod(f));
+        case Hold(ft)       : __.hold(ft.mod(f));
+        case Halt(h)        : __.halt(h);
+      }
+    }
+    return Derive.lift(f(self));
+  }
 }

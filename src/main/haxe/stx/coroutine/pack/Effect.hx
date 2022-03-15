@@ -135,18 +135,19 @@ class EffectLift{
     return f(self);
   }
 }
-class EffectExecute<E> implements FletcherApi<Noise,Report<E>,Noise>{
+class EffectExecute<E> extends FletcherCls<Noise,Report<E>,Noise>{
   public var effect : Effect<E>;
   public function new(effect){
+    super();
     this.effect = effect;
   }
   public function defer(_:Noise,cont:Terminal<Report<E>,Noise>):Work{
-    return __.option(
-      () -> Future.irreversible(
+    return Work.lift(
+      Cycler.pure(Future.irreversible(
         (cb:Cycle->Void) -> {
           cb(handler(effect,(report) -> cont.receive(cont.value(report))));
         }
-      )
+      ))
     );
   }
   private final function handler(self:EffectDef<Dynamic>,cont:Report<E>->Void):Cycle{

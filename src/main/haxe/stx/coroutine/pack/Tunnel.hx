@@ -61,6 +61,9 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
   @:from static public function fromCoroutine<I,O,E>(self:Coroutine<I,O,Noise,E>):Tunnel<I,O,E>{
     return lift(self);
   }
+  public function prj(){
+    return this;
+  }
 }
 class TunnelLift{
   @:noUsing static private function lift<I,O,E>(self:TunnelDef<I,O,E>) return Tunnel.lift(self);
@@ -109,10 +112,51 @@ class TunnelLift{
         }
     });
   }
-  // //request next value rudely
-  // static public function demand<I,O,E>(self:Tunner<I,O,E>,i:I,fn:O->Tunnel<I,O,E>):Tunnel<I,O,E>{
-  
-  // }
+  static public function demand<I,O,E>(self:TunnelDef<I,O,E>,req:I,fn:Res<O,E> -> Bool):Tunnel<I,O,E>{
+    final source  = Pledge.trigger();
+    var sent      = false;
+    var done      = false;
+    function f(self:TunnelDef<I,O,E>):TunnelDef<I,O,E>{
+      return switch(self){
+        case Emit(o,next)               : 
+          if(sent){
+            if(!done){
+              fn(__.accept(o)).if_else(
+                ()  -> {
+                  done = true;
+                  return next;
+                },
+                () -> f(next)
+              );
+            }else{
+              next;
+            }
+          }else{
+            __.emit(o,f(next));
+          }
+        case Wait(tran)                 : 
+          if(!sent){
+            sent = true;
+            f(tran(req));
+          }else{
+            __.wait(tran.mod(f));
+          }
+        case Hold(held)                 :
+          __.hold(held.mod(f));
+        case Halt(Production(_))    : 
+          if(!done){
+            final err =__.fault().explain(_ -> _.e_undefined());
+            fn(__.reject(err));
+            __.term(err);
+          }else{
+            __.prod(Noise);
+          } 
+        case Halt(Terminated(Stop))     : __.stop();
+        case Halt(Terminated(Exit(e)))  : __.exit(e);
+      }
+    }
+    return Tunnel.lift(f(self));
+  }
   /**
    Reorders the outputs such that the first `true` from `fn` is produced first. `Rejection` if the stream
    terminates without ever returning `true`. Infinite `Tunnel` unaffected.

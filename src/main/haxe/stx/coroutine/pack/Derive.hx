@@ -147,4 +147,5 @@ class DeriveLift{
     }
     return Derive.lift(f(self));
   }
+  //static public function fiber<R,E>(self:Derive<R,E>):Fu
 }

@@ -363,9 +363,9 @@ class CoroutineLift{
             (res:Res<Ri,Cause<E>>) -> res.fold(
               ok -> __.prod(ok),
               no -> switch(no.val){
-                case Some(EXCEPT(Stop))                     : __.stop();
-                case Some(REFUSE(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
-                case Some(EXCEPT(Exit(rejection)))          : __.exit(rejection);
+                case Some(REJECT(Stop))                     : __.stop();
+                case Some(DIGEST(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
+                case Some(REJECT(Exit(rejection)))          : __.exit(rejection);
                 case None                                   : __.stop();
               }
             )
