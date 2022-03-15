@@ -154,14 +154,17 @@ class DeriveLift{
       t.trigger(v);
     }
     return Produce.fromPledge(
-      Pledge.lift(@:privateAccess Future.either(secure(self,f).run(),t).map(
-        either -> switch(either) {
-          case Left(None)                   : __.reject(__.fault().explain(_ -> _.e_coroutine_stop()));
-          case Left(Some(Stop))             : __.reject(__.fault().explain(_ -> _.e_coroutine_stop()));
-          case Left(Some(Exit(rejection)))  : __.reject(rejection);
-          case Right(value)                 : __.accept(value);
-        }   
-      ))
+      Pledge.lift(
+        run(self).map(
+          outcome -> outcome.fold(
+            ok -> __.accept(ok),
+            no -> switch(no) {
+              case Stop     : __.reject(__.fault().explain(_ -> _.e_coroutine_stop()));
+              case Exit(e)  : __.reject(e);
+            }
+          )
+        )
+      )
     );
   }
   ////////////////////////////////////////////////////////////////////////////////
