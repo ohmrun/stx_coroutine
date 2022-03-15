@@ -289,6 +289,8 @@ class EmiterLift{
           __.wait(tran.mod(rec));
         case Hold(held)     :
           __.hold(held.mod(rec));
+        case Halt(Terminated(Stop))     :
+          __.prod(data);
         case Halt(Terminated(r))        :
           __.halt(Terminated(r));
         case Halt(Production(r))         :

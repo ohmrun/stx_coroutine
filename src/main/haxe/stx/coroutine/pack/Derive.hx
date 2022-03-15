@@ -149,10 +149,6 @@ class DeriveLift{
     return Derive.lift(f(self));
   }
   static public function produce<R,E>(self:DeriveDef<R,E>):Produce<R,E>{
-    final t = Future.trigger();
-    function f(v:R){
-      t.trigger(v);
-    }
     return Produce.fromPledge(
       Pledge.lift(
         run(self).map(
