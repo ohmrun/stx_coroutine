@@ -5,7 +5,7 @@ typedef SecureDef<I,E> = CoroutineSum<I,Noise,Noise,E>;
 @:using(stx.coroutine.pack.Secure.SecureLift)
 @:forward abstract Secure<I,E>(SecureDef<I,E>) from SecureDef<I,E> to SecureDef<I,E>{
     static public var _(default,never) = SecureLift;
-    static public function lift<I,E>(self:SecureDef<I,E>):Secure<I,E> return new Secure(self);
+    @:noUsing static public function lift<I,E>(self:SecureDef<I,E>):Secure<I,E> return new Secure(self);
     public function new(self) this = self;
     
     @:noUsing static public function handler<O,E>(fn:O->Void):Secure<O,E>{

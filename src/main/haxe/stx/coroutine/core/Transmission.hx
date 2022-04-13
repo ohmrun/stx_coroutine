@@ -6,7 +6,7 @@ typedef TransmissionDef<I,O,R,E> = Control<I> -> Coroutine<I,O,R,E>;
 @:using(stx.coroutine.core.Transmission.TransmissionLift)
 @:callable abstract Transmission<I,O,R,E>(TransmissionDef<I,O,R,E>) from TransmissionDef<I,O,R,E> to TransmissionDef<I,O,R,E>{
   public function new(self) this = self;
-  static public function lift<I,O,R,E>(self:TransmissionDef<I,O,R,E>):Transmission<I,O,R,E> return new Transmission(self);
+  @:noUsing static public function lift<I,O,R,E>(self:TransmissionDef<I,O,R,E>):Transmission<I,O,R,E> return new Transmission(self);
   
   @:noUsing static public inline function fromFun1R<I,O,R,E>(fn:I->Coroutine<I,O,R,E>){
     return lift((control:Control<I>) -> control.fold(

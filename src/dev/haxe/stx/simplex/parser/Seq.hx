@@ -20,7 +20,7 @@ import stx.coroutine.pack.Coroutine.parser.data.Seq as SeqT;
       }
     });
   }
-  static public function pure<T>(v:T):Seq<T>{
+  @:noUsing static public function pure<T>(v:T):Seq<T>{
     var is_done = false;
     return new Seq({
       peek: function():Null<T>{

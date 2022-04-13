@@ -9,7 +9,7 @@ abstract Produce<I,O>(ProduceT<I,O>) from ProduceT<I,O> to ProduceT<I,O>{
   static public function zero<I,O>(){
     return Accept(null,null);
   }
-  static public function pure<I,O>(i:I){
+  @:noUsing static public function pure<I,O>(i:I){
     return Accept(i,null);
   }
   static public function create<I,O>(i:I,o:O):Produce<I,O>{
