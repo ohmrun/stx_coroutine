@@ -158,7 +158,7 @@ class TunnelLift{
     return Tunnel.lift(f(self));
   }
   /**
-   Reorders the outputs such that the first `true` from `fn` is produced first. `Rejection` if the stream
+   Reorders the outputs such that the first `true` from `fn` is produced first. `Refuse` if the stream
    terminates without ever returning `true`. Infinite `Tunnel` unaffected.
   **/
   // static public function require<I,O,Z,E>(self:TunnelDef<I,O,E>,fn:Arrange<O,Tunnel<I,O,E>>->Option<Tunnel<I,O,E>>):Tunnel<I,O,E>{

@@ -11,7 +11,7 @@ typedef TransmissionDef<I,O,R,E> = Control<I> -> Coroutine<I,O,R,E>;
   @:noUsing static public inline function fromFun1R<I,O,R,E>(fn:I->Coroutine<I,O,R,E>){
     return lift((control:Control<I>) -> control.fold(
       fn,
-      (e:Error<Digest>) -> __.term(e.toRejection()),
+      (e:Error<Digest>) -> __.term(e.toRefuse()),
       () -> __.stop()
     ));
   }

@@ -107,9 +107,9 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
   public function touch(before:Void->Void,after:Void->Void):Held<I,O,R,E>{
     return lift(Fletcher._.mapi(
       this,
-      __.passthrough((_:Noise) -> before())
+      ((_:Noise) -> before()).promote()
     ).map(
-      __.passthrough((_:Coroutine<I,O,R,E>) -> after())
+      ((_:Coroutine<I,O,R,E>) -> after()).promote()
     ));
   }
   public function environment(handler):Fiber{

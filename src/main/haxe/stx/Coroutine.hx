@@ -40,10 +40,10 @@ class LiftCoroutine{
   // static public function asTunnel<I,O>(wildcard:Wildcard,spx:Coroutine<I,O,Noise>):Tunnel<I,O>{
   //   return new Tunnel(spx);
   // }
-  static public inline function quit<I,O,R,E>(wildcard:Wildcard,er:Rejection<E>):Coroutine<I,O,R,E>{
+  static public inline function quit<I,O,R,E>(wildcard:Wildcard,er:Refuse<E>):Coroutine<I,O,R,E>{
     return term(__,Exit(er));
   }
-  static public inline function exit<I,O,R,E>(wildcard:Wildcard,er:Rejection<E>):Coroutine<I,O,R,E>{
+  static public inline function exit<I,O,R,E>(wildcard:Wildcard,er:Refuse<E>):Coroutine<I,O,R,E>{
     return term(__,Exit(er));
   }
   static public inline function halt<I,O,R,E>(wildcard:Wildcard,ret:Return<R,E>):Coroutine<I,O,R,E>{

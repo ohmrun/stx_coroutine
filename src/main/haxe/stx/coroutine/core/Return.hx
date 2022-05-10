@@ -13,7 +13,7 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
     return new Return(self);
   }
   public function new(self) this = self;
-  @:from static public function fromRejection<T,E>(e:Rejection<E>):Return<T,E>{
+  @:from static public function fromRefuse<T,E>(e:Refuse<E>):Return<T,E>{
     return Terminated(Exit(e));
   }
   @:from static public function fromCause<T,E>(c:Cause<E>):Return<T,E>{

@@ -10,6 +10,7 @@ enum CoroutineSum<I,O,R,E>{
   Halt(e:Return<R,E>);
 }
 ```
+Stepwise Streams with input and built in flow control. 
 
 This is about half of Gabriel Gonzalez' Haskell Pipes, with a little modification to allow adaptation to
 both threaded and event based languages: `Hold`.

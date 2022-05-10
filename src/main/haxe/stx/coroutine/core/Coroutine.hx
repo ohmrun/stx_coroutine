@@ -66,14 +66,14 @@ class CoroutineLift{
       case Halt(r)      : Halt(r);
     }
   }
-  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Rejection<E>->Rejection<EE>):Coroutine<I,O,R,EE>{
+  static public inline function errata<I,O,R,E,EE>(prc:Coroutine<I,O,R,E>,fn:Refuse<E>->Refuse<EE>):Coroutine<I,O,R,EE>{
     var f : Coroutine<I,O,R,E> -> Coroutine<I,O,R,EE> = errata.bind(_,fn);
     return switch prc {
       case Emit(o, next)    : __.emit(o,f(next));
       case Wait(fn)         : __.wait(
         (ctl:Control<I>) -> ctl.fold(
           (v) -> f(fn(Push(v))),
-          (e) -> Halt(Terminated(Exit(e.toRejection()))),
+          (e) -> Halt(Terminated(Exit(e.toRefuse()))),
           ()  -> Halt(Terminated(Stop))
         )
       );
@@ -282,7 +282,7 @@ class CoroutineLift{
   }
   static public function hook<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
     return self.map(
-      __.passthrough(fn)
+      fn.promote()
     );
   }
   static public function once<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Void):Coroutine<I,O,R,E>{
@@ -341,7 +341,7 @@ class CoroutineLift{
         function(ctrl:Control<I>) : Coroutine<I,O,R,EE> {
           return ctrl.fold(
             ok -> f(tran(Push(ok))),
-            no -> __.term(Exit(no.toRejection())),
+            no -> __.term(Exit(no.toRefuse())),
             () -> __.stop()
           );
         }
@@ -362,11 +362,11 @@ class CoroutineLift{
           final result =  Provide.lift(fn.produce(__.accept(r)).prj().map(
             (res:Res<Ri,Cause<E>>) -> res.fold(
               ok -> __.prod(ok),
-              no -> switch(no.val){
-                case Some(REJECT(Stop))                     : __.stop();
-                case Some(DIGEST(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
-                case Some(REJECT(Exit(rejection)))          : __.exit(rejection);
-                case None                                   : __.stop();
+              no -> switch(no.data){
+                case Some(EXTERIOR(Stop))                     : __.stop();
+                case Some(INTERIOR(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
+                case Some(EXTERIOR(Exit(rejection)))          : __.exit(rejection);
+                case None                                     : __.stop();
               }
             )
           ));
