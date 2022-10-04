@@ -12,7 +12,7 @@ class Test{
     Logger.ZERO.includes.push("stx/coroutine");
 
     __.log().info('test');
-    __.test([
+    __.test().run([
         new OverridesTest(),
       ],
       []

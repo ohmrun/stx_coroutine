@@ -3,7 +3,7 @@
 // typedef CoroutineFailureSum<E>          = stx.fail.CoroutineFailure.CoroutineFailureSum<E>;
 // typedef CoroutineFailure<E>             = stx.fail.CoroutineFailure<E>;
 
-// typedef CoroutineFailureNote            = stx.fail.CoroutineFailureNote;
+typedef CoroutineFailureNote            = stx.fail.CoroutineFailureNote;
 
 typedef Effect<E>                       = stx.coroutine.pack.Effect<E>;                               //000 
 typedef EffectDef<E>                    = stx.coroutine.pack.Effect.EffectDef<E>;                     //000
@@ -31,6 +31,9 @@ typedef TransmissionDef<I,O,R,E>        = stx.coroutine.core.Transmission.Transm
 typedef Transmission<I,O,R,E>           = stx.coroutine.core.Transmission<I,O,R,E>;
 
 class LiftCoroutine{
+  static public function e_coroutine(digests:Digests,note:CoroutineFailureNote){
+    return new stx.coroutine.core.Digest(note);
+  }
   static public inline function upcast<I,O,R,E>(wildcard:Wildcard,spx:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return spx;
   }

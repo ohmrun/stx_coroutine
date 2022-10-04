@@ -58,6 +58,11 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
   @:to public function toCoroutine():Coroutine<I,O,Noise,E>{
     return this;
   }
+  public function toCoroutineStop<R>():Coroutine<I,O,R,E>{
+    return this.flat_map_r(
+      (r:Noise) -> __.stop()
+    );
+  }
   @:from static public function fromCoroutine<I,O,E>(self:Coroutine<I,O,Noise,E>):Tunnel<I,O,E>{
     return lift(self);
   }
@@ -72,6 +77,7 @@ class TunnelLift{
       case Emit(head,tail)              : Emit(head,append(tail,prc1));
       case Wait(arw)                    : Wait(arw.mod(__.into(append.bind(_,prc1))));
       case Halt(Production(Noise))      : prc1();
+      case Halt(Terminated(Stop))       : prc1();
       case Halt(Terminated(cause))      : Halt(Terminated(cause));
       case Halt(e)                      : Halt(e);
       case Hold(ft)                     : Hold(ft.mod(__.into(append.bind(_,prc1))));
@@ -156,6 +162,15 @@ class TunnelLift{
       }
     }
     return Tunnel.lift(f(self));
+  }
+  static public function mod<I,O,R,E>(self:TunnelDef<I,O,E>,fn:TunnelDef<I,O,E>->Tunnel<I,O,E>):Tunnel<I,O,E>{
+    final f : TunnelDef<I,O,E> -> TunnelDef<I,O,E> = mod.bind(_,fn.fn().then(x -> x.prj()));
+    return lift(switch(self){
+      case Hold(held)                     : __.hold(held.mod(f));
+      case Wait(fn)                       : __.wait(fn.mod(f));
+      case Halt(h)                        : __.halt(h);
+      case Emit(data,next)                : __.emit(data,f(next));
+    });
   }
   /**
    Reorders the outputs such that the first `true` from `fn` is produced first. `Refuse` if the stream

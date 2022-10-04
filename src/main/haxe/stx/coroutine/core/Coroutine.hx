@@ -35,6 +35,27 @@ enum CoroutineSum<I,O,R,E>{
   }
 }
 class CoroutineLift{
+  static public function append<I,O,R,E>(prc0:CoroutineSum<I,O,R,E>,prc1:Thunk<Coroutine<I,O,R,E>>):Coroutine<I,O,R,E>{
+    return switch (prc0){
+      case Emit(head,tail)              : Emit(head,append(tail,prc1));
+      case Wait(arw)                    : Wait(arw.mod(__.into(append.bind(_,prc1))));
+      case Halt(Terminated(Stop))       : prc1();
+      case Halt(Terminated(cause))      : Halt(Terminated(cause));
+      case Halt(e)                      : Halt(e);
+      case Hold(ft)                     : Hold(ft.mod(__.into(append.bind(_,prc1))));
+    }
+  }
+  /**
+    Insert `that` either before then next `Wait` or `Halt`;
+  **/
+  static public function frame<I,O,R,E>(self:CoroutineSum<I,O,R,E>,that:Tunnel<I,O,E>){
+    return switch(self){
+      case Wait(fn)               : append(that.toCoroutineStop(),() -> self);
+      case Halt(halt)             : append(that.toCoroutineStop(),() -> self);
+      case Hold(held)             : __.hold(held.mod(frame.bind(_,that)));
+      case Emit(head,rest)        : __.emit(head,frame(rest,that));
+    }
+  }
   static public function cons<I,O,R,E>(spx:Coroutine<I,O,R,E>,o:O):Coroutine<I,O,R,E>{
     return __.emit(o,spx);
   }
