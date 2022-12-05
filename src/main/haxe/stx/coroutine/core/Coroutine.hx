@@ -384,9 +384,9 @@ class CoroutineLift{
             (res:Res<Ri,Cause<E>>) -> res.fold(
               ok -> __.prod(ok),
               no -> switch(no.data){
-                case Some(EXTERIOR(Stop))                     : __.stop();
-                case Some(INTERIOR(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
-                case Some(EXTERIOR(Exit(rejection)))          : __.exit(rejection);
+                case Some(EXTERNAL(Stop))                     : __.stop();
+                case Some(INTERNAL(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
+                case Some(EXTERNAL(Exit(rejection)))          : __.exit(rejection);
                 case None                                     : __.stop();
               }
             )

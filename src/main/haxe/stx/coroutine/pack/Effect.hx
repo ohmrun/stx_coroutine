@@ -78,8 +78,8 @@ class EffectLift{
 }
 class EffectExecute<E> extends FletcherCls<Noise,Report<E>,Noise>{
   public var effect : Effect<E>;
-  public function new(effect){
-    super();
+  public function new(effect,?pos:Pos){
+    super(pos);
     this.effect = effect;
   }
   public function defer(_:Noise,cont:Terminal<Report<E>,Noise>):Work{

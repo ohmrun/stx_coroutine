@@ -1,0 +1,11 @@
+-lib stx_pico
+-lib stx_nano
+-lib stx_fp
+-lib stx_fn
+-lib stx_log
+-lib stx_pkg
+-lib fletcher 
+-lib stx_test
+--macro include('stx.Coroutine',true)
+--macro include('stx.coroutine',true)
+--interp
