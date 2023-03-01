@@ -13,13 +13,13 @@
     "version": "0.3.0",
     "url": "https://github.com/0b1kn00b/stx_coroutine",
     "dependencies": {
-        "stx_pico"      : "git:https://github.com/ohmrun/stx_pico.git",
-        "stx_nano"      : "git:https://github.com/ohmrun/stx_nano.git",
-        "stx_fp"        : "git:https://github.com/ohmrun/stx_fp.git",
-        "stx_pkg"       : "git:https://github.com/ohmrun/stx_pkg.git",
-        "stx_log"       : "git:https://github.com/ohmrun/stx_log.git",
-        "stx_stream"    : "git:https://github.com/ohmrun/stx_stream.git",
-        "fletcher"      : "git:https://github.com/ohmrun/fletcher.git"
+        "stx_pico"      : "",
+        "stx_nano"      : "",
+        "stx_fp"        : "",
+        "stx_pkg"       : "",
+        "stx_log"       : "",
+        "stx_stream"    : "",
+        "fletcher"      : ""
     },
     "classPath": "src/main/haxe"
 }
