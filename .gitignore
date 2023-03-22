@@ -1,2 +1,3 @@
-test.n
-bin
+/test.n
+/bin
+/.env.machine

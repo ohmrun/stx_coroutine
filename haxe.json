@@ -1,7 +1,7 @@
 {
   "build" : {
     "-D"   : ["no-deprecation-warnings"],
-    "-lib" : ["stx_pico", "stx_nano", "stx_fp", "stx_fn", "stx_log", "stx_pkg", "fletcher ", "stx_test"],
+    "-lib" : ["stx_pico", "stx_nano", "stx_fp", "stx_fn", "stx_log", "stx_pkg", "fletcher "],
     "unit"  : {
       "--macro" : [
         "include('stx.Coroutine',true)",      
@@ -16,6 +16,10 @@
       "interp" : {
         "--interp" : true
       }
-    }  
+    },
+    "test" : {
+      "-cp" : "src/main/haxe",
+      "lib" : ["stx_text"]
+    }
   }
 }
