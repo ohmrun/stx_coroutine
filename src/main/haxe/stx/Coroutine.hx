@@ -1,5 +1,9 @@
- package stx;
+package stx;
 
+using stx.Nano;
+using stx.Fail;
+using stx.coroutine.Core;
+using stx.Coroutine;
 // typedef CoroutineFailureSum<E>          = stx.fail.CoroutineFailure.CoroutineFailureSum<E>;
 // typedef CoroutineFailure<E>             = stx.fail.CoroutineFailure<E>;
 
