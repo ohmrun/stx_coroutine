@@ -14,7 +14,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       Fletcher.Then(
         self,
         Fletcher.Sync(
-          (res:Res<Coroutine<I,O,R,E>,E>) -> res.fold(
+          (res:Upshot<Coroutine<I,O,R,E>,E>) -> res.fold(
             ok -> ok,
             no -> __.exit(no)
           )

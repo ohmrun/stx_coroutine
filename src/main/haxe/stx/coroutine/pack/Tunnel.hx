@@ -118,7 +118,7 @@ class TunnelLift{
         }
     });
   }
-  static public function demand<I,O,E>(self:TunnelDef<I,O,E>,req:I,fn:Res<O,E> -> Bool):Tunnel<I,O,E>{
+  static public function demand<I,O,E>(self:TunnelDef<I,O,E>,req:I,fn:Upshot<O,E> -> Bool):Tunnel<I,O,E>{
     final source  = Pledge.trigger();
     var sent      = false;
     var done      = false;

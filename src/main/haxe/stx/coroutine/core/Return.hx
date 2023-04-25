@@ -25,7 +25,7 @@ abstract Return<T,E>(ReturnSum<T,E>) from ReturnSum<T,E> to ReturnSum<T,E>{
   @:to public function toCoroutine<I,O>():Coroutine<I,O,T,E>{
     return Halt(lift(this));
   }
-  public function toOptionRes():Option<Res<T,E>>{
+  public function toOptionUpshot():Option<Upshot<T,E>>{
     return switch(this){
       case Terminated(Stop)       : None;
       case Terminated(Exit(err))  : Some(__.reject(err));

@@ -381,7 +381,7 @@ class CoroutineLift{
         case Hold(held)               : __.hold(held.mod(f));
         case Halt(Production(r))      : 
           final result =  Provide.lift(fn.produce(__.accept(r)).prj().map(
-            (res:Res<Ri,Cause<E>>) -> res.fold(
+            (res:Upshot<Ri,Cause<E>>) -> res.fold(
               ok -> __.prod(ok),
               no -> switch(no.data){
                 case Some(EXTERNAL(Stop))                     : __.stop();
