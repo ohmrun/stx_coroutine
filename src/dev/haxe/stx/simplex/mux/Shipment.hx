@@ -11,16 +11,16 @@ using stx.coroutine.Package;
 typedef ShipmentT<T> = stx.coroutine.core.data.Source<Chunk<T>>;
 
 @:forward abstract Shipment<T>(ShipmentT<T>) from ShipmentT<T> to ShipmentT<T>{
-  @:to public function toCoroutine():Coroutine<Noise,Chunk<T>,Noise>{
+  @:to public function toCoroutine():Coroutine<Nada,Chunk<T>,Nada>{
     return this;
   }
   @:to public function toSource():Source<Chunk<T>>{
     return this;
   }
-  @:from static public function fromCoroutine<T>(spx:Coroutine<Noise,Chunk<T>,Noise>):Shipment<T>{
+  @:from static public function fromCoroutine<T>(spx:Coroutine<Nada,Chunk<T>,Nada>):Shipment<T>{
     return new Shipment(spx);
   }
-  @:from static public function fromCoroutineT<T>(spx:CoroutineT<Noise,Chunk<T>,Noise>):Shipment<T>{
+  @:from static public function fromCoroutineT<T>(spx:CoroutineT<Nada,Chunk<T>,Nada>):Shipment<T>{
     return new Shipment(spx);
   }
   public function new(self){

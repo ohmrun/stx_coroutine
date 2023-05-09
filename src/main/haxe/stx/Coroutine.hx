@@ -41,10 +41,10 @@ class LiftCoroutine{
   static public inline function upcast<I,O,R,E>(wildcard:Wildcard,spx:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return spx;
   }
-  // static public function asEmiter<O>(wildcard:Wildcard,spx:Coroutine<Noise,O,Noise>):Emiter<O>{
+  // static public function asEmiter<O>(wildcard:Wildcard,spx:Coroutine<Nada,O,Nada>):Emiter<O>{
   //   return new Emiter(spx);
   // }
-  // static public function asTunnel<I,O>(wildcard:Wildcard,spx:Coroutine<I,O,Noise>):Tunnel<I,O>{
+  // static public function asTunnel<I,O>(wildcard:Wildcard,spx:Coroutine<I,O,Nada>):Tunnel<I,O>{
   //   return new Tunnel(spx);
   // }
   static public inline function quit<I,O,R,E>(wildcard:Wildcard,er:Refuse<E>):Coroutine<I,O,R,E>{

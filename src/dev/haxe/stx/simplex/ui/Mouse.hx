@@ -6,7 +6,7 @@ import tink.core.Signal;
 using stx.async.Futures;
 using stx.async.Arrowlet;
 import stx.types.Producer;
-import tink.core.Noise;
+import stx.pico.Nada;
 
 #if js
   #if(!nodejs)

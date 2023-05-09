@@ -6,7 +6,7 @@ using stx.coroutine.Package;
 
 class Shipments{
   static public function slice<T>(pt:Shipment<T>,fn:T->Bool):Shipment<T>{
-    function recurse(pt:Coroutine<Noise,Either<Chunk<T>,Chunk<T>>,Noise>){
+    function recurse(pt:Coroutine<Nada,Either<Chunk<T>,Chunk<T>>,Nada>){
       return switch(pt){
         case Emit(head,tail) :
           switch(head){
@@ -22,7 +22,7 @@ class Shipments{
               Emit(Right(Nil),recurse(tail));
             case Right(v)     : Emit(Right(v),recurse(tail)); 
           }
-        case Wait(arw)  : recurse(arw(Noise));
+        case Wait(arw)  : recurse(arw(Nada));
         case Hold(ft)   : Hold(ft.map(recurse)); 
         case Halt(e)    : Halt(e);
       }

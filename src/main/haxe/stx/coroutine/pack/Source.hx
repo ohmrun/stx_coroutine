@@ -1,6 +1,6 @@
 package stx.coroutine.pack;
 
-typedef SourceDef<O,R,E> = CoroutineSum<Noise,O,R,E>;
+typedef SourceDef<O,R,E> = CoroutineSum<Nada,O,R,E>;
 
 @:using(stx.coroutine.pack.Source.SourceLift)
 @:forward abstract Source<O,R,E>(SourceDef<O,R,E>) from SourceDef<O,R,E> to SourceDef<O,R,E>{
@@ -8,10 +8,10 @@ typedef SourceDef<O,R,E> = CoroutineSum<Noise,O,R,E>;
   @:noUsing static public function lift<O,R,E>(self:SourceDef<O,R,E>) return new Source(self);
   public function new(self) this = self;
 
-  @:from static public function fromCoroutine<O,R,E>(self:Coroutine<Noise,O,R,E>):Source<O,R,E>{
+  @:from static public function fromCoroutine<O,R,E>(self:Coroutine<Nada,O,R,E>):Source<O,R,E>{
     return lift(self);
   }
-  @:to public function toCoroutine():Coroutine<Noise,O,R,E>{
+  @:to public function toCoroutine():Coroutine<Nada,O,R,E>{
     return this;
   }
 }
@@ -19,7 +19,7 @@ class SourceLift{
   @:noUsing static private function lift<O,R,E>(self:SourceDef<O,R,E>) return Source.lift(self);
 
   static public function toEmiter<O,R,E>(self:Source<O,R,E>,cb:R->O):Emiter<O,E>{
-    function recurse(self:Source<O,R,E>):Source<O,Noise,E>{
+    function recurse(self:Source<O,R,E>):Source<O,Nada,E>{
       var f = __.into(recurse);
       return switch(self){
         case Halt(Terminated(cause))  : __.term(cause);
@@ -32,7 +32,7 @@ class SourceLift{
     return Emiter.lift(recurse(self));
   }
   static public function emiter<O,R,E>(self:Source<O,R,E>,cb:R->O):Emiter<O,E>{
-    function recurse(self:Source<O,R,E>):Source<O,Noise,E>{
+    function recurse(self:Source<O,R,E>):Source<O,Nada,E>{
       var f = __.into(recurse);
       return switch(self){
         case Halt(Terminated(cause))  : __.term(cause);

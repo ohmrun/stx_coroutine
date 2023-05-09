@@ -1,6 +1,6 @@
 package stx.process.types;
 
-import tink.core.Noise;
+import stx.pico.Nada;
 import stx.types.Process;
 
 class Producer{

@@ -1,6 +1,6 @@
 package stx.coroutine.pack;
 
-typedef SecureDef<I,E> = CoroutineSum<I,Noise,Noise,E>;
+typedef SecureDef<I,E> = CoroutineSum<I,Nada,Nada,E>;
 
 @:using(stx.coroutine.pack.Secure.SecureLift)
 @:forward abstract Secure<I,E>(SecureDef<I,E>) from SecureDef<I,E> to SecureDef<I,E>{
@@ -27,10 +27,10 @@ typedef SecureDef<I,E> = CoroutineSum<I,Noise,Noise,E>;
     @:from static public function fromHandler<I,E>(fn:I->Void):Secure<I,E>{
         return handler(fn);
     }
-    @:to public function toCoroutine():Coroutine<I,Noise,Noise,E>{
+    @:to public function toCoroutine():Coroutine<I,Nada,Nada,E>{
       return this;
     } 
-    @:from static public function fromCoroutine<I,E>(self:Coroutine<I,Noise,Noise,E>):Secure<I,E>{
+    @:from static public function fromCoroutine<I,E>(self:Coroutine<I,Nada,Nada,E>):Secure<I,E>{
       return lift(self);
     }
 }

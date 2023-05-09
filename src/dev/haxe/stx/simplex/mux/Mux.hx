@@ -1,7 +1,7 @@
 package stx.coroutine.pack;
 
 
-typedef MuxT<L,R> = Coroutine<Either<L,R>,Muxer,Noise>;
+typedef MuxT<L,R> = Coroutine<Either<L,R>,Muxer,Nada>;
 
 @:forward abstract Mux<L,R>(MuxT<L,R>) from MuxT<L,R> to MuxT<L,R>{
   public function new(self){

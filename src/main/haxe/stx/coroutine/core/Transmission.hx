@@ -40,5 +40,5 @@ class TransmissionLift{
   static public function imply<I,O,R,E>(self:TransmissionDef<I,O,R,E>,input:I):Coroutine<I,O,R,E>{
     return self(Push(input));
   }
-  //static public function reply<O,R,E>(self:TransmissionDef<Noise,O,R,E>)
+  //static public function reply<O,R,E>(self:TransmissionDef<Nada,O,R,E>)
 }

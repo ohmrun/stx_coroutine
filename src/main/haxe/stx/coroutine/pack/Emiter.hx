@@ -1,6 +1,6 @@
 package stx.coroutine.pack;
 
-typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
+typedef EmiterDef<O,E> = SourceDef<O,Nada,E>;
 
 @:using(stx.coroutine.pack.Emiter.EmiterLift)
 @:forward abstract Emiter<O,E>(EmiterDef<O,E>) from EmiterDef<O,E> to EmiterDef<O,E>{
@@ -9,11 +9,11 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
   @:noUsing static public function lift<O,E>(self:EmiterDef<O,E>) return new Emiter(self);
 
   @:noUsing static public function pure<T,E>(self:T):Emiter<T,E>{
-    return __.emit(self,__.prod(Noise));
+    return __.emit(self,__.prod(Nada));
   }
   @:noUsing static public function unit<T,E>():Emiter<T,E>{
     return lift(__.wait(
-      Transmission.fromFun1R( (_:Noise) -> __.stop()
+      Transmission.fromFun1R( (_:Nada) -> __.stop()
     )));
   }
   @:noUsing static public function fromOption<O,E>(opt:Option<O>):Emiter<O,E>{
@@ -77,10 +77,10 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
       )
     ));
   } 
-  @:from static public function fromCoroutine<I,O,R,E>(self:Coroutine<Noise,O,Noise,E>):Emiter<O,E>{
+  @:from static public function fromCoroutine<I,O,R,E>(self:Coroutine<Nada,O,Nada,E>):Emiter<O,E>{
     return lift(self);
   }
-  @:to public function toCoroutine():Coroutine<Noise,O,Noise,E>{
+  @:to public function toCoroutine():Coroutine<Nada,O,Nada,E>{
     return this;
   }
   static public function ints(){
@@ -98,7 +98,7 @@ typedef EmiterDef<O,E> = SourceDef<O,Noise,E>;
   static public function one(){
     return Emiter.fromThunk(()->1);
   }
-  // @:to public function toTunnel():Tunnel<Noise,O>{
+  // @:to public function toTunnel():Tunnel<Nada,O>{
   //   return this;
   // }
 }
@@ -112,7 +112,7 @@ class EmiterLift{
         rest.mod(
           (spx) -> f(spx,fn(head,memo))
         );
-      case Halt(Production(Noise))              : __.prod(memo);
+      case Halt(Production(Nada))              : __.prod(memo);
       case Halt(Terminated(cause))              : __.term(cause);
       case Halt(_)                              : throw "Pattern match regression 062020";
       case Wait(arw)                            : __.wait(arw.mod(c(memo)));
@@ -129,7 +129,7 @@ class EmiterLift{
     return switch (prc0){
       case Emit(head,rest)              : __.emit(head,rest.mod(f));
       case Wait(arw)                    : __.wait(arw.mod(f));
-      case Halt(Production(Noise))      : prc1();
+      case Halt(Production(Nada))      : prc1();
       case Halt(Terminated(cause))      : __.term(cause);
       case Halt(_)                      : throw "Pattern match regression 30/06/2020";
       case Hold(ft)                     : __.hold(ft.mod(f));
@@ -165,7 +165,7 @@ class EmiterLift{
         case [Emit(head,rest),_]                : rest.mod(__.into(recurse.bind(_,Some(head))));
         case [Wait(fn),_]                       : __.wait(fn.mod(f));
         case [Hold(ft),_]                       : __.hold(ft.mod(f));
-        case [Halt(Production(Noise)),v]        : __.prod(v);
+        case [Halt(Production(Nada)),v]        : __.prod(v);
         case [Halt(Terminated(cause)),_]        : __.term(cause);
         case [Halt(_),v]                        : __.prod(v);
       }
@@ -194,7 +194,7 @@ class EmiterLift{
     function recurse(self,cont){
       var f = __.into(recurse.bind(_,cont));
       return switch(cont){
-        case false : __.prod(Noise);
+        case false : __.prod(Nada);
         case true   :
           switch(self){
             case Wait(fn)         : __.wait(fn.mod(f));
@@ -211,7 +211,7 @@ class EmiterLift{
   static public function take<O,E>(self:Emiter<O,E>,max:Int){
     function recurse(self,n){
       var f = (n) -> __.into(recurse.bind(_,n));
-      return n >= max ? Halt(Production(Noise))
+      return n >= max ? Halt(Production(Nada))
         : switch(self){
           case Wait(fn)         : __.wait(fn.mod(f(n)));
           case Hold(ft)         : __.hold(ft.mod(f(n)));
@@ -233,7 +233,7 @@ class EmiterLift{
   static public function snoc<O,E>(self:Emiter<O,E>,o:O):Emiter<O,E>{
     var f = __.into(snoc.bind(_,o));
     return switch(self){
-      case Halt(Production(Noise))  : self.cons(o);
+      case Halt(Production(Nada))  : self.cons(o);
       case Halt(Terminated(cause))  : self;
       case Emit(head,rest)          : __.emit(head,rest.mod(f)); 
       case Wait(fn)                 : __.wait(fn.mod(f));
@@ -246,7 +246,7 @@ class EmiterLift{
     return Wait(
       function recurse(_){
         return if(val == last){
-          __.prod(Noise);
+          __.prod(Nada);
         }else{
           __.emit(val++,__.wait(recurse));
         };
@@ -257,7 +257,7 @@ class EmiterLift{
     return Emiter.lift(Source._.filter(Source.lift(self),prd));
   }
   static public function secure<O,E>(self:Emiter<O,E>,next:Secure<O,E>):Effect<E>{
-    function recurse(self:Coroutine<Noise,O,Noise,E>,next:Coroutine<O,Noise,Noise,E>):Coroutine<Noise,Noise,Noise,E>{
+    function recurse(self:Coroutine<Nada,O,Nada,E>,next:Coroutine<O,Nada,Nada,E>):Coroutine<Nada,Nada,Nada,E>{
       var fl = __.into(recurse.bind(_,next));
       return Effect.lift(switch([self,next]){
         case [Emit(head,tail),Wait(fn)] : recurse(tail,fn(Push(head)));
@@ -273,7 +273,7 @@ class EmiterLift{
   }
   static public function sample<O,R,E>(self:Emiter<O,E>,fn:O->R->Chunk<R,E>,init:R):Source<O,R,E>{
     var data = init;
-    function rec(self:CoroutineSum<Noise,O,Noise,E>):Coroutine<Noise,O,R,E>{
+    function rec(self:CoroutineSum<Nada,O,Nada,E>):Coroutine<Nada,O,R,E>{
       return switch(self){
         case Emit(o,next)   :
           final step = fn(o,data);
@@ -308,7 +308,7 @@ class EmiterLift{
       return switch(self){
         case Emit(o,next) : 
           value = plus(pure(o),zero);
-          __.emit(Noise,__.hold(Held.Pause(f.bind(next))));
+          __.emit(Nada,__.hold(Held.Pause(f.bind(next))));
         case Wait(tran)                   : __.wait(tran.mod(f));
         case Hold(held)                   : __.hold(held.mod(f));
         case Halt(Production(_))          : __.prod(value);

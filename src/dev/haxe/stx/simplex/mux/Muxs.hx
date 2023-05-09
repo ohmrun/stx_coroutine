@@ -8,7 +8,7 @@ using stx.coroutine.Package;
 class Muxs{
   static public function then<L,R>(sel0:Mux<L,R>,sel1:Mux<L,R>):Mux<L,R>{
     return sel0.flatMapR(
-      function(_:Noise){
+      function(_:Nada){
         return sel1;
       }
     );

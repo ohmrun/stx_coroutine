@@ -1,6 +1,6 @@
 package stx.coroutine.pack;
 
-typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
+typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Nada,E>;
 
 @:using(stx.coroutine.pack.Tunnel.TunnelLift)
 @:forward abstract Tunnel<I,O,E>(TunnelDef<I,O,E>) from TunnelDef<I,O,E> to TunnelDef<I,O,E>{
@@ -13,7 +13,7 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
     return lift(__.wait(
       Transmission.fromFun1R(
         function rec(i:I){ 
-          var future : FutureTrigger<Coroutine<I,O,Noise,E>> = Future.trigger();
+          var future : FutureTrigger<Coroutine<I,O,Nada,E>> = Future.trigger();
           arw(i,
             (o) -> {
               future.trigger(__.emit(o,__.wait(Transmission.fromFun1R(rec))));
@@ -28,7 +28,7 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
     return __.wait(
       Transmission.fromFun1R(
         (i:I) -> {
-          function recurse(emiter:Emiter<O,E>):Coroutine<I,O,Noise,E>{
+          function recurse(emiter:Emiter<O,E>):Coroutine<I,O,Nada,E>{
             return switch(emiter){
               case Wait(fn) : __.wait(
                 Transmission.fromFun1R(cons.fn().then(recurse))
@@ -55,15 +55,15 @@ typedef TunnelDef<I,O,E> = CoroutineSum<I,O,Noise,E>;
       )
     );
   }
-  @:to public function toCoroutine():Coroutine<I,O,Noise,E>{
+  @:to public function toCoroutine():Coroutine<I,O,Nada,E>{
     return this;
   }
   public function toCoroutineStop<R>():Coroutine<I,O,R,E>{
     return this.flat_map_r(
-      (r:Noise) -> __.stop()
+      (r:Nada) -> __.stop()
     );
   }
-  @:from static public function fromCoroutine<I,O,E>(self:Coroutine<I,O,Noise,E>):Tunnel<I,O,E>{
+  @:from static public function fromCoroutine<I,O,E>(self:Coroutine<I,O,Nada,E>):Tunnel<I,O,E>{
     return lift(self);
   }
   public function prj(){
@@ -76,7 +76,7 @@ class TunnelLift{
     return switch (prc0){
       case Emit(head,tail)              : Emit(head,append(tail,prc1));
       case Wait(arw)                    : Wait(arw.mod(__.into(append.bind(_,prc1))));
-      case Halt(Production(Noise))      : prc1();
+      case Halt(Production(Nada))      : prc1();
       case Halt(Terminated(Stop))       : prc1();
       case Halt(Terminated(cause))      : Halt(Terminated(cause));
       case Halt(e)                      : Halt(e);
@@ -113,7 +113,7 @@ class TunnelLift{
           case Hold(ft)         : __.hold(Held.lift(ft.map(
             (pipe) -> Coroutine.lift(emiter(self,pipe))
           )));
-          case Wait(arw)        : emiter(self,arw(Push(Noise)));
+          case Wait(arw)        : emiter(self,arw(Push(Nada)));
           case Halt(done)       : __.halt(done);
         }
     });
@@ -155,7 +155,7 @@ class TunnelLift{
             fn(__.reject(err));
             __.term(err);
           }else{
-            __.prod(Noise);
+            __.prod(Nada);
           } 
         case Halt(Terminated(Stop))     : __.stop();
         case Halt(Terminated(Exit(e)))  : __.exit(e);

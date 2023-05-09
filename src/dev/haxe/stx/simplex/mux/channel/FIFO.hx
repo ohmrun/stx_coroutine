@@ -37,9 +37,9 @@ abstract FIFO<T>(ChannelT<T>) from ChannelT<T> to ChannelT<T>{
   public function toSource():Source<T>{
       var commit = Processes.commit;
       var out = Wait(
-          function recurse(ctrl:Control<Noise>){
+          function recurse(ctrl:Control<Nada>){
             return switch(ctrl){
-              case Continue(Noise) :
+              case Continue(Nada) :
                 function handler(channel:FIFO<T>){
                   return switch(channel){
                     case Wait(fn)         : handler(fn(Continue(Pull)));

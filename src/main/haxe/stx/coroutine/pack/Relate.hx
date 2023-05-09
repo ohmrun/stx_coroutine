@@ -1,6 +1,6 @@
 package stx.coroutine.pack;
 
-typedef RelateDef<I,R,E> = CoroutineSum<I,Noise,R,E>;
+typedef RelateDef<I,R,E> = CoroutineSum<I,Nada,R,E>;
 
 @:using(stx.coroutine.pack.Relate.RelateLift)
 @:forward abstract Relate<T,R,E>(RelateDef<T,R,E>) from RelateDef<T,R,E> to RelateDef<T,R,E>{
@@ -30,7 +30,7 @@ typedef RelateDef<I,R,E> = CoroutineSum<I,Noise,R,E>;
 }
 class RelateLift{
   static public function toTunnel<I,R,E>(self:Relate<I,R,E>):Tunnel<I,R,E>{
-    function rec(self:CoroutineSum<I,Noise,R,E>):Coroutine<I,R,Noise,E>{
+    function rec(self:CoroutineSum<I,Nada,R,E>):Coroutine<I,R,Nada,E>{
       return switch(self){
         case Emit(_,next)               : rec(next);
         case Wait(tran)                 : __.wait(tran.mod(rec));

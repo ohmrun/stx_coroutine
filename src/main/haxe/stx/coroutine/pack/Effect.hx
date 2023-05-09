@@ -2,7 +2,7 @@ package stx.coroutine.pack;
 
 using stx.Log;
 
-typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
+typedef EffectDef<E> = CoroutineSum<Nada,Nada,Nada,E>;
 
 @:using(stx.coroutine.pack.Effect.EffectLift)
 @:forward abstract Effect<E>(EffectDef<E>) from EffectDef<E> to EffectDef<E>{
@@ -13,10 +13,10 @@ typedef EffectDef<E> = CoroutineSum<Noise,Noise,Noise,E>;
   }
   public function new(self) this = self;
 
-  @:to public function toCoroutine():Coroutine<Noise,Noise,Noise,E>{
+  @:to public function toCoroutine():Coroutine<Nada,Nada,Nada,E>{
     return this;
   }
-  @:from static public function fromCoroutine<E>(self:Coroutine<Noise,Noise,Noise,E>):Effect<E>{
+  @:from static public function fromCoroutine<E>(self:Coroutine<Nada,Nada,Nada,E>):Effect<E>{
     return lift(self);
   }
   public function prj():EffectDef<E>{
@@ -47,7 +47,7 @@ class EffectLift{
       case Emit(head,rest)          : f(rest);
       case Hold(pull)               : __.hold(pull.mod(f));
       case Halt(Terminated(cause))  : __.term(cause.next(c));
-      case Halt(Production(Noise))  : __.term(c);
+      case Halt(Production(Nada))  : __.term(c);
       case Halt(e)                  : __.halt(e);
     });
   }
@@ -60,7 +60,7 @@ class EffectLift{
         case Emit(o,next)                 : __.hold(Held.Pause(f.bind(next)));
         case Wait(tran)                   : __.tran(
           (i:I) -> {
-            return __.hold(Held.Pause(f.bind(tran(Push(Noise))))).provide(i);
+            return __.hold(Held.Pause(f.bind(tran(Push(Nada))))).provide(i);
           }
         );
         case Hold(held)                   : __.hold(
@@ -76,13 +76,13 @@ class EffectLift{
     return f(self);
   }
 }
-class EffectExecute<E> extends FletcherCls<Noise,Report<E>,Noise>{
+class EffectExecute<E> extends FletcherCls<Nada,Report<E>,Nada>{
   public var effect : Effect<E>;
   public function new(effect,?pos:Pos){
     super(pos);
     this.effect = effect;
   }
-  public function defer(_:Noise,cont:Terminal<Report<E>,Noise>):Work{
+  public function defer(_:Nada,cont:Terminal<Report<E>,Nada>):Work{
     return Work.lift(
       Cycler.pure(Future.irreversible(
         (cb:Cycle->Void) -> {
@@ -95,17 +95,17 @@ class EffectExecute<E> extends FletcherCls<Noise,Report<E>,Noise>{
     final f = handler.bind(_,cont);
     return switch(self){
       case Emit(_,next) : Future.irreversible(cb -> cb(f(next)));
-      case Wait(tran)   : Future.irreversible(cb -> cb(f(tran(Push(Noise)))));
+      case Wait(tran)   : Future.irreversible(cb -> cb(f(tran(Push(Nada)))));
       case Hold(held)   : 
         final provide : Provide<Cycle>  = Provide.lift(held.map(f));
         provide.then(
           Fletcher.Anon(
-            (inpt:Cycle,cont:Terminal<Noise,Noise>) -> {
-              return Work.fromCycle(inpt).seq(cont.receive(cont.value(Noise)));
+            (inpt:Cycle,cont:Terminal<Nada,Nada>) -> {
+              return Work.fromCycle(inpt).seq(cont.receive(cont.value(Nada)));
             }
           )
         ).environment(
-          (noise:Noise) -> {}
+          (noise:Nada) -> {}
         ).cycle();
       case Halt(Production(_))                : 
         cont(__.report());
@@ -149,7 +149,7 @@ class EffectExecute<E> extends FletcherCls<Noise,Report<E>,Noise>{
               }
             ).submit();
         case Wait(fn)               :
-            cursor = fn(Noise);
+            cursor = fn(Nada);
         case Emit(_,tail)           : 
             cursor = tail;
       }

@@ -1,13 +1,13 @@
 package stx.coroutine.pack;
 
-typedef DeriveDef<R,E> = CoroutineSum<Noise,Noise,R,E>;
+typedef DeriveDef<R,E> = CoroutineSum<Nada,Nada,R,E>;
 
 @:using(stx.coroutine.pack.Derive.DeriveLift)
 @:forward abstract Derive<R,E>(DeriveDef<R,E>) from DeriveDef<R,E> to DeriveDef<R,E>{
   static public var _(default,never) = DeriveLift;
   public function new(self:DeriveDef<R,E>) this = self;
   @:noUsing static public function lift<R,E>(self:DeriveDef<R,E>) return new Derive(self);
-  @:from static public function fromCoroutine<I,O,R,E>(spx:Coroutine<Noise,Noise,R,E>):Derive<R,E>{
+  @:from static public function fromCoroutine<I,O,R,E>(spx:Coroutine<Nada,Nada,R,E>):Derive<R,E>{
     return new Derive(spx);
   }
   @:noUsing static public function fromThunk<R,E>(thk:Thunk<R>):Derive<R,E>{
@@ -15,7 +15,7 @@ typedef DeriveDef<R,E> = CoroutineSum<Noise,Noise,R,E>;
       () -> __.prod(thk())
     ));
   }
-  @:to public function toCoroutine():Coroutine<Noise,Noise,R,E>{
+  @:to public function toCoroutine():Coroutine<Nada,Nada,R,E>{
     return this;
   }
   /*
@@ -44,7 +44,7 @@ class DeriveLift{
         case Halt(Terminated(cause))  : Halt(Terminated(cause));
         case Halt(Production(ret))    : Halt(Production(ret));
         case Halt(e)                  : Halt(e);
-        case Emit(Noise,next)         : __.stop();
+        case Emit(Nada,next)         : __.stop();
         case Wait(arw)                : Wait(arw.mod(recurse));
         case Hold(ft)                 : Hold(ft.mod(recurse));
         case _                        : throw "This is a regression";
@@ -99,13 +99,13 @@ class DeriveLift{
     function f(self,that):DeriveDef<Couple<R,Ri>,E>{
       return switch([self,that]){
         case [Emit(_,nI),Emit(_,nII)]                                 : __.hold(Held.Pause(f.bind(nI,nII)));
-        case [Emit(_,nI),Wait(fn)]                                    : __.hold(Held.Pause(f.bind(nI,fn(Push(Noise)))));
+        case [Emit(_,nI),Wait(fn)]                                    : __.hold(Held.Pause(f.bind(nI,fn(Push(Nada)))));
         case [Emit(_,nI),Hold(ft)]                                    : __.hold(ft.mod(f.bind(nI)));
         case [Emit(_,nI),Halt(Production(r))]                         : __.hold(Held.Pause(f.bind(nI,__.prod(r))));
-        case [Wait(fn),Emit(_,nII)]                                   : __.hold(Held.Pause(f.bind(fn(Push(Noise)),nII)));
-        case [Wait(fn),Hold(ft)]                                      : __.hold(ft.mod(f.bind(fn(Push(Noise)))));
-        case [Wait(fn),Halt(Production(r))]                           : __.hold(Held.Pause(f.bind(fn(Push(Noise)),__.prod(r))));
-        case [Wait(l),Wait(r)]                                        : __.hold(Held.Pause(f.bind(l(Push(Noise)),r(Push(Noise)))));
+        case [Wait(fn),Emit(_,nII)]                                   : __.hold(Held.Pause(f.bind(fn(Push(Nada)),nII)));
+        case [Wait(fn),Hold(ft)]                                      : __.hold(ft.mod(f.bind(fn(Push(Nada)))));
+        case [Wait(fn),Halt(Production(r))]                           : __.hold(Held.Pause(f.bind(fn(Push(Nada)),__.prod(r))));
+        case [Wait(l),Wait(r)]                                        : __.hold(Held.Pause(f.bind(l(Push(Nada)),r(Push(Nada)))));
         case [Hold(l),r]                                              : __.hold(l.mod(f.bind(_,r)));
         
         case [Halt(Production(l)),Halt(Production(r))]                : __.prod(__.couple(l,r));
@@ -192,7 +192,7 @@ class DeriveLift{
             }
           ).submit();
           break;
-        case Wait(fn)     : now = fn(Push(Noise));
+        case Wait(fn)     : now = fn(Push(Nada));
         case Emit(_,nxt)  : now = nxt;
       }
     }

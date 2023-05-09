@@ -22,12 +22,12 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
       )
     );
   }
-  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,E>,Noise>):Held<I,O,R,E>{
+  @:from static public function fromProduceI<I,O,R,E>(self:Produce<Coroutine<I,O,R,E>,Nada>):Held<I,O,R,E>{
     return new Held(
       Provide.lift(
         Fletcher.Anon(
-          (ipt:Noise,cont:Terminal<Coroutine<I,O,R,E>,Noise>) -> cont.receive(
-            self.forward(Noise).fold_mapp(
+          (ipt:Nada,cont:Terminal<Coroutine<I,O,R,E>,Nada>) -> cont.receive(
+            self.forward(Nada).fold_mapp(
               (ok) -> {
                 //$type(ok);
                 final result : CoroutineSum<I,O,R,E> = ok.fold(
@@ -107,7 +107,7 @@ typedef HeldDef<I,O,R,E> = ProvideDef<Coroutine<I,O,R,E>>;
   public function touch(before:Void->Void,after:Void->Void):Held<I,O,R,E>{
     return lift(Fletcher._.mapi(
       this,
-      ((_:Noise) -> before()).promote()
+      ((_:Nada) -> before()).promote()
     ).map(
       ((_:Coroutine<I,O,R,E>) -> after()).promote()
     ));

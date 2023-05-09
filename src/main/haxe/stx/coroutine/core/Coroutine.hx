@@ -13,7 +13,7 @@ enum CoroutineSum<I,O,R,E>{
 
 @:using(stx.coroutine.core.Coroutine.CoroutineLift)
 @:forward abstract Coroutine<I,O,R,E>(CoroutineSum<I,O,R,E>) from CoroutineSum<I,O,R,E> to CoroutineSum<I,O,R,E>{
-  static public var STOP = Halt(Production(Noise));
+  static public var STOP = Halt(Production(Nada));
 
   @:noUsing static public function lift<I,O,R,E>(self:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
     return new Coroutine(self);
@@ -128,7 +128,7 @@ class CoroutineLift{
     }
   }
   static public function relate<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:O->Report<E>):Relate<I,R,E>{
-    function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Noise,R,E>{
+    function rec(self:CoroutineSum<I,O,R,E>):CoroutineSum<I,Nada,R,E>{
       return switch self{
         case Emit(o, next) : fn(o).fold(
           (e) -> __.exit(e),
@@ -330,7 +330,7 @@ class CoroutineLift{
       }
     );
   }
-  static public function pause<I,O,R,E>(self:CoroutineSum<I,O,R,E>,ft:Future<Noise>):Coroutine<I,O,R,E>{
+  static public function pause<I,O,R,E>(self:CoroutineSum<I,O,R,E>,ft:Future<Nada>):Coroutine<I,O,R,E>{
     return __.hold(
       Provide.fromFuture(
         ft.map(_ -> self )
@@ -344,13 +344,13 @@ class CoroutineLift{
         Held.Guard(
           sig().map(
             (either:Either<I,Cause<E>>) -> either.fold(
-              l -> (source(arw(l),sig):CoroutineSum<Noise,O,R,E>),
+              l -> (source(arw(l),sig):CoroutineSum<Nada,O,R,E>),
               r -> __.term(r)
             )
           )
         )
       );
-      case Hold(ft)     : __.hold(ft.mod(x -> (source(x,sig):CoroutineSum<Noise,O,R,E>)));
+      case Hold(ft)     : __.hold(ft.mod(x -> (source(x,sig):CoroutineSum<Nada,O,R,E>)));
       case Halt(done)   : __.halt(done);
     });
   }
