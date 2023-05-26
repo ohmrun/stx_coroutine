@@ -396,7 +396,13 @@ class CoroutineLift{
     }
     return Coroutine.lift(f(self));
   }
-  // static public function prod<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>){
-  //   return 
-  // }
+  static public function squeeze<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>){
+    return switch(self){
+      case Hold(ft) : ft.squeeze().fold(
+        ok -> ok,
+        () -> __.hold(ft)
+      );
+      default : self;
+    }
+  }
 }
