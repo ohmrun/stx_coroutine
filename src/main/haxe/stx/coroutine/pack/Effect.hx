@@ -64,7 +64,7 @@ class EffectLift{
           }
         );
         case Hold(held)                   : __.hold(
-          held.convert(
+          held.mod(
             self -> f(self)
           )
         );
@@ -97,16 +97,7 @@ class EffectExecute<E> extends FletcherCls<Nada,Report<E>,Nada>{
       case Emit(_,next) : Future.irreversible(cb -> cb(f(next)));
       case Wait(tran)   : Future.irreversible(cb -> cb(f(tran(Push(Nada)))));
       case Hold(held)   : 
-        final provide : Provide<Cycle>  = Provide.lift(held.map(f));
-        provide.then(
-          Fletcher.Anon(
-            (inpt:Cycle,cont:Terminal<Nada,Nada>) -> {
-              return Work.fromCycle(inpt).seq(cont.receive(cont.value(Nada)));
-            }
-          )
-        ).environment(
-          (noise:Nada) -> {}
-        ).cycle();
+        Cycle.anon(() -> held.map(f));
       case Halt(Production(_))                : 
         cont(__.report());
         Cycle.unit();
@@ -142,12 +133,12 @@ class EffectExecute<E> extends FletcherCls<Nada,Report<E>,Nada>{
           done = true;
         case Hold(held)             :
             suspended = true;
-            held.environment(
+            held.handle(
               (eff) -> {
                 cursor    = eff;
                 suspended = false;
               }
-            ).submit();
+            );
         case Wait(fn)               :
             cursor = fn(Nada);
         case Emit(_,tail)           : 

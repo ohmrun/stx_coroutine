@@ -1,5 +1,8 @@
 package stx.coroutine.pack;
 
+/**
+ * `Stream` like `Coroutine`
+ */
 typedef EmiterDef<O,E> = SourceDef<O,Nada,E>;
 
 @:using(stx.coroutine.pack.Emiter.EmiterLift)

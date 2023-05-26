@@ -185,12 +185,12 @@ class DeriveLift{
         break;
         case Hold(ft)     :
           __.log().debug('hold'); 
-          ft.environment(
+          ft.handle(
             (x) -> {
               __.log().debug('hold:release');
               loop(x,f);
             }
-          ).submit();
+          );
           break;
         case Wait(fn)     : now = fn(Push(Nada));
         case Emit(_,nxt)  : now = nxt;

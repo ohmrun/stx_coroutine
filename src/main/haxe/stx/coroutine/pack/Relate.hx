@@ -3,7 +3,7 @@ package stx.coroutine.pack;
 typedef RelateDef<I,R,E> = CoroutineSum<I,Nada,R,E>;
 
 @:using(stx.coroutine.pack.Relate.RelateLift)
-@:forward abstract Relate<T,R,E>(RelateDef<T,R,E>) from RelateDef<T,R,E> to RelateDef<T,R,E>{
+@:transitive @:forward abstract Relate<T,R,E>(RelateDef<T,R,E>) from RelateDef<T,R,E> to RelateDef<T,R,E>{
   static public var _(default,never) = RelateLift;
 
   @:noUsing static public function lift<I,R,E>(self:RelateDef<I,R,E>):Relate<I,R,E>{

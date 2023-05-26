@@ -21,7 +21,7 @@ enum CoroutineSum<I,O,R,E>{
   static public var _(default,never) = CoroutineLift;
   public function new(self) this = self;
 
-  public function held(){
+  public function is_held(){
     return switch(this){
       case Hold(_)  : true;
       default       : false; 
@@ -218,10 +218,15 @@ class CoroutineLift{
   }
   static public function immediate<I,O,R,E>(self:CoroutineSum<I,O,R,E>,effect:Fiber):Coroutine<I,O,R,E>{
     return __.hold(
-      Held.lift(
-        effect.then(
-          Provide.fromFunXR(() -> self)          
-        )
+      Held.Pause(
+        () -> {
+          final nextt = Future.trigger();
+          final next  = nextt.asFuture();
+          effect.seq(
+            Fiber.fromFuture(next)
+          ).submit(); 
+          return __.hold(next.map((_) -> self));
+        }
       )
     );
   }
@@ -244,7 +249,7 @@ class CoroutineLift{
   static public function mod<I,O,Oi,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:Coroutine<I,O,R,E>->Coroutine<I,Oi,Ri,E>):Coroutine<I,Oi,Ri,E>{
     return switch(self){
       case Wait(arw)                    : Wait(arw.mod(fn));
-      case Hold(slot)                   : Hold(slot.convert(fn));
+      case Hold(slot)                   : Hold(slot.map(fn));
       default                           : fn(self);
     }
   }
@@ -269,13 +274,13 @@ class CoroutineLift{
       case Halt(e)                      : __.halt(e);
     }
   }
-  static public function touch<I,O,R,E>(self:CoroutineSum<I,O,R,E>,before:Void->Void,after:Void->Void):Coroutine<I,O,R,E>{
-    return switch(self){
-      case Wait(arw)  : __.wait(arw.touch(before,after));
-      case Hold(h)    : __.hold(h.touch(before,after));
-      default         : self;
-    }
-  }
+  // static public function touch<I,O,R,E>(self:CoroutineSum<I,O,R,E>,before:Void->Void,after:Void->Void):Coroutine<I,O,R,E>{
+  //   return switch(self){
+  //     case Wait(arw)  : __.wait(arw.touch(before,after));
+  //     case Hold(h)    : __.hold(h.touch(before,after));
+  //     default         : self;
+  //   }
+  // }
   static public function on_return<I,O,R,E>(self:CoroutineSum<I,O,R,E>,fn:Return<R,E>->Void):Coroutine<I,O,R,E>{
     var f = __.into(on_return.bind(_,fn));
     return switch(self){
@@ -332,9 +337,7 @@ class CoroutineLift{
   }
   static public function pause<I,O,R,E>(self:CoroutineSum<I,O,R,E>,ft:Future<Nada>):Coroutine<I,O,R,E>{
     return __.hold(
-      Provide.fromFuture(
-        ft.map(_ -> self )
-      )
+      ft.flatMap(_ -> self )
     );
   }
   static public function source<I,O,R,E>(self:CoroutineSum<I,O,R,E>,sig:Void->Future<Either<I,Cause<E>>>):Source<O,R,E>{
@@ -373,28 +376,27 @@ class CoroutineLift{
       case Halt(Production(r))            : __.prod(r);
     }
   }
-  static public function mod_r<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:Modulate<R,Ri,Cause<E>>):Coroutine<I,O,Ri,E>{
+  static public function mod_r<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,fn:R -> Outcome<Ri,Cause<E>>):Coroutine<I,O,Ri,E>{
     function f(self:CoroutineSum<I,O,R,E>){
       return switch(self){
         case Emit(o,next)             : __.emit(o,f(next));
         case Wait(tran)               : __.wait(tran.mod(f));
         case Hold(held)               : __.hold(held.mod(f));
         case Halt(Production(r))      : 
-          final result =  Provide.lift(fn.produce(__.accept(r)).prj().map(
-            (res:Upshot<Ri,Cause<E>>) -> res.fold(
-              ok -> __.prod(ok),
-              no -> switch(no.data){
-                case Some(EXTERNAL(Stop))                     : __.stop();
-                case Some(INTERNAL(code))                     : __.term(__.fault(no.pos.defv(null)).explain(_ -> code));
-                case Some(EXTERNAL(Exit(rejection)))          : __.exit(rejection);
-                case None                                     : __.stop();
-              }
-            )
-          ));
-          __.hold(result);
+          final result =  fn(r).fold(
+            ok -> __.prod(ok),
+            no -> switch(no){
+              case Stop                   : __.stop();
+              case Exit(rejection)        : __.exit(rejection);
+            }
+          );
+          result;
         case Halt(Terminated(e))    : __.term(e);
       }
     }
     return Coroutine.lift(f(self));
   }
+  // static public function prod<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>){
+  //   return 
+  // }
 }
