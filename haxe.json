@@ -1,5 +1,6 @@
 {
   "build" : {
+    "-cp" : "src/main/haxe",
     "-D"   : ["no-deprecation-warnings"],
     "-lib" : ["stx_pico", "stx_nano", "stx_fp", "stx_fn", "stx_log", "stx_pkg", "fletcher "],
     "unit"  : {
@@ -18,8 +19,12 @@
       }
     },
     "test" : {
-      "-cp" : "src/main/haxe",
-      "lib" : ["stx_text"]
+      "-cp" : "src/test/haxe",
+      "-lib" : ["stx_test"],
+      "interp" : {
+        "--interp" : true,
+        "-main"    : "stx.coroutine.Test"
+      }
     }
   }
 }

@@ -42,14 +42,17 @@ class RelateLift{
     return rec(self);
   }
   /**
-    Next time we hit an input request, Stop.
+    Next time we hit an input request, call values.
   **/
-  static public function derive<I,R,E>(self:RelateDef<I,R,E>):Derive<R,E>{
+  static public function derive<I,R,E>(self:RelateDef<I,R,E>,values:Void->Either<I,Cause<E>>):Derive<R,E>{
     function rec(self:RelateDef<I,R,E>):DeriveDef<R,E>{
       final f = rec;
       return switch(self){
         case Emit(o,next) : __.emit(o,f(next));
-        case Wait(tran)   : __.stop();
+        case Wait(tran)   : values().fold(
+          l -> derive(tran.imply(l),values),
+          r -> __.halt(r)
+        );
         case Hold(held)   : __.hold(held.mod(f));
         case Halt(r)      : __.halt(r);
       }

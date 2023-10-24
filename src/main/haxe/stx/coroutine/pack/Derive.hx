@@ -54,8 +54,11 @@ class DeriveLift{
   }
   static public function complete<R,E>(self:DeriveDef<R,E>,cb:R->Void):Effect<E>{
     function recurse(self){
+      //trace(self);
       return switch(self){
-        case Halt(Terminated(cause))  : __.term(cause);
+        case Halt(Terminated(cause))  : 
+          __.log().error('$cause');
+          __.term(cause);
         case Halt(Production(ret))    :
           cb(ret); 
           __.stop();

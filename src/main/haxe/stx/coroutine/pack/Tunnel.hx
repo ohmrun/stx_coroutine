@@ -172,6 +172,103 @@ class TunnelLift{
       case Emit(data,next)                : __.emit(data,f(next));
     });
   }
+  static public function seq<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,that:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
+    trace('$self $that');
+    return switch([self,that]){
+      case [Wait(l),Wait(r)]                    : 
+        __.tran(
+          (x) -> {
+            return seq(l.imply(x),r.imply(x));
+          }
+        );
+      case [Emit(eI,restI),Emit(eII,restII)]      :
+        __.emit(eI,Emit(eII,seq(restI,restII)));
+      case [Halt(Production(x)),next]             : 
+        next;
+      case [self,Halt(Production(x))]             : 
+        self;
+      case [Halt(Terminated(Stop)),next]          : 
+        next;
+      case [self,Halt(Terminated(Stop))]          : 
+        self;
+      case [Halt(Terminated(cause)),_]            : 
+        __.term(cause);
+      case [_,Halt(Terminated(cause))]            : 
+        __.term(cause);
+      case [Wait(fn),that]                        :
+        __.tran(x -> seq(fn.imply(x),that));
+      case [Emit(x,n),that]                       :
+        __.emit(x,seq(n,that));
+      case [Hold(l),Hold(r)]                      :
+        __.hold(
+          Held.Pause(
+            () -> return self.squeeze().mod(
+              x -> seq(x,that.squeeze())
+            )
+          )
+        );
+      case [Hold(l),x] : 
+          __.hold(
+            l.mod(v -> seq(x,v))
+          );
+      case [x,Hold(l)] : 
+        __.hold(
+          l.mod(v -> seq(x,v))
+        );
+    }
+  }
+  static public function amb<I,O,R,Ri,E>(self:CoroutineSum<I,O,R,E>,that:CoroutineSum<I,O,R,E>):Coroutine<I,O,R,E>{
+    trace('$self $that');
+    var l_res = __.option();
+    var r_res = __.option();
+
+    final yes   = stx.Math.rndOne() == 1;
+    final main  = yes ? that : self;
+    final next  = yes ? self : that;
+
+    return switch([main,next]){
+      case [Wait(l),Wait(r)]                    : 
+        __.tran(
+          (x) -> {
+            return amb(l.imply(x),r.imply(x));
+          }
+        );
+      case [Emit(eI,restI),Emit(eII,restII)]      :
+        __.emit(eI,Emit(eII,amb(restI,restII)));
+      case [Halt(Production(x)),next]             : 
+        next;
+      case [main,Halt(Production(x))]             : 
+        main;
+      case [Halt(Terminated(Stop)),next]          : 
+        next;
+      case [main,Halt(Terminated(Stop))]          : 
+        main;
+      case [Halt(Terminated(cause)),_]            : 
+        __.term(cause);
+      case [_,Halt(Terminated(cause))]            : 
+        __.term(cause);
+      case [Wait(fn),next]                        :
+        __.tran(x -> amb(fn.imply(x),next));
+      case [Emit(x,n),next]                       :
+        __.emit(x,amb(n,next));
+      case [Hold(l),Hold(r)]                      :
+        __.hold(
+          Held.Pause(
+            () -> return main.squeeze().mod(
+              x -> amb(x,next.squeeze())
+            )
+          )
+        );
+      case [Hold(l),x] : 
+          __.hold(
+            l.mod(v -> amb(x,v))
+          );
+      case [x,Hold(l)] : 
+        __.hold(
+          l.mod(v -> amb(x,v))
+        );
+    }
+  }
   /**
    Reorders the outputs such that the first `true` from `fn` is produced first. `Refuse` if the stream
    terminates without ever returning `true`. Infinite `Tunnel` unaffected.

@@ -2,18 +2,27 @@ package stx.coroutine;
 
 using stx.Nano;
 using stx.Test;
+using stx.Log;
 
 using stx.Coroutine;
 
+import stx.coroutine.test.*;
 using stx.coroutine.Logging;
 
 class Test{
   static public function main(){
-    Logger.ZERO.includes.push("stx/coroutine");
+    __.logger().global().configure(
+          logger -> logger.with_logic(
+            logic -> logic.or(
+              logic.tags(['stx/coroutine'])
+            )
+          )
+        );
 
-    __.log().info('test');
+
     __.test().run([
         new OverridesTest(),
+        new TunnelTest()
       ],
       []
     );
@@ -21,12 +30,14 @@ class Test{
     //     test.test();
   }
 }
+@stx.test.async
 class OverridesTest extends TestCase{
   public function test(async:Async){
     var event = null;
         event = haxe.MainLoop.add(
           () -> {
             __.log().debug('called');
+            this.pass('MainLoop called');
             event.stop();
             async.done();
           }
