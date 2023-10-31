@@ -2,16 +2,19 @@ package stx.coroutine.pack;
 
 typedef DeriveDef<R,E> = CoroutineSum<Nada,Nada,R,E>;
 
-@:using(stx.coroutine.pack.Derive.DeriveLift)
+@:using(stx.coroutine.pack.Derive.DeriveUses)
 @:forward abstract Derive<R,E>(DeriveDef<R,E>) from DeriveDef<R,E> to DeriveDef<R,E>{
-  static public var _(default,never) = DeriveLift;
+  
+  @stx.meta.using
+  static public inline function _uses(){ return DeriveUses; }
+
   public function new(self:DeriveDef<R,E>) this = self;
-  @:noUsing static public function lift<R,E>(self:DeriveDef<R,E>) return new Derive(self);
+  @:noUsing static public function Uses<R,E>(self:DeriveDef<R,E>) return new Derive(self);
   @:from static public function fromCoroutine<I,O,R,E>(spx:Coroutine<Nada,Nada,R,E>):Derive<R,E>{
     return new Derive(spx);
   }
   @:noUsing static public function fromThunk<R,E>(thk:Thunk<R>):Derive<R,E>{
-    return lift(__.lazy(
+    return Uses(__.lazy(
       () -> __.prod(thk())
     ));
   }
@@ -36,7 +39,7 @@ typedef DeriveDef<R,E> = CoroutineSum<Nada,Nada,R,E>;
   }*/
 }
 
-class DeriveLift{
+class DeriveUses{
   
   static public function toSource<O,R,E>(self:DeriveDef<R,E>):Source<O,R,E>{
     function recurse(self){
@@ -52,22 +55,22 @@ class DeriveLift{
     }
     return recurse(self);
   }
-  static public function complete<R,E>(self:DeriveDef<R,E>,cb:R->Void):Effect<E>{
+  static public function complete<R,E>(self:DeriveDef<R,E>,cb:Option<R>->Void):Effect<E>{
     function recurse(self){
       //trace(self);
       return switch(self){
         case Halt(Terminated(cause))  : 
-          __.log().error('$cause');
+          cb(None);
           __.term(cause);
         case Halt(Production(ret))    :
-          cb(ret); 
+          cb(Some(ret)); 
           __.stop();
         case Emit(head,rest)          : __.emit(head,complete(rest,cb));
         case Wait(arw)                : __.wait(arw.mod(recurse));
         case Hold(ft)                 : __.hold(ft.mod(recurse));
       } 
     }
-    return Effect.lift(recurse(self));
+    return Effect.Uses(recurse(self));
   }
   // static public function modulate<R,Ri,E>(self:DeriveDef<R,E>,fn:Modulate<R,Ri,CoroutineFailure<E>>):Derive<Ri,E>{
   //   function f(self:DeriveDef<R,E>):DeriveDef<R,E>{
@@ -96,7 +99,7 @@ class DeriveLift{
   //       default                                     : __.stop();
   //     }
   //   }
-  //   return Derive.lift(self);
+  //   return Derive.Uses(self);
   // }
   static public function zip<R,Ri,E>(self:DeriveDef<R,E>,that:DeriveDef<Ri,E>):Derive<Couple<R,Ri>,E>{
     function f(self,that):DeriveDef<Couple<R,Ri>,E>{
@@ -122,7 +125,7 @@ class DeriveLift{
         case [Halt(l),r]                                              : __.hold(Held.Pause(f.bind(__.halt(l),r)));
       }
     }
-    return Derive.lift(f(self,that));
+    return Derive.Uses(f(self,that));
   }
   // static public function regulate<R,E>(self:DeriveDef<R,E>,fn:Regulate<R,E>):Regulate<R,E>{
   //   return modulate(self,fn);
@@ -137,7 +140,7 @@ class DeriveLift{
         case Halt(Terminated(e))      : __.term(e);
       }
     }
-    return Effect.lift(f(self));
+    return Effect.Uses(f(self));
   }
   static public function map<R,Ri,E>(self:DeriveDef<R,E>,fn:R->Ri):Derive<Ri,E>{
     function f(self:DeriveDef<R,E>):DeriveDef<Ri,E>{
@@ -149,11 +152,11 @@ class DeriveLift{
         case Halt(Terminated(e))      : __.term(e);
       }
     }
-    return Derive.lift(f(self));
+    return Derive.Uses(f(self));
   }
   static public function produce<R,E>(self:DeriveDef<R,E>):Produce<R,E>{
     return Produce.fromPledge(
-      Pledge.lift(
+      Pledge.Uses(
         run(self).map(
           outcome -> outcome.fold(
             ok -> __.accept(ok),
@@ -170,7 +173,7 @@ class DeriveLift{
   ///////////////////////////////////////////////////////////////////////////////
   
   static public function run<R,E>(eff:Derive<R,E>):Future<Outcome<R,Cause<E>>>{
-    __.log().info('run $eff');
+    //__.log().info('run $eff');
     var t     = Future.trigger();
     loop(eff,t);
     return t.asFuture();
@@ -192,6 +195,7 @@ class DeriveLift{
             (x) -> {
               __.log().debug('hold:release');
               loop(x,f);
+              //haxe.Timer.delay(loop.bind(x,f),0);
             }
           );
           break;

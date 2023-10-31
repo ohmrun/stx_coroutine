@@ -1,5 +1,8 @@
 package stx.coroutine.pack;
 
+#if tink_streams
+import tink.streams.Stream;
+#end
 /**
  * `Stream` like `Coroutine`
  */
@@ -19,6 +22,9 @@ typedef EmiterDef<O,E> = SourceDef<O,Nada,E>;
       Transmission.fromFun1R( (_:Nada) -> __.stop()
     )));
   }
+  // @:noUsing static public function fromStream<O,E>(stream:Stream<O,E>):Emiter<O,E>{
+
+  // }
   @:noUsing static public function fromOption<O,E>(opt:Option<O>):Emiter<O,E>{
     return lift(switch (opt){
         case None     : __.stop();
@@ -115,9 +121,9 @@ class EmiterLift{
         rest.mod(
           (spx) -> f(spx,fn(head,memo))
         );
-      case Halt(Production(Nada))              : __.prod(memo);
-      case Halt(Terminated(cause))              : __.term(cause);
-      case Halt(_)                              : throw "Pattern match regression 062020";
+      case CoroutineSum.Halt(ReturnSum.Production(Nada))              : __.prod(memo);
+      case CoroutineSum.Halt(ReturnSum.Terminated(cause))              : __.term(cause);
+      case CoroutineSum.Halt(_)                              : throw "Pattern match regression 062020";
       case Wait(arw)                            : __.wait(arw.mod(c(memo)));
       case Hold(ft)                             : __.hold(ft.mod(c(memo)));
     });
@@ -132,9 +138,9 @@ class EmiterLift{
     return switch (prc0){
       case Emit(head,rest)              : __.emit(head,rest.mod(f));
       case Wait(arw)                    : __.wait(arw.mod(f));
-      case Halt(Production(Nada))      : prc1();
-      case Halt(Terminated(cause))      : __.term(cause);
-      case Halt(_)                      : throw "Pattern match regression 30/06/2020";
+      case CoroutineSum.Halt(ReturnSum.Production(Nada))      : prc1();
+      case CoroutineSum.Halt(ReturnSum.Terminated(cause))      : __.term(cause);
+      case CoroutineSum.Halt(_)                      : throw "Pattern match regression 30/06/2020";
       case Hold(ft)                     : __.hold(ft.mod(f));
     }
   }
@@ -143,7 +149,7 @@ class EmiterLift{
     return switch (prc){
       case Emit(head,rest)        : append(fn(head),f.bind(rest));
       case Wait(arw)              : __.wait(arw.mod(__.into(f)));
-      case Halt(e)                : __.halt(e);
+      case CoroutineSum.Halt(e)                : __.halt(e);
       case Hold(ft)               : __.hold(ft.mod(__.into(f)));
     }
   }
@@ -154,8 +160,8 @@ class EmiterLift{
       case Emit(head,rest)                    : rest.mod(__.into(search.bind(_,prd)));
       case Wait(fn)                           : __.wait(fn.mod(__.into(f)));
       case Hold(ft)                           : __.hold(ft.mod(__.into(f)));
-      case Halt(Production(v))                : __.prod(None);
-      case Halt(Terminated(cause))            : __.term(cause);
+      case CoroutineSum.Halt(ReturnSum.Production(v))                : __.prod(None);
+      case CoroutineSum.Halt(ReturnSum.Terminated(cause))            : __.term(cause);
     }
   }
   static public function first<O,E>(self:Emiter<O,E>):Derive<Option<O>,E>{
@@ -168,9 +174,9 @@ class EmiterLift{
         case [Emit(head,rest),_]                : rest.mod(__.into(recurse.bind(_,Some(head))));
         case [Wait(fn),_]                       : __.wait(fn.mod(f));
         case [Hold(ft),_]                       : __.hold(ft.mod(f));
-        case [Halt(Production(Nada)),v]        : __.prod(v);
-        case [Halt(Terminated(cause)),_]        : __.term(cause);
-        case [Halt(_),v]                        : __.prod(v);
+        case [CoroutineSum.Halt(ReturnSum.Production(Nada)),v]        : __.prod(v);
+        case [CoroutineSum.Halt(ReturnSum.Terminated(cause)),_]        : __.term(cause);
+        case [CoroutineSum.Halt(_),v]                        : __.prod(v);
       }
     }
     return recurse(self,None);
@@ -184,8 +190,8 @@ class EmiterLift{
         case Emit(head,tail)  if(index == count)    : __.prod(Some(head));
         case Emit(head,tail)                        : tail.mod(f(count + 1));
         case Hold(ft)                               : __.hold(ft.mod(c));
-        case Halt(Terminated(cause))                : __.term(cause);
-        case Halt(Production(_))                    : __.prod(None);
+        case CoroutineSum.Halt(ReturnSum.Terminated(cause))                : __.term(cause);
+        case CoroutineSum.Halt(ReturnSum.Production(_))                    : __.prod(None);
       }
     }
     return recurse(self);
@@ -202,7 +208,7 @@ class EmiterLift{
           switch(self){
             case Wait(fn)         : __.wait(fn.mod(f));
             case Hold(ft)         : __.hold(ft.mod(f));
-            case Halt(v)          : __.halt(v);
+            case CoroutineSum.Halt(v)          : __.halt(v);
             case Emit(head,tail)  : tail.mod(
               __.into((self) -> recurse(self,!prd(head)))
             );
@@ -214,11 +220,11 @@ class EmiterLift{
   static public function take<O,E>(self:Emiter<O,E>,max:Int){
     function recurse(self,n){
       var f = (n) -> __.into(recurse.bind(_,n));
-      return n >= max ? Halt(Production(Nada))
+      return n >= max ? CoroutineSum.Halt(ReturnSum.Production(Nada))
         : switch(self){
           case Wait(fn)         : __.wait(fn.mod(f(n)));
           case Hold(ft)         : __.hold(ft.mod(f(n)));
-          case Halt(out)        : __.halt(out);
+          case CoroutineSum.Halt(out)        : __.halt(out);
           case Emit(head,tail)  : __.emit(head,f(n++)(tail));
         }
     }
@@ -236,8 +242,8 @@ class EmiterLift{
   static public function snoc<O,E>(self:Emiter<O,E>,o:O):Emiter<O,E>{
     var f = __.into(snoc.bind(_,o));
     return switch(self){
-      case Halt(Production(Nada))  : self.cons(o);
-      case Halt(Terminated(cause))  : self;
+      case CoroutineSum.Halt(ReturnSum.Production(Nada))  : self.cons(o);
+      case CoroutineSum.Halt(ReturnSum.Terminated(cause))  : self;
       case Emit(head,rest)          : __.emit(head,rest.mod(f)); 
       case Wait(fn)                 : __.wait(fn.mod(f));
       case Hold(ft)                 : __.hold(ft.mod(f));
@@ -264,8 +270,8 @@ class EmiterLift{
       var fl = __.into(recurse.bind(_,next));
       return Effect.lift(switch([self,next]){
         case [Emit(head,tail),Wait(fn)] : recurse(tail,fn(Push(head)));
-        case [Halt(out),_]              : __.halt(out);
-        case [_,Halt(out)]              : __.halt(out);
+        case [CoroutineSum.Halt(out),_]              : __.halt(out);
+        case [_,CoroutineSum.Halt(out)]              : __.halt(out);
         case [Wait(fn),_]               : __.wait(fn.mod(fl));
         case [Hold(ft),_]               : __.hold(ft.mod(fl));
         case [_,Emit(head,tail)]        : recurse(self,tail);
@@ -281,26 +287,26 @@ class EmiterLift{
         case Emit(o,next)   :
           final step = fn(o,data);
           switch(step){
-            case Val(v) : 
+            case ChunkSum.Val(v) : 
               data = v;
               rec(next);
-            case End(null) : 
+            case ChunkSum.End(null) : 
               __.prod(data);
-            case End(err)  : 
+            case ChunkSum.End(err)  : 
               __.quit(err);
-            case Tap :
+            case ChunkSum.Tap :
               rec(next);
           }
         case Wait(tran)     :
           __.wait(tran.mod(rec));
         case Hold(held)     :
           __.hold(held.mod(rec));
-        case Halt(Terminated(Stop))     :
+        case CoroutineSum.Halt(ReturnSum.Terminated(Stop))     :
           __.prod(data);
-        case Halt(Terminated(r))        :
-          __.halt(Terminated(r));
-        case Halt(Production(r))         :
-          __.halt(Production(data));
+        case CoroutineSum.Halt(ReturnSum.Terminated(r))        :
+          __.halt(ReturnSum.Terminated(r));
+        case CoroutineSum.Halt(ReturnSum.Production(r))         :
+          __.halt(ReturnSum.Production(data));
       }
     }
     return rec(self);
@@ -314,10 +320,13 @@ class EmiterLift{
           __.emit(Nada,__.hold(Held.Pause(f.bind(next))));
         case Wait(tran)                   : __.wait(tran.mod(f));
         case Hold(held)                   : __.hold(held.mod(f));
-        case Halt(Production(_))          : __.prod(value);
-        case Halt(Terminated(cause))      : __.term(cause);
+        case CoroutineSum.Halt(ReturnSum.Production(_))          : __.prod(value);
+        case CoroutineSum.Halt(ReturnSum.Terminated(cause))      : __.term(cause);
       }
     }
     return f(self);
   }
+  #if tink_stream
+  static public function fromTinkStream(self:)
+  #end
 }

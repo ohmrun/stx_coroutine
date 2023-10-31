@@ -25,10 +25,10 @@ typedef EffectDef<E> = CoroutineSum<Nada,Nada,Nada,E>;
 }
 class EffectLift{
   static public function run<E>(self:Effect<E>):Future<Option<Cause<E>>>{
-    return Derive._.run(self.prj()).map(outcome -> outcome.fold(ok -> None,no -> Some(no)));
+    return Derive._uses().run(self.prj()).map(outcome -> outcome.fold(ok -> None,no -> Some(no)));
   }
   static public function submit<E>(eff:Effect<E>):Void{
-    Derive._.run(eff.prj()).handle(
+    Derive._uses().run(eff.prj()).handle(
       (res) -> res.fold(
         (_) -> {},
         cause -> switch(cause){
@@ -110,7 +110,7 @@ class EffectExecute<E> extends FletcherCls<Nada,Report<E>,Nada>{
     }
   }
   static public inline function crunch1<E>(eff:Effect<E>):Void{
-    Derive._.run(eff.prj()).handle(
+    Derive._uses().run(eff.prj()).handle(
       res -> res.fold(
         (_) -> {},
         __.crack
